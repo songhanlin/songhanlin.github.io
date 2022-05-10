@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ssh,bash," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="使用SecureCRT痛苦之后的崛起">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac 电脑下最新实用ssh免密码登录脚本">
+<meta property="og:url" content="http://blog.julysong.com/2019/05/16/mac-ssh/index.html">
+<meta property="og:site_name" content="骑驴码梦">
+<meta property="og:description" content="使用SecureCRT痛苦之后的崛起">
+<meta property="og:locale">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190517113118673.png">
+<meta property="article:published_time" content="2019-05-16T14:03:20.000Z">
+<meta property="article:modified_time" content="2022-05-10T03:03:54.948Z">
+<meta property="article:author" content="TeenSong">
+<meta property="article:tag" content="ssh">
+<meta property="article:tag" content="bash">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190517113118673.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.julysong.com/2019/05/16/mac-ssh/"/>
+
+
+
+
+
+  <title>Mac 电脑下最新实用ssh免密码登录脚本 | 骑驴码梦</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">骑驴码梦</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我一进门就看到常威在打来福~</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.julysong.com/2019/05/16/mac-ssh/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="骑驴码梦">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Mac 电脑下最新实用ssh免密码登录脚本</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-16T22:03:20+08:00">
+                2019-05-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              
+                <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/05/16/mac-ssh/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">post.comments_count：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2019/05/16/mac-ssh/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+              
+            
+          
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  使用SecureCRT痛苦之后的崛起
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 target="_blank" href="https://img-blog.csdnimg.cn/20190517113118673.png" rel="gallery_cl2ztnxk6000aix465cktho54 noopener"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://img-blog.csdnimg.cn/20190517113118673.png" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <p>mac 系统上我一直少有发现一款好用的 ssh 工具, 免去我记住多个密码的烦恼.</p>
+<p>经过大量时间的寻找, 我发现了一款名为 SecureCRT 的工具, 可以在 mac 系统上使用, 的确可以免除我记住大量密码的烦恼, 但是使用的痛苦也随之而来.</p>
+<ol>
+<li>不存在清理屏幕的快捷键<br>经常登录服务器进行测试环境的日志查阅, 这个时候, 界面上停留的可能有进入多少级目录, 然后打了什么命令, 已经其他很多无关紧要的东西在上面. 这个时候清理屏幕就显的很重要, 但是 CRT 不支持. 只能傻傻的通过工具栏上方的按钮去清除屏幕.</li>
+<li>vim 之后不能滚轮滑动<br>文字已经很能说明问题了, 我就不多赘述.</li>
+<li>我自己的 Iterm2 上操作的很开心, 不能用他我就不开心<br>这一点尤为重要.</li>
+</ol>
+<p>基于以上三个问题, 我决定翻出去年写的那个已经不能用的脚本来搞好他.</p>
+<p>之前的脚本存在几个问题</p>
+<ol>
+<li>不能展示出来列表<br>我目前存了多少个服务器, 我记不住, 也不能展示出来</li>
+<li>好端端的坏了<br>进入服务器之后, 啥也不能干.</li>
+</ol>
+<p>通过网上苦苦的搜索, 我找到一个朋友写的一个东西非常棒. fork 了他的项目, 改编了一下, 使其能更好的适用于我的电脑.<br>此处感谢 AlicFeng 的文章给我的帮助, 此处是<a target="_blank" rel="noopener" href="https://github.com/alicfeng/sshAutoLogin">github 地址</a>.</p>
+<p>首先说说为什么要重写</p>
+<ol>
+<li>电脑上下载的时候总是提示需要管理员的权限, 但是已经使用了, 不厌其烦</li>
+<li>废了好多功夫弄到本地之后, 感觉不是太会用. 这一点很尴尬.</li>
+<li>简书评论区 2 楼回复的很好, 在此引用一下<blockquote>
+<p>-s 登录的时候，后面的编号并不是 ini 文件中的 Index 项，而是取决于 shell 过滤出来的 ini 文件顺序</p>
+</blockquote>
+</li>
+</ol>
+<p>基于上面 3 点功能, 打算小小的改造一下.</p>
+<p>首先解决重点解决第三个问题.<br>AlicFeng 之前使用的是集合, 顺序得不到保证. 因此, 我在想, 是不是可以用 Map 类型来存储.<br>经过查阅资料, 发现 Map 数据类型和 bash 相关, mac 下的 bash 是 3.x, 但是 Map 数据类型必须要 4.x 以上.<br>于是乎, 需要升级个 bash.</p>
+<h3 id="方法一-更换系统的-bash-需要重启电脑"><a href="#方法一-更换系统的-bash-需要重启电脑" class="headerlink" title="方法一: 更换系统的 bash, 需要重启电脑"></a>方法一: 更换系统的 bash, 需要重启电脑</h3><table><td bgcolor=pink>
+mac 升级 bash 之前需要关闭 SIP(System Integrity Protection).
+网上有很多文章关于如何操作, 先简单介绍一下, 不清楚的可以去查阅资料.
+首先重启电脑, 并按住 command+r 键, 进入恢复模式.
+
+<p>进入恢复模式的系统之后, 打开上方工具栏中”实用工具”下的”终端”.</p>
+<p>在终端中输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">csrutil disable</span><br></pre></td></tr></table></figure>
+
+<p>成功之后, 重启电脑.</p>
+<p>这个时候就可以升级 bash 了.</p>
+<p>打开 iterm2, 输入命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install bash</span><br></pre></td></tr></table></figure>
+
+<p>升级成功之后输入如下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 替换bash</span><br><span class="line">sudo mv /bin/bash /bin/bash.origin</span><br><span class="line">sudo ln -s /usr/local/opt/bash/bin/bash /bin/bash</span><br><span class="line"># 由于本mac版本下的sh并不是直接链接bash，而是bash的一个文件拷贝。因此，还要替换默认的sh指向的命令为bash，如下：</span><br><span class="line">sudo mv /bin/sh /bin/sh.origin</span><br><span class="line">sudo ln -s /usr/local/opt/bash/bin/bash /bin/sh</span><br></pre></td></tr></table></figure>
+
+<p>这个时候可以通过命令来查看是否成功</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash --version</span><br></pre></td></tr></table></figure>
+
+<p>安装之后, 就可以重启电脑, 把 SIP 给启动.<br>同样进入恢复模式下输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">csrutil enable</span><br></pre></td></tr></table></figure>
+
+<p>然后重启电脑.</p>
+</td></table>
+
+<h3 id="方法二-直接下载新的-bash-无需重启电脑"><a href="#方法二-直接下载新的-bash-无需重启电脑" class="headerlink" title="方法二: 直接下载新的 bash, 无需重启电脑"></a>方法二: 直接下载新的 bash, 无需重启电脑</h3><table><td bgcolor=PaleGreen>
+
+<p>打开 iterm2, 输入命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install bash</span><br></pre></td></tr></table></figure>
+
+<p>这个时候需要把下载下来的 lucy 脚本的 “开头”部分, 加上一小段说明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/local/bin/bash</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>表示使用我们当前下载下来的 bash, 而不是系统目录下面的 bash</p>
+</td></table>
+
+<p>还是打开 iterm2, 这个时候, 安装一个小插件, 让界面更漂亮</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install toilet</span><br></pre></td></tr></table></figure>
+
+<p>安装好之后, 就进入了正文.</p>
+<p>首先介绍下, 文件路径.</p>
+<p>首先到~目录下, 创建一个文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir ssh-lucy</span><br></pre></td></tr></table></figure>
+
+<p>创建一个 servers 的文件. (无后缀).</p>
+<p>文件中内容放入以下东西</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#服务器IP	       账号	       密码		             	端口	    主机</span><br></pre></td></tr></table></figure>
+
+<p>实际最后放入的东西内容如下图所示</p>
+<p><img src="https://img-blog.csdnimg.cn/20190517113153953.png"></p>
+<p>最后的主机一列, 存放的是我们用于寻找登录哪个服务器的名称, 也就是我们存入 Map 中的 key, 可以自定义.</p>
+<p>存好服务器地址之后, 就可以使用我们真正的脚本.</p>
+<p>服务器脚本最后保留一个空行.</p>
+<p>我给她起了一个非常人性化的名字, 也是我心心念念的名字”lucy”([人类的始祖](&lt;<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Lucy_(Australopithecus)">https://en.wikipedia.org/wiki/Lucy_(Australopithecus)</a>)</p>
+<p>从 <a target="_blank" rel="noopener" href="https://github.com/songhanlin/ssh-lucy">gayhub</a> 上下载文件”lucy”之后, 放入本地的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/bin</span><br></pre></td></tr></table></figure>
+
+<p>目录.</p>
+<p>修改文件中的第十行内容”目录”为 servers 存在的绝对路径.</p>
+<p>然后赋予这个文件生命</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x lucy</span><br></pre></td></tr></table></figure>
+
+<p>此刻大公告成.</p>
+<p>此刻存在的命令如下, 延续了 AlicFeng 之前的命名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// l表示list, 表示查看列表(不包含密码)</span><br><span class="line">lucy -l</span><br><span class="line"></span><br><span class="line">// h表示help, 表示帮助</span><br><span class="line">lucy -h</span><br><span class="line"></span><br><span class="line">// s 表示ssh, 也就是平时我们使用的登陆方式</span><br><span class="line">lucy -s 主机名</span><br><span class="line"></span><br><span class="line">// p表示password, 展示包含密码的查看列表</span><br><span class="line">lucy -p</span><br></pre></td></tr></table></figure>
+
+<p>效果如下:<br><img src="https://img-blog.csdnimg.cn/20190517113005821.png"><br><img src="https://img-blog.csdnimg.cn/20190517113023583.png"><br>如果您使用了这个小脚本, 希望可以保留 lucy 的名字, 让我们给他一个生命的延续.<br><img src="https://img-blog.csdnimg.cn/20190517113040464.jpeg"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/qrcode.jpg" alt=" wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫描关注我的公众号, 掌握最新博客动态.</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>哇塞, 打赏这么多!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.png" alt=" WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt=" Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    TeenSong
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://blog.julysong.com/2019/05/16/mac-ssh/" title="Mac 电脑下最新实用ssh免密码登录脚本">http://blog.julysong.com/2019/05/16/mac-ssh/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ssh/" rel="tag"># ssh</a>
+          
+            <a href="/tags/bash/" rel="tag"># bash</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/12/rn-android-run-error/" rel="next" title="React Native Android 启动异常">
+                <i class="fa fa-chevron-left"></i> React Native Android 启动异常
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b483d889e488bfa" async = "async" ></script>
+</div>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="comments" id="comments">
+        
+          <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+          <div id="gitment-container" style="display:none"></div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/head.jpeg"
+               alt="" />
+          <p class="site-author-name" itemprop="name"></p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80-%E6%9B%B4%E6%8D%A2%E7%B3%BB%E7%BB%9F%E7%9A%84-bash-%E9%9C%80%E8%A6%81%E9%87%8D%E5%90%AF%E7%94%B5%E8%84%91"><span class="nav-number">1.</span> <span class="nav-text">方法一: 更换系统的 bash, 需要重启电脑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C-%E7%9B%B4%E6%8E%A5%E4%B8%8B%E8%BD%BD%E6%96%B0%E7%9A%84-bash-%E6%97%A0%E9%9C%80%E9%87%8D%E5%90%AF%E7%94%B5%E8%84%91"><span class="nav-number">2.</span> <span class="nav-text">方法二: 直接下载新的 bash, 无需重启电脑</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">TeenSong</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://july-song.oss-cn-beijing.aliyuncs.com/default2.css">
+        <script src="https://july-song.oss-cn-beijing.aliyuncs.com/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname,
+            owner: 'songhanlin',
+            repo: 'blog',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'b04eb623dae17584fe8c2246c7af7dc5ea3f1b2b',
+            
+                client_id: '58797e27de182d42ab95'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
+      
+      </script>
+    
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

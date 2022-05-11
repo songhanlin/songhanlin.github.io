@@ -96,20 +96,19 @@
 
 <meta name="description" content="学习笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据结构之斐波那切数列">
-<meta property="og:url" content="http://blog.julysong.com/2022/05/10/Fibonacci-Number/index.html">
+<meta property="og:title" content="回文数算法">
+<meta property="og:url" content="http://blog.julysong.com/2022/05/11/palindrome/index.html">
 <meta property="og:site_name" content="骑驴码梦">
 <meta property="og:description" content="学习笔记">
 <meta property="og:locale">
-<meta property="og:image" content="https://github.com/songhanlin/hexo-image/blob/master/Fibonacci-Number/1.png?raw=true">
-<meta property="og:image" content="https://github.com/songhanlin/hexo-image/blob/master/Fibonacci-Number/2.png?raw=true">
-<meta property="article:published_time" content="2022-05-10T08:47:26.000Z">
-<meta property="article:modified_time" content="2022-05-10T08:52:04.560Z">
+<meta property="og:image" content="https://github.com/songhanlin/hexo-image/blob/master/palindrome/1.png?raw=true">
+<meta property="article:published_time" content="2022-05-11T06:31:14.000Z">
+<meta property="article:modified_time" content="2022-05-11T06:36:17.253Z">
 <meta property="article:author" content="TeenSong">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="数据结构">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/songhanlin/hexo-image/blob/master/Fibonacci-Number/1.png?raw=true">
+<meta name="twitter:image" content="https://github.com/songhanlin/hexo-image/blob/master/palindrome/1.png?raw=true">
 
 
 
@@ -138,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.julysong.com/2022/05/10/Fibonacci-Number/"/>
+  <link rel="canonical" href="http://blog.julysong.com/2022/05/11/palindrome/"/>
 
 
 
 
 
-  <title>数据结构之斐波那切数列 | 骑驴码梦</title>
+  <title>回文数算法 | 骑驴码梦</title>
   
 
 
@@ -267,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.julysong.com/2022/05/10/Fibonacci-Number/">
+    <link itemprop="mainEntityOfPage" href="http://blog.julysong.com/2022/05/11/palindrome/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -284,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数据结构之斐波那切数列</h1>
+          <h1 class="post-title" itemprop="name headline">回文数算法</h1>
         
 
         <div class="post-meta">
@@ -296,8 +295,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-05-10T16:47:26+08:00">
-                2022-05-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-05-11T14:31:14+08:00">
+                2022-05-11
               </time>
             
 
@@ -337,15 +336,25 @@
       
 
       
-        <p>英文: Fibonacci Number<br>数列规则: 0    1    1    2    3    5    8    13    21 …</p>
-<p>f(n)&#x3D;f(n-1)+f(n+1)<br>f(1)&#x3D;1<br>f(0)&#x3D;0</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">private int f(int n) &#123;</span><br><span class="line">  if (n == 0) &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  if (n == 1) &#123;</span><br><span class="line">    return 1;</span><br><span class="line">  &#125;</span><br><span class="line">  return f(n - 1) + f(n - 2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>由上述公式可得:</p>
-<p><img src="https://github.com/songhanlin/hexo-image/blob/master/Fibonacci-Number/1.png?raw=true"><br>该图中可以看出, f(4)会计算1次, f(3)会计算2次, f(2)会计算3次, f(1)会计算2次;<br>实际上, 一个值已经计算过了, 我们就可以不需要重复计算多次了, 因此优化之后的结果如下:(以空间换时间)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">private Integer f(Integer n, Map&lt;Integer, Integer&gt; maps) &#123;</span><br><span class="line">  // 首先传入一个空Map, key是计算的位数, value是当前位数的实际值</span><br><span class="line">  for (Integer i : maps.keySet()) &#123;</span><br><span class="line">    if (Objects.equals(n, i)) &#123;</span><br><span class="line">      return maps.get(n);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  if (n == 0) &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  if (n == 1) &#123;</span><br><span class="line">    return 1;</span><br><span class="line">  &#125;</span><br><span class="line">  Integer ans = f(n - 1, maps) + f(n - 2, maps);</span><br><span class="line">  maps.put(n, ans);</span><br><span class="line">  return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>最终方法: 迭代(for&#x2F;while), 有点耗时短, 效率高;可以避免递归方法计算的数字过大, f()嵌套过度导致爆栈的问题</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">private int f(int n) &#123;</span><br><span class="line">  int a = 0;</span><br><span class="line">  int b = 1;</span><br><span class="line">  for (int i = 0; i &lt;= n; i++) &#123;</span><br><span class="line">    b = a + b;</span><br><span class="line">    a = b - a;</span><br><span class="line">  &#125;</span><br><span class="line">  return a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>公式图解(红色:移动, 绿色:相加)<br><img src="https://github.com/songhanlin/hexo-image/blob/master/Fibonacci-Number/2.png?raw=true"></p>
+        <h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p>正读和倒读都一样</p>
+<h4 id="例"><a href="#例" class="headerlink" title="例"></a>例</h4><p>汉字: “我为人人, 人人为我”<br>英文: “eye”<br>普通自然数:  232<br>平方回数: 121(11^2)<br>回文算式: 3 x 51 &#x3D; 153(去掉x号和&#x3D;号)</p>
+<h3 id="回文数算法"><a href="#回文数算法" class="headerlink" title="回文数算法"></a>回文数算法</h3><p>随意找一个十进制的数，把它倒过来成另一个数，再把这两个数相加，得一个和数，这是第一步;然后把这个和数倒过来，与原来的和数相加，又得到一个新的和数，这是第二步。照此方法，一步步接续往下算，直到出现一个“回文数”为n。例如:28+82&#x3D;110,110+011&#x3D;121，两步就得出了一个“回文数”。如果接着算下去，还会得到更多的“回文数”。这个过程称为“196算法”。</p>
+<p>利克瑞尔数, 猜测第一个利克瑞尔数是196, 但是尚未被证实<br>领军人W.V.Landingham到2006年2月已经计算到了699万步，得到了一个2.89亿位以上的和数，之间的结果仍未出现“回文数”</p>
+<h3 id="算法一"><a href="#算法一" class="headerlink" title="算法一"></a>算法一</h3><blockquote>
+<p>解释: 逆序后进行恒等于比较</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public boolean isPalindrome(String s) &#123;</span><br><span class="line">    return this.reverse(s).equals(s);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public String reverse(String s) &#123;</span><br><span class="line">    StringBuilder ans = new StringBuilder();</span><br><span class="line">    for (char i : s.toCharArray()) &#123;</span><br><span class="line">        ans.insert(0, i);</span><br><span class="line">    &#125;</span><br><span class="line">    return ans.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public boolean isPalindrome(String s) &#123;</span><br><span class="line">    return StringUtils.reverse(s).equals(s);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// StringUtils.reverse(s)的底层为</span><br><span class="line">public static String reverse(String str) &#123;</span><br><span class="line">    return str == null ? null : (new StringBuilder(str)).reverse().toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="算法二"><a href="#算法二" class="headerlink" title="算法二"></a>算法二</h3><h4 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h4><img src="https://github.com/songhanlin/hexo-image/blob/master/palindrome/1.png?raw=true" width="400" hegiht="300"  />
+
+<h4 id="解释-1"><a href="#解释-1" class="headerlink" title="解释"></a>解释</h4><p>第一位为Left, 最后一位为Right<br>Left &#x3D;&#x3D; Right, Left + 1 &#x3D;&#x3D; Right - 1, …</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public boolean isPalindrome(String s) &#123;</span><br><span class="line">    int left = 0;</span><br><span class="line">    int right = s.length() - 1;</span><br><span class="line">    char[] chars = s.toCharArray();</span><br><span class="line">    while (left &lt; right) &#123;</span><br><span class="line">        if (chars[left] != chars[right]) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        left++;</span><br><span class="line">        right--;</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="算法三"><a href="#算法三" class="headerlink" title="算法三"></a>算法三</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public boolean isPalindrome(String s) &#123;</span><br><span class="line">    int length = s.length();</span><br><span class="line">    char[] chars = s.toCharArray();</span><br><span class="line">    for (int i = 0; i &lt; length / 2; i++) &#123;</span><br><span class="line">        if (chars[i] != chars[length - 1 - i]) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="算法四"><a href="#算法四" class="headerlink" title="算法四"></a>算法四</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public boolean isPalindrome(String s) &#123;</span><br><span class="line">    char[] chars = s.toCharArray();</span><br><span class="line">    Stack&lt;String&gt; stack = new Stack&lt;&gt;();</span><br><span class="line">    for (char c : chars) &#123;</span><br><span class="line">        stack.push(String.valueOf(c));</span><br><span class="line">    &#125;</span><br><span class="line">    for (char c : chars) &#123;</span><br><span class="line">        String x = stack.pop();</span><br><span class="line">        if(!StringUtils.equals(x, String.valueOf(c))) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -403,7 +412,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://blog.julysong.com/2022/05/10/Fibonacci-Number/" title="数据结构之斐波那切数列">http://blog.julysong.com/2022/05/10/Fibonacci-Number/</a>
+    <a href="http://blog.julysong.com/2022/05/11/palindrome/" title="回文数算法">http://blog.julysong.com/2022/05/11/palindrome/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -433,8 +442,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2022/05/10/recursive/" rel="next" title="递归">
-                <i class="fa fa-chevron-left"></i> 递归
+              <a href="/2022/05/11/tree-BF/" rel="next" title="树和广度优先">
+                <i class="fa fa-chevron-left"></i> 树和广度优先
               </a>
             
           </div>
@@ -443,8 +452,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2022/05/10/stack/" rel="prev" title="数据结构之堆栈(Stack)">
-                数据结构之堆栈(Stack) <i class="fa fa-chevron-right"></i>
+              <a href="/2022/05/11/two-sum/" rel="prev" title="使用三种算法来解决Two-Sum问题">
+                使用三种算法来解决Two-Sum问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -510,8 +519,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/head.jpeg"
@@ -573,6 +591,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%87%8A"><span class="nav-number">1.</span> <span class="nav-text">解释</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B"><span class="nav-number">1.1.</span> <span class="nav-text">例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E6%96%87%E6%95%B0%E7%AE%97%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">回文数算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E4%B8%80"><span class="nav-number">3.</span> <span class="nav-text">算法一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E4%BA%8C"><span class="nav-number">4.</span> <span class="nav-text">算法二</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%BE%E8%A7%A3"><span class="nav-number">4.1.</span> <span class="nav-text">图解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E9%87%8A-1"><span class="nav-number">4.2.</span> <span class="nav-text">解释</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E4%B8%89"><span class="nav-number">5.</span> <span class="nav-text">算法三</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%9B%9B"><span class="nav-number">6.</span> <span class="nav-text">算法四</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

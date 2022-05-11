@@ -2631,3 +2631,12 @@ ul.breadcrumb li:last-child {
     margin-bottom: 10px;
   }
 }
+body {
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.main {
+  opacity: 0.8;
+}

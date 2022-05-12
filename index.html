@@ -152,12 +152,14 @@ window.onload = function(e){
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">4</span>
-        <span class="site-state-item-name">分类</span>
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
+          <a href="/tags/">
         <span class="site-state-item-count">27</span>
-        <span class="site-state-item-name">标签</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -238,7 +240,16 @@ window.onload = function(e){
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-05-12 17:34:15 / 修改时间：20:18:15" itemprop="dateCreated datePublished" datetime="2022-05-12T17:34:15+08:00">2022-05-12</time>
+      <time title="创建时间：2022-05-12 17:34:15 / 修改时间：20:51:20" itemprop="dateCreated datePublished" datetime="2022-05-12T17:34:15+08:00">2022-05-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+        </span>
     </span>
 
   
@@ -315,7 +326,16 @@ window.onload = function(e){
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-05-12 17:01:33 / 修改时间：17:08:22" itemprop="dateCreated datePublished" datetime="2022-05-12T17:01:33+08:00">2022-05-12</time>
+      <time title="创建时间：2022-05-12 17:01:33 / 修改时间：20:51:20" itemprop="dateCreated datePublished" datetime="2022-05-12T17:01:33+08:00">2022-05-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+        </span>
     </span>
 
   
@@ -328,18 +348,15 @@ window.onload = function(e){
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="翻译"><a href="#翻译" class="headerlink" title="翻译"></a>翻译</h3><p>GCD（greatest common divisor）: 最大公约数</p>
-<h3 id="例"><a href="#例" class="headerlink" title="例"></a>例</h3><p>25和35的最大公约数为5</p>
-<blockquote>
-<p>欧几里得算法(Euclidean algorithm), 辗转相除法</p>
-</blockquote>
-<img src="https://github.com/songhanlin/hexo-image/blob/master/gcd-lcm/1.png?raw=true" width="200" hegiht="40"  />
-
-<h3 id="GCD算法1"><a href="#GCD算法1" class="headerlink" title="GCD算法1"></a>GCD算法1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public int gcd(int a, int b) &#123;</span><br><span class="line">    int temp;</span><br><span class="line">    while (b &gt; 0) &#123;</span><br><span class="line">        temp = a;</span><br><span class="line">        a = b;</span><br><span class="line">        b = temp % b;</span><br><span class="line">    &#125;</span><br><span class="line">    return a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="GCD算法2"><a href="#GCD算法2" class="headerlink" title="GCD算法2"></a>GCD算法2</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public int gcd(int a, int b) &#123;</span><br><span class="line">    if (b == 0) &#123;</span><br><span class="line">        return a;</span><br><span class="line">    &#125;</span><br><span class="line">    return gcd(b, a % b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="翻译-1"><a href="#翻译-1" class="headerlink" title="翻译"></a>翻译</h3><p>LCM（least common multiple）: 最小公倍数<br><img src="https://github.com/songhanlin/hexo-image/blob/master/gcd-lcm/2.png?raw=true" width="400" hegiht="40"  /></p>
-<h3 id="算法1"><a href="#算法1" class="headerlink" title="算法1"></a>算法1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public int lcm(int a, int b) &#123;</span><br><span class="line">    return a * b / gcd(a, b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <p>学习笔记</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/12/gcd-lcm/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -395,7 +412,16 @@ window.onload = function(e){
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-05-12 16:55:15 / 修改时间：16:58:40" itemprop="dateCreated datePublished" datetime="2022-05-12T16:55:15+08:00">2022-05-12</time>
+      <time title="创建时间：2022-05-12 16:55:15 / 修改时间：20:51:20" itemprop="dateCreated datePublished" datetime="2022-05-12T16:55:15+08:00">2022-05-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+        </span>
     </span>
 
   
@@ -472,7 +498,16 @@ window.onload = function(e){
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-05-12 16:46:52 / 修改时间：16:54:15" itemprop="dateCreated datePublished" datetime="2022-05-12T16:46:52+08:00">2022-05-12</time>
+      <time title="创建时间：2022-05-12 16:46:52 / 修改时间：20:51:36" itemprop="dateCreated datePublished" datetime="2022-05-12T16:46:52+08:00">2022-05-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+        </span>
     </span>
 
   
@@ -547,9 +582,24 @@ window.onload = function(e){
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-05-11 14:41:41 / 修改时间：14:43:00" itemprop="dateCreated datePublished" datetime="2022-05-11T14:41:41+08:00">2022-05-11</time>
+      <time title="创建时间：2022-05-11 14:41:41" itemprop="dateCreated datePublished" datetime="2022-05-11T14:41:41+08:00">2022-05-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-12 20:51:20" itemprop="dateModified" datetime="2022-05-12T20:51:20+08:00">2022-05-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+        </span>
     </span>
 
   
@@ -624,9 +674,24 @@ window.onload = function(e){
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-05-11 14:37:25 / 修改时间：14:40:21" itemprop="dateCreated datePublished" datetime="2022-05-11T14:37:25+08:00">2022-05-11</time>
+      <time title="创建时间：2022-05-11 14:37:25" itemprop="dateCreated datePublished" datetime="2022-05-11T14:37:25+08:00">2022-05-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-12 20:51:47" itemprop="dateModified" datetime="2022-05-12T20:51:47+08:00">2022-05-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+        </span>
     </span>
 
   
@@ -701,9 +766,24 @@ window.onload = function(e){
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-05-11 14:31:14 / 修改时间：14:36:17" itemprop="dateCreated datePublished" datetime="2022-05-11T14:31:14+08:00">2022-05-11</time>
+      <time title="创建时间：2022-05-11 14:31:14" itemprop="dateCreated datePublished" datetime="2022-05-11T14:31:14+08:00">2022-05-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-12 20:50:42" itemprop="dateModified" datetime="2022-05-12T20:50:42+08:00">2022-05-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+        </span>
     </span>
 
   
@@ -778,9 +858,24 @@ window.onload = function(e){
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-05-11 14:25:02 / 修改时间：14:30:08" itemprop="dateCreated datePublished" datetime="2022-05-11T14:25:02+08:00">2022-05-11</time>
+      <time title="创建时间：2022-05-11 14:25:02" itemprop="dateCreated datePublished" datetime="2022-05-11T14:25:02+08:00">2022-05-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-12 20:51:43" itemprop="dateModified" datetime="2022-05-12T20:51:43+08:00">2022-05-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+        </span>
     </span>
 
   
@@ -855,9 +950,24 @@ window.onload = function(e){
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-05-11 14:15:17 / 修改时间：14:23:51" itemprop="dateCreated datePublished" datetime="2022-05-11T14:15:17+08:00">2022-05-11</time>
+      <time title="创建时间：2022-05-11 14:15:17" itemprop="dateCreated datePublished" datetime="2022-05-11T14:15:17+08:00">2022-05-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-12 20:51:27" itemprop="dateModified" datetime="2022-05-12T20:51:27+08:00">2022-05-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+        </span>
     </span>
 
   
@@ -932,9 +1042,24 @@ window.onload = function(e){
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-05-10 16:56:37 / 修改时间：16:58:29" itemprop="dateCreated datePublished" datetime="2022-05-10T16:56:37+08:00">2022-05-10</time>
+      <time title="创建时间：2022-05-10 16:56:37" itemprop="dateCreated datePublished" datetime="2022-05-10T16:56:37+08:00">2022-05-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-12 20:51:20" itemprop="dateModified" datetime="2022-05-12T20:51:20+08:00">2022-05-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+        </span>
     </span>
 
   

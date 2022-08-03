@@ -23,8 +23,8 @@ http://blog.julysong.com/2022/05/11/tree-BF/
 http://blog.julysong.com/2022/05/12/sum-of-the-digits/
 http://blog.julysong.com/2022/05/10/stack/
 http://blog.julysong.com/2022/05/11/set-venn-graph/
-http://blog.julysong.com/2022/05/11/Inverse-Factorial/
 http://blog.julysong.com/2022/05/10/Fibonacci-Number/
+http://blog.julysong.com/2022/05/11/Inverse-Factorial/
 http://blog.julysong.com/2022/05/12/anagram/
 http://blog.julysong.com/2022/05/12/average-median/
 http://blog.julysong.com/2022/05/10/from-Linear-Search-to-Binary-Search/

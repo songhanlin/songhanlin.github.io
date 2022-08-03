@@ -1,3 +1,4 @@
+http://blog.julysong.com/2022/08/03/web3-freshman-level4/
 http://blog.julysong.com/2022/08/02/frontend-development-the-essentials/
 http://blog.julysong.com/2022/08/02/web3-freshman-level3/
 http://blog.julysong.com/2022/08/02/web3-freshman-level1/
@@ -68,10 +69,10 @@ http://blog.julysong.com/tags/bash/
 http://blog.julysong.com/tags/Linux/
 http://blog.julysong.com/tags/Mac/
 http://blog.julysong.com/tags/JDK/
-http://blog.julysong.com/tags/404/
 http://blog.julysong.com/tags/Node/
 http://blog.julysong.com/tags/Nvm/
 http://blog.julysong.com/tags/Avn/
+http://blog.julysong.com/tags/404/
 http://blog.julysong.com/tags/React-Native/
 http://blog.julysong.com/tags/Android/
 http://blog.julysong.com/tags/Gradle/

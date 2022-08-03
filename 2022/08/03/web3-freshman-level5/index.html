@@ -22,28 +22,30 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"blog.julysong.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="WEB3系列教程之新手篇">
+    <meta name="description" content="web3系列之新手篇">
 <meta property="og:type" content="article">
-<meta property="og:title" content="WEB3系列教程之新手篇--level0:基础编程">
-<meta property="og:url" content="http://blog.julysong.com/2022/08/02/web3-freshman-level0/index.html">
+<meta property="og:title" content="WEB3系列教程之新手篇--level5:Remix IDE">
+<meta property="og:url" content="http://blog.julysong.com/2022/08/03/web3-freshman-level5/index.html">
 <meta property="og:site_name" content="骑驴码梦">
-<meta property="og:description" content="WEB3系列教程之新手篇">
+<meta property="og:description" content="web3系列之新手篇">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-08-02T08:26:36.000Z">
-<meta property="article:modified_time" content="2022-08-02T09:59:09.819Z">
+<meta property="og:image" content="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level5/1.png?raw=true">
+<meta property="article:published_time" content="2022-08-03T09:43:52.000Z">
+<meta property="article:modified_time" content="2022-08-03T10:09:38.572Z">
 <meta property="article:author" content="TeenSong">
 <meta property="article:tag" content="web3">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level5/1.png?raw=true">
 
 
-<link rel="canonical" href="http://blog.julysong.com/2022/08/02/web3-freshman-level0/">
+<link rel="canonical" href="http://blog.julysong.com/2022/08/03/web3-freshman-level5/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://blog.julysong.com/2022/08/02/web3-freshman-level0/","path":"2022/08/02/web3-freshman-level0/","title":"WEB3系列教程之新手篇--level0:基础编程"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://blog.julysong.com/2022/08/03/web3-freshman-level5/","path":"2022/08/03/web3-freshman-level5/","title":"WEB3系列教程之新手篇--level5:Remix IDE"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>WEB3系列教程之新手篇--level0:基础编程 | 骑驴码梦</title>
+<title>WEB3系列教程之新手篇--level5:Remix IDE | 骑驴码梦</title>
   
 
 
@@ -138,7 +140,7 @@ window.onload = function(e){
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF"><span class="nav-number">2.</span> <span class="nav-text">前端技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF"><span class="nav-number">3.</span> <span class="nav-text">后端技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">练习题</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E8%88%AA-Remix"><span class="nav-number">1.</span> <span class="nav-text">导航 Remix</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Remix-%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">Remix 工作流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E8%8D%90"><span class="nav-number">3.</span> <span class="nav-text">推荐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">练习题</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -214,10 +216,15 @@ window.onload = function(e){
 
 <div class="post-block">
   
-  
+  <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+    
+    <div class="post-gallery-image">
+      <img src="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level5/1.png?raw=true" itemprop="contentUrl">
+    </div>
+    </div>
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://blog.julysong.com/2022/08/02/web3-freshman-level0/">
+    <link itemprop="mainEntityOfPage" href="http://blog.julysong.com/2022/08/03/web3-freshman-level5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/head.jpeg">
@@ -230,12 +237,12 @@ window.onload = function(e){
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="WEB3系列教程之新手篇--level0:基础编程 | 骑驴码梦">
-      <meta itemprop="description" content="WEB3系列教程之新手篇">
+      <meta itemprop="name" content="WEB3系列教程之新手篇--level5:Remix IDE | 骑驴码梦">
+      <meta itemprop="description" content="web3系列之新手篇">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          WEB3系列教程之新手篇--level0:基础编程
+          WEB3系列教程之新手篇--level5:Remix IDE
         </h1>
 
         <div class="post-meta-container">
@@ -247,7 +254,7 @@ window.onload = function(e){
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-08-02 16:26:36 / 修改时间：17:59:09" itemprop="dateCreated datePublished" datetime="2022-08-02T16:26:36+08:00">2022-08-02</time>
+      <time title="创建时间：2022-08-03 17:43:52 / 修改时间：18:09:38" itemprop="dateCreated datePublished" datetime="2022-08-03T17:43:52+08:00">2022-08-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -262,7 +269,7 @@ window.onload = function(e){
   
 </div>
 
-            <div class="post-description">WEB3系列教程之新手篇</div>
+            <div class="post-description">web3系列之新手篇</div>
         </div>
       </header>
 
@@ -271,61 +278,83 @@ window.onload = function(e){
     
     <div class="post-body" itemprop="articleBody">
         <blockquote>
-<p>原文地址: <a target="_blank" rel="noopener" href="https://www.learnweb3.io/tracks/freshman/basic-programming">https://www.learnweb3.io/tracks/freshman/basic-programming</a></p>
+<p>原文地址: <a target="_blank" rel="noopener" href="https://www.learnweb3.io/tracks/freshman/remix-ide">https://www.learnweb3.io/tracks/freshman/remix-ide</a></p>
 <p>翻译: JulySong</p>
 </blockquote>
-<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>要开始在 Web3 中构建应用程序，我们需要一些 Web2 的背景知识。web2 中肯定涵盖了许多在 Web3 中非常有用的主题。</p>
-<p>例如，如果您制作了一份智能合约，您仍然需要为您的用户提供一种与该智能合约进行交互的方式。您可以通过构建允许用户以简单方式与智能合约交互的网站或应用程序来做到这一点。</p>
-<p>此外，您可能还想在智能合约之外存储一些用户数据或其他数据。这些概念与 Web2 完全相同，唯一不同的是我们将在后台使用智能合约并与之交互。</p>
-<h2 id="前端技术"><a href="#前端技术" class="headerlink" title="前端技术"></a>前端技术</h2><p>前端是用户与之交互的界面。在网络上，前端是指您可以浏览的网站。移动应用程序和桌面应用程序也是有效前端接口的示例。就本课程而言，我们将专注于 Web，并使用 HTML、CSS 和 Javascript 等 Web 技术开发前端界面。</p>
+<p>Remix 是用于以太坊开发的开源、Web 和桌面集成开发环境 (IDE)。它是开始在以太坊上构建的最简单的开发工具，并且拥有大量插件来扩展其体验。</p>
+<p>Remix 可帮助您直接在浏览器中编写 Solidity 代码，并提供用于测试、调试和将智能合约部署到区块链的工具。</p>
+<p>你可以在<a target="_blank" rel="noopener" href="https://remix.ethereum.org/%E8%AE%BF%E9%97%AE">https://remix.ethereum.org/访问</a> Remix</p>
+<h2 id="导航-Remix"><a href="#导航-Remix" class="headerlink" title="导航 Remix"></a>导航 Remix</h2><p>当您第一次打开 Remix 时，您会看到这样的屏幕。</p>
+<p><img src="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level5/2.png?raw=true"><br><code>File Explorer</code>在左侧边栏中，您可以在、<code>Solidity Compiler</code>、<code>Deployer</code>和<code>Extensions</code>面板之间切换。</p>
+<p>在底部，有一个输出面板，显示编译、部署和函数调用的输出。</p>
+<p>中间是您将编辑代码的地方。目前它显示 IDE 的主屏幕，但是一旦我们打开一个文件，它将成为代码编辑器。</p>
+<h2 id="Remix-工作流程"><a href="#Remix-工作流程" class="headerlink" title="Remix 工作流程"></a>Remix 工作流程</h2><p>在侧边栏中，如果您查看<code>contracts</code>文件夹下方 - Remix 附带 3 个基本智能合约，以帮助人们学习 Solidity。让我们来看看<code>1_Storage.sol</code>。</p>
+<p><img src="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level5/3.png?raw=true"><br>我们现在可以看到代码编辑器了。</p>
+<p>在文件资源管理器中，我们还可以看到创建新文件或目录、上传本地文件或从 Github 导入文件的选项。</p>
+<p>为了编译我们的合约，我们切换到 <code>Solidity Compiler</code> 选项卡，我们将在侧边栏中看到类似的内容。<br><img src="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level5/4.png?raw=true"><br>在这里，我们可以选择<code>Compiler Version</code>我们想要的、我们使用的智能合约编程语言（大多数情况下你只会使用 Solidity），以及一些进一步的配置选项。</p>
+<p>注意：Remix 中列出的另一种编程语言 <code>Yul</code> 是低级语言。它用于中间编译，比 Solidity 更接近硬件。99% 的时间你不会在 Yul 中编码。在此处阅读有关 Yul 的更多信息 - <a target="_blank" rel="noopener" href="https://docs.soliditylang.org/en/v0.8.9/yul.html">https://docs.soliditylang.org/en/v0.8.9/yul.html</a></p>
+<p>单击 <code>Compile 1_Storage.sol</code> 将编译合约并使其准备好部署。<br><img src="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level5/5.png?raw=true"><br>转到<code>Deployment</code>选项卡，我们将在侧边栏中看到类似的内容。</p>
+<p><img src="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level5/6.png?raw=true"><br>这里首先要注意的是<code>Environment</code>. Remix 附带一个<code>Javascript VM</code>- 这是浏览器中以太坊虚拟机 (EVM) 的模拟器。只要您的合约不依赖于部署到真实以太坊网络的另一个合约，这便可以快速测试和调试您的智能合约。谢天谢地，我们的存储合约没有，所以我们可以在 Javascript VM 中测试它。</p>
+<p>要部署到实际网络，我们将希望将我们更改<code>Environment</code>为那里列出的其他选项之一（稍后会详细介绍）。</p>
+<p>除了<code>Javascript VM</code>，Remix 还创建了一组虚假账户，所有账户都装有 100 ETH，以供测试。</p>
+<p>从下拉列表中选择<code>1_Storage.sol</code>合约，然后单击<code>Deploy</code>以部署合约。<br><img src="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level5/7.png?raw=true"><br>部署合约后，您将在该<code>Deployed Contracts</code>部分下看到它 - 您现在可以在其中调用智能合约上的函数。</p>
+<p>调用该<code>retrieve</code>函数将返回一个<code>0</code>right now 值，这是 Solidity 中整数的默认值。<br><img src="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level5/8.png?raw=true"><br>此外，我们将在“输出”面板中看到一些关于<code>Storage.retrieve</code>我们的函数调用的日志。</p>
+<p>现在，让我们尝试<code>store</code>使用 number 调用该值<code>5</code>。<br><img src="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level5/9.png?raw=true"><br>同样，我们在输出面板中看到一些关于调用的日志<code>Storage.store</code>。现在，如果我们再次尝试<code>retrieve</code>，输出将是<code>5</code>.</p>
+<p><img src="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level5/10.png?raw=true"></p>
+<p>注意- 我们所做的这些函数调用&#x2F;交易都没有打开您的数字钱包 (Metamask)。这是因为我们<code>Javascript VM</code>目前正在测试，而那只是一个使用假账户的模拟器。部署到真实网络（测试网或主网）时，需要通过您的数字钱包确认和签署交易。</p>
+<h2 id="推荐"><a href="#推荐" class="headerlink" title="推荐"></a>推荐</h2><p>要了解有关 Remix 的更多信息，我们建议：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://betterprogramming.pub/frontend-development-the-essentials-1c1290b43590">前端开发要点</a></li>
-<li><a target="_blank" rel="noopener" href="https://scrimba.com/learn/learnjavascript">免费学习 JavaScript</a></li>
-<li><a target="_blank" rel="noopener" href="https://scrimba.com/learn/learnreact">免费学习 React</a></li>
+<li>浏览 <a target="_blank" rel="noopener" href="https://remix-ide.readthedocs.io/en/latest/">Remix IDE Docs 上的文档</a></li>
+<li>使用 Remix 附带的默认智能合约来处理工作流程</li>
 </ul>
-<h2 id="后端技术"><a href="#后端技术" class="headerlink" title="后端技术"></a>后端技术</h2><p>后端是指软件中允许其运行并且用户不能（必然）直接访问的部分。大多数私有数据、用户数据、业务逻辑、数据处理等都发生在后端，而前端仅用于提供该数据的可视化表示并允许用户使用它执行某些任务。后端接收来自客户端的请求，并包含将适当数据发送回客户端的逻辑。后端服务可以用多种编程语言编写——Python、Java、Javascript、Go、Rust 等。</p>
-<p>在 Web 上，前端网站通常通过 Internet 通过 HTTP 向后端服务器发送请求，请求某些数据或要求它执行某个任务，然后后端注册请求并发送回响应。出于本课程的目的，我们还将使用 Javascript 开发我们的后端，以便能够重用代码并在前端和后端之间共享知识。</p>
-<p>必读:</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.codecademy.com/article/back-end-architecture">什么是后端?</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.freecodecamp.org/learn/back-end-development-and-apis/#basic-node-and-express">使用 Node.js 和 Express 构架 API</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.freecodecamp.org/learn/back-end-development-and-apis/#back-end-development-and-apis-projects">在 Node.js 中构建链接到数据库的 API</a></li>
-</ul>
-<hr>
-<p>在继续讨论实际的 web3 特定内容之前，请确保您熟悉以下内容：</p>
-<ul>
-<li>HTML</li>
-<li>CSS</li>
-<li>JavaScript</li>
-<li>Node.js</li>
-<li>React.js</li>
-</ul>
-<p>如果您愿意，您可以并行学习它们，但拥有背景知识肯定会有所帮助！尤其是当您继续在大一以外的轨道上行驶时。</p>
 <hr>
 <h2 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h2><ol>
-<li><p>🤔 什么是前端?</p>
-<p>A: 用户与之交互的界面</p>
-<p>B: 接收来自客户端的请求, 并包含发送适当数据的逻辑</p>
+<li><p>🤔 IDE 代表什么？</p>
+<p>A: 集成开发环境</p>
+<p>B: 智能不和谐环境</p>
+<p>C: 有意的开发人员体验</p>
+<p>D: 恼怒的开发者愤怒</p>
 </li>
-<li><p>🤔 什么是后端?</p>
-<p>A: 用户与之交互的界面</p>
-<p>B: 接收来自客户端的请求, 并包含发送适当数据的逻辑</p>
+<li><p>🤔 Remix 可以写什么?</p>
+<p>A: Solidity 合约</p>
+<p>B: 可靠性测试</p>
+<p>C: Javascript 脚本</p>
+<p>D: 上述所有的</p>
 </li>
-<li><p>🤔 什么是 API?</p>
-<p>A: 以持久方式将数据保存到内存的接口</p>
-<p>B: 用于在不同软件组件之间进行通信的接口</p>
+<li><p>🤔 以下哪一项不是 Remix 中的面板？</p>
+<p>A: 文件管理器</p>
+<p>B: 版本控制历史</p>
+<p>C: Solidity 编译器</p>
 </li>
-<li><p>🤔 什么是数据库?</p>
-<p>A: 以持久方式将数据保存到内存的接口</p>
-<p>B: 用于在不同软件组件之间进行通信的接口</p>
+<li><p>🤔 Remix 不支持以下哪个环境？</p>
+<p>A: Javascript 虚拟机</p>
+<p>B: Rinkeby 测试网</p>
+<p>C: Solana 测试网</p>
+<p>D: 以太坊主网</p>
+</li>
+<li><p>🤔 你可以用 Solidity 以外的语言在 Remix 上写代码吗？</p>
+<p>A: 真的</p>
+<p>B: 错误的</p>
+</li>
+<li><p>🤔 Remix 不支持以下哪些功能？</p>
+<p>A: 与已部署的智能合约交互</p>
+<p>B: 从 Github 存储库导入代码</p>
+<p>C: 提供免费的测试网以太</p>
+</li>
+<li><p>🤔 Remix 允许您与未部署的合约进行交互</p>
+<p>A: 真的</p>
+<p>B: 错误的</p>
 </li>
 </ol>
 <blockquote>
 <p>参考答案:</p>
 <ol>
 <li>A</li>
+<li>D</li>
 <li>B</li>
-<li>B</li>
+<li>C</li>
+<li>A</li>
+<li>C</li>
 <li>A</li>
 </ol>
 </blockquote>
@@ -345,14 +374,11 @@ window.onload = function(e){
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/07/14/manager-jdk-versions/" rel="prev" title="管理JDK多个版本">
-                  <i class="fa fa-chevron-left"></i> 管理JDK多个版本
+                <a href="/2022/08/03/web3-freshman-level4/" rel="prev" title="WEB3系列教程之新手篇--level4:加密钱包">
+                  <i class="fa fa-chevron-left"></i> WEB3系列教程之新手篇--level4:加密钱包
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/08/02/web3-freshman-level1/" rel="next" title="WEB3系列教程之新手篇--level1:什么是区块链?">
-                  WEB3系列教程之新手篇--level1:什么是区块链? <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -401,7 +427,7 @@ window.onload = function(e){
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.7.2/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"songhanlin","repo":"blog","client_id":"58797e27de182d42ab95","client_secret":"b04eb623dae17584fe8c2246c7af7dc5ea3f1b2b","admin_user":"songhanlin","distraction_free_mode":true,"proxy":"https://glacial-dawn-82467.herokuapp.com/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.7.2/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"348d3e7202670bc8fc2ab38ba5194e6c"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"songhanlin","repo":"blog","client_id":"58797e27de182d42ab95","client_secret":"b04eb623dae17584fe8c2246c7af7dc5ea3f1b2b","admin_user":"songhanlin","distraction_free_mode":true,"proxy":"https://glacial-dawn-82467.herokuapp.com/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.7.2/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"a36e7eff72ecfe507c161183b2029ad5"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>

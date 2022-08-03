@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.julysong.com/baidu_verify_code-bx6Ior1Y4k.html</loc>
+    
+    <lastmod>2022-08-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://blog.julysong.com/2022/08/02/frontend-development-the-essentials/</loc>
     
     <lastmod>2022-08-02</lastmod>
@@ -227,7 +236,7 @@
   </url>
   
   <url>
-    <loc>http://blog.julysong.com/2022/05/11/Inverse-Factorial/</loc>
+    <loc>http://blog.julysong.com/2022/05/10/Fibonacci-Number/</loc>
     
     <lastmod>2022-05-12</lastmod>
     
@@ -236,7 +245,7 @@
   </url>
   
   <url>
-    <loc>http://blog.julysong.com/2022/05/10/Fibonacci-Number/</loc>
+    <loc>http://blog.julysong.com/2022/05/11/Inverse-Factorial/</loc>
     
     <lastmod>2022-05-12</lastmod>
     
@@ -509,27 +518,6 @@
   </url>
   
   <url>
-    <loc>http://blog.julysong.com/tags/idea/</loc>
-    <lastmod>2022-08-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.julysong.com/tags/rest-client/</loc>
-    <lastmod>2022-08-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.julysong.com/tags/plugin/</loc>
-    <lastmod>2022-08-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://blog.julysong.com/tags/ios12/</loc>
     <lastmod>2022-08-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -545,6 +533,27 @@
   
   <url>
     <loc>http://blog.julysong.com/tags/%E5%8F%8B%E7%9B%9F/</loc>
+    <lastmod>2022-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.julysong.com/tags/idea/</loc>
+    <lastmod>2022-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.julysong.com/tags/rest-client/</loc>
+    <lastmod>2022-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.julysong.com/tags/plugin/</loc>
     <lastmod>2022-08-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

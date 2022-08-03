@@ -1,3 +1,4 @@
+http://blog.julysong.com/baidu_verify_code-bx6Ior1Y4k.html
 http://blog.julysong.com/2022/08/02/frontend-development-the-essentials/
 http://blog.julysong.com/2022/08/02/web3-freshman-level3/
 http://blog.julysong.com/2022/08/02/web3-freshman-level1/
@@ -23,8 +24,8 @@ http://blog.julysong.com/2022/05/11/tree-BF/
 http://blog.julysong.com/2022/05/12/sum-of-the-digits/
 http://blog.julysong.com/2022/05/10/stack/
 http://blog.julysong.com/2022/05/11/set-venn-graph/
-http://blog.julysong.com/2022/05/11/Inverse-Factorial/
 http://blog.julysong.com/2022/05/10/Fibonacci-Number/
+http://blog.julysong.com/2022/05/11/Inverse-Factorial/
 http://blog.julysong.com/2022/05/12/anagram/
 http://blog.julysong.com/2022/05/12/average-median/
 http://blog.julysong.com/2022/05/10/from-Linear-Search-to-Binary-Search/
@@ -57,12 +58,12 @@ http://blog.julysong.com/tags/https/
 http://blog.julysong.com/tags/Nginx/
 http://blog.julysong.com/tags/gitment/
 http://blog.julysong.com/tags/hexo/
-http://blog.julysong.com/tags/idea/
-http://blog.julysong.com/tags/rest-client/
-http://blog.julysong.com/tags/plugin/
 http://blog.julysong.com/tags/ios12/
 http://blog.julysong.com/tags/%E5%B4%A9%E6%BA%83/
 http://blog.julysong.com/tags/%E5%8F%8B%E7%9B%9F/
+http://blog.julysong.com/tags/idea/
+http://blog.julysong.com/tags/rest-client/
+http://blog.julysong.com/tags/plugin/
 http://blog.julysong.com/tags/ssh/
 http://blog.julysong.com/tags/bash/
 http://blog.julysong.com/tags/Linux/

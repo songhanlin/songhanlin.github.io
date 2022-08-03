@@ -245,7 +245,7 @@
   </url>
   
   <url>
-    <loc>http://blog.julysong.com/2022/05/12/average-median/</loc>
+    <loc>http://blog.julysong.com/2022/05/12/anagram/</loc>
     
     <lastmod>2022-05-12</lastmod>
     
@@ -254,7 +254,7 @@
   </url>
   
   <url>
-    <loc>http://blog.julysong.com/2022/05/12/anagram/</loc>
+    <loc>http://blog.julysong.com/2022/05/12/average-median/</loc>
     
     <lastmod>2022-05-12</lastmod>
     
@@ -586,6 +586,13 @@
   </url>
   
   <url>
+    <loc>http://blog.julysong.com/tags/404/</loc>
+    <lastmod>2022-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://blog.julysong.com/tags/Node/</loc>
     <lastmod>2022-08-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -601,13 +608,6 @@
   
   <url>
     <loc>http://blog.julysong.com/tags/Avn/</loc>
-    <lastmod>2022-08-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.julysong.com/tags/404/</loc>
     <lastmod>2022-08-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

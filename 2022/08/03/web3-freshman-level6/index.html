@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="PQtVM4HDVB0BsS4YeoZ0tnhdbsrCEuwdFaFEgWztqTA">
+  <meta name="baidu-site-verification" content="code-bx6Ior1Y4k">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.julysong.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="在本模块中，您将了解什么是 Solidity 以及该语言的基本语法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WEB3 系列教程之新手篇--level6:Solidity">
+<meta property="og:url" content="http://blog.julysong.com/2022/08/03/web3-freshman-level6/index.html">
+<meta property="og:site_name" content="骑驴码梦">
+<meta property="og:description" content="在本模块中，您将了解什么是 Solidity 以及该语言的基本语法。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level6/1.png?raw=true">
+<meta property="article:published_time" content="2022-08-03T11:19:39.000Z">
+<meta property="article:modified_time" content="2022-08-04T03:03:37.687Z">
+<meta property="article:author" content="TeenSong">
+<meta property="article:tag" content="web3">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level6/1.png?raw=true">
+
+
+<link rel="canonical" href="http://blog.julysong.com/2022/08/03/web3-freshman-level6/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://blog.julysong.com/2022/08/03/web3-freshman-level6/","path":"2022/08/03/web3-freshman-level6/","title":"WEB3 系列教程之新手篇--level6:Solidity"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>WEB3 系列教程之新手篇--level6:Solidity | 骑驴码梦</title>
+  
+
+
+
+
+
+<script type="text/javascript">
+window.onload = function(e){
+  var urls = "https://picsum.photos/"
+  + window.screen.availWidth +
+  "/" + window.screen.availHeight + "/?random";
+  document.body.style.backgroundImage='url('+urls+')';
+}
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126093412-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-126093412-1');
+</script>
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">骑驴码梦</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">我一进门就看到常威在打来福~</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Solidity"><span class="nav-number">1.</span> <span class="nav-text">什么是 Solidity?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA-Solidity"><span class="nav-number">2.</span> <span class="nav-text">构建 Solidity</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6"><span class="nav-number">2.1.</span> <span class="nav-text">初始化智能合约</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E5%92%8C%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.2.</span> <span class="nav-text">变量和类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E3%80%81%E5%BE%AA%E7%8E%AF%E5%92%8C-If-x2F-Else"><span class="nav-number">2.3.</span> <span class="nav-text">函数、循环和 If&#x2F;Else</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">2.4.</span> <span class="nav-text">数组、字符串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90"><span class="nav-number">4.</span> <span class="nav-text">其他学习资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="nav-number">5.</span> <span class="nav-text">练习题</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="TeenSong"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">TeenSong</p>
+  <div class="site-description" itemprop="description">常威, 你还说你不会武功</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/songhanlin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;songhanlin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/e05ddaee7769" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;e05ddaee7769" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_28153553" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_28153553" rel="noopener" target="_blank"><i class="fa fa-copyright fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/song_hanlin/activities" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;song_hanlin&#x2F;activities" rel="noopener" target="_blank"><i class="fa fa-mortar-board fa-fw"></i>知乎</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+    
+    <div class="post-gallery-image">
+      <img src="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level6/1.png?raw=true" itemprop="contentUrl">
+    </div>
+    </div>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.julysong.com/2022/08/03/web3-freshman-level6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="TeenSong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="骑驴码梦">
+      <meta itemprop="description" content="常威, 你还说你不会武功">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="WEB3 系列教程之新手篇--level6:Solidity | 骑驴码梦">
+      <meta itemprop="description" content="在本模块中，您将了解什么是 Solidity 以及该语言的基本语法。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          WEB3 系列教程之新手篇--level6:Solidity
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-08-03 19:19:39" itemprop="dateCreated datePublished" datetime="2022-08-03T19:19:39+08:00">2022-08-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-08-04 11:03:37" itemprop="dateModified" datetime="2022-08-04T11:03:37+08:00">2022-08-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/web3-%E7%B3%BB%E5%88%97%E4%B9%8B%E6%96%B0%E6%89%8B%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">web3 系列之新手篇</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">在本模块中，您将了解什么是 Solidity 以及该语言的基本语法。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+<p>原文地址: <a target="_blank" rel="noopener" href="https://www.learnweb3.io/tracks/freshman/solidity">https://www.learnweb3.io/tracks/freshman/solidity</a></p>
+<p>翻译: JulySong</p>
+</blockquote>
+<h2 id="什么是-Solidity"><a href="#什么是-Solidity" class="headerlink" title="什么是 Solidity?"></a>什么是 Solidity?</h2><ul>
+<li>Solidity 是一种面向对象的高级语言，用于实现智能合约。它旨在针对<a target="_blank" rel="noopener" href="https://coinmarketcap.com/alexandria/glossary/ethereum-virtual-machine-evm">以太坊虚拟机（EVM）</a></li>
+<li>它是静态类型的，支持继承、库和复杂的用户声明类型等特性。</li>
+</ul>
+<h2 id="构建-Solidity"><a href="#构建-Solidity" class="headerlink" title="构建 Solidity"></a>构建 Solidity</h2><h3 id="初始化智能合约"><a href="#初始化智能合约" class="headerlink" title="初始化智能合约"></a>初始化智能合约</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// Define the compiler version you would be using</span><br><span class="line">pragma solidity ^0.8.10;</span><br><span class="line"></span><br><span class="line">// Start by creating a contract named HelloWorld</span><br><span class="line">contract HelloWorld &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="变量和类型"><a href="#变量和类型" class="headerlink" title="变量和类型"></a>变量和类型</h3><p>Solidity 中有 3 种类型的变量</p>
+<ul>
+<li>Local<ul>
+<li>在函数内部声明并且不存储在区块链上</li>
+</ul>
+</li>
+<li>State<ul>
+<li>在维护智能合约状态的函数之外声明</li>
+<li>存储在区块链上</li>
+</ul>
+</li>
+<li>Global<ul>
+<li>提供有关区块链的信息。它们在运行时由以太坊虚拟机注入。</li>
+<li>包括交易发送者、区块时间戳、区块哈希等。</li>
+<li><a target="_blank" rel="noopener" href="https://docs.soliditylang.org/en/v0.8.9/units-and-global-variables.html">全局变量示例</a></li>
+</ul>
+</li>
+</ul>
+<p>变量的范围是由它们的声明位置声明的，而不是它们的值。将局部变量的值设置为全局变量不会使其成为全局变量，因为它仍然只能在其范围内访问。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">// 定义您将使用的编译器版本</span><br><span class="line">pragma solidity ^0.8.10;</span><br><span class="line"></span><br><span class="line">// 首先创建一个名为 Variables的合约</span><br><span class="line">contract Variables &#123;</span><br><span class="line">    /*</span><br><span class="line">        ******** State 变量 **********</span><br><span class="line">    */</span><br><span class="line">    /*</span><br><span class="line">        使用uint代表无符号整数, 表示不同大小的非负整数可用. 例如:</span><br><span class="line">            - uint8   范围 从 0 到 2 ** 8 - 1</span><br><span class="line">            - uint256 范围 从 0 到 2 ** 256 - 1</span><br><span class="line">        `public` 表示该变量可以被合约内部访问，也可以被外部世界读取</span><br><span class="line">    */</span><br><span class="line">    uint8 public u8 = 10;</span><br><span class="line">    uint public u256 = 600;</span><br><span class="line">    uint public u = 1230; // uint is an alias for uint256</span><br><span class="line"></span><br><span class="line">    /*</span><br><span class="line">        该int类型允许为负数. 例如:</span><br><span class="line">            - int256 ranges from -2 ** 255 to 2 ** 255 - 1</span><br><span class="line">    */</span><br><span class="line">    int public i = -123; // int 相当于 int256</span><br><span class="line"></span><br><span class="line">    // address 代表了一个以太坊地址</span><br><span class="line">    address public addr = 0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c;</span><br><span class="line"></span><br><span class="line">    // bool 代表了 boolean类型</span><br><span class="line">    bool public defaultBoo1 = false;</span><br><span class="line"></span><br><span class="line">    // 默认值</span><br><span class="line">    // 在Solidity中未赋值的变量有一个默认值</span><br><span class="line">    bool public defaultBoo2; // false</span><br><span class="line">    uint public defaultUint; // 0</span><br><span class="line">    int public defaultInt; // 0</span><br><span class="line">    address public defaultAddr; // 0x0000000000000000000000000000000000000000</span><br><span class="line"></span><br><span class="line">    function doSomething() public &#123;</span><br><span class="line">        /*</span><br><span class="line">        ******** Local 变量 **********</span><br><span class="line">        */</span><br><span class="line">        uint ui = 456;</span><br><span class="line"></span><br><span class="line">        /*</span><br><span class="line">        ******** Global 变量 **********</span><br><span class="line">        */</span><br><span class="line"></span><br><span class="line">        /*</span><br><span class="line">            block.timestamp 告诉我们当前块的时间戳是什么</span><br><span class="line">            msg.sender 告诉我们哪个地址调用了 doSomething 函数</span><br><span class="line">        */</span><br><span class="line">        uint timestamp = block.timestamp; // 当前区块时间戳</span><br><span class="line">        address sender = msg.sender; // 调用者地址</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数、循环和-If-x2F-Else"><a href="#函数、循环和-If-x2F-Else" class="headerlink" title="函数、循环和 If&#x2F;Else"></a>函数、循环和 If&#x2F;Else</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">// 声明您将使用的编译器版本</span><br><span class="line">pragma solidity ^0.8.10;</span><br><span class="line"></span><br><span class="line">// 首先创建一个合同叫Conditions</span><br><span class="line">contract Conditions &#123;</span><br><span class="line">    // 声明一个State变量来存储数字</span><br><span class="line">    uint public num;</span><br><span class="line"></span><br><span class="line">    /*</span><br><span class="line">        函数的名称是 set.</span><br><span class="line">        需要在使用uint和num设置state变量。</span><br><span class="line">        该方法声明为public 类型表示它也可以从内部被称为合同和外部。</span><br><span class="line">    */</span><br><span class="line">    function set(uint _num) public &#123;</span><br><span class="line">        num = _num;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /*</span><br><span class="line">        函数的名称是 get。</span><br><span class="line">        该方法的返回值为数字</span><br><span class="line">        该方法声明为view 类型表示函数不改变任何变量的状态。</span><br><span class="line">        在solidity中view函数不消耗汽油.</span><br><span class="line">    */</span><br><span class="line">    function get() public view returns (uint) &#123;</span><br><span class="line">        return num;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /*</span><br><span class="line">        函数名是 foo。</span><br><span class="line">        该方法需要一个unit参数, 并且返回一个unit参数。</span><br><span class="line">        该方法通过if/else来比较入参x的大小</span><br><span class="line">    */</span><br><span class="line">    function foo(uint x) public returns (uint) &#123;</span><br><span class="line">        if (x &lt; 10) &#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125; else if (x &lt; 20) &#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return 2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /*</span><br><span class="line">        函数的名称是循环。</span><br><span class="line">        它运行一个循环直到 10</span><br><span class="line">    */</span><br><span class="line">    function loop() public &#123;</span><br><span class="line">        // for 循环</span><br><span class="line">        for (uint i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">            if (i == 3) &#123;</span><br><span class="line">                // 用continue跳到下一个迭代</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">            if (i == 5) &#123;</span><br><span class="line">                // 用break跳出循环</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="数组、字符串"><a href="#数组、字符串" class="headerlink" title="数组、字符串"></a>数组、字符串</h3><p>数组可以具有编译时固定大小或动态大小。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.8.10;</span><br><span class="line"></span><br><span class="line">contract Array &#123;</span><br><span class="line"></span><br><span class="line">    // 声明一个public字符串变量</span><br><span class="line">    string public greet = &quot;Hello World!&quot;;</span><br><span class="line">    // 初始化数组的几种方式</span><br><span class="line">    // 这里初始化的数组被认为是存储在区块链上的状态变量</span><br><span class="line">    // 以下就是存储变量</span><br><span class="line">    uint[] public arr;</span><br><span class="line">    uint[] public arr2 = [1, 2, 3];</span><br><span class="line">    // 固定大小的数组,初始化所有元素为0</span><br><span class="line">    uint[10] public myFixedSizeArr;</span><br><span class="line">    /*</span><br><span class="line">        函数的名称是 get</span><br><span class="line">        它获取存储在数组索引中的元素的值</span><br><span class="line">    */</span><br><span class="line">    function get(uint i) public view returns (uint) &#123;</span><br><span class="line">        return arr[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /*</span><br><span class="line">     Solidity 可以返回整个数组。</span><br><span class="line">     这个函数被调用并返回一个 uint[] 内存。</span><br><span class="line">     内存 - 该值仅存储在内存中，而不是在区块链上，</span><br><span class="line">              它仅在函数执行期间存在</span><br><span class="line"></span><br><span class="line">     Memory变量和Storage变量可以被认为类似于 RAM 与硬盘。</span><br><span class="line">     Memory变量在函数执行期间暂时存在，而Storage变量</span><br><span class="line">     在合约生命周期内跨函数调用保持不变。</span><br><span class="line">     这里数组仅在函数执行期间需要，因此被声明为Memory变量</span><br><span class="line">    */</span><br><span class="line">    function getArr(uint[] memory _arr) public view returns (uint[] memory) &#123;</span><br><span class="line">        return _arr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">     /*</span><br><span class="line">        此函数返回字符串内存。</span><br><span class="line">        添加 memory 关键字的原因是因为 string 在内部作为数组工作</span><br><span class="line">        这里字符串仅在函数执行时才需要。</span><br><span class="line">    */</span><br><span class="line">    function foo() public returns (string memory) &#123;</span><br><span class="line">        return &quot;C&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function doStuff(uint i) public &#123;</span><br><span class="line">        // 追加到数组</span><br><span class="line">        // 这将使数组长度增加 1.</span><br><span class="line">        arr.push(i);</span><br><span class="line">        // 从数组中删除最后一个元素</span><br><span class="line">        // 这将使数组长度减少 1</span><br><span class="line">        arr.pop();</span><br><span class="line">        // 获取数组的长度</span><br><span class="line">        uint length = arr.length;</span><br><span class="line">        // 删除不会改变数组长度。</span><br><span class="line">        // 它将 index 处的值重置为其默认值，</span><br><span class="line">        // 在这种情况下，它将 arr2 中索引 1 处的值重置为 0</span><br><span class="line">        uint index = 1;</span><br><span class="line">        delete arr2[index];</span><br><span class="line">        // 在内存中创建数组，只能创建固定大小</span><br><span class="line">        uint[] memory a = new uint[](5);</span><br><span class="line">        // 在内存中创建字符串</span><br><span class="line">        string memory hi = &quot;hi&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://solidity-by-example.org/">Solidity 实例</a></li>
+</ul>
+<h2 id="其他学习资源"><a href="#其他学习资源" class="headerlink" title="其他学习资源"></a>其他学习资源</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://cryptozombies.io/">Cryptozombies</a></li>
+<li><a target="_blank" rel="noopener" href="https://solidity-by-example.org/">Solidity 实例</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.soliditylang.org/en/v0.8.10/">Solidity 文档</a></li>
+</ul>
+<hr>
+<h2 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h2><ol>
+<li><p>🤔 Solidity 在哪个虚拟机上运行？</p>
+<p>A: JVM</p>
+<p>B: EVM</p>
+<p>C: KVM</p>
+</li>
+<li><p>🤔 Solidity 中的 State 变量是什么？</p>
+<p>A: 它们在函数内声明，不存储在区块链上</p>
+<p>B: 它们在函数外部声明并存储在区块链上</p>
+<p>C: 他们提供有关区块链的信息</p>
+</li>
+<li><p>🤔 uint 代表什么？</p>
+<p>A: 大学情报</p>
+<p>B: 普遍审讯</p>
+<p>C: 通用整数</p>
+<p>D: 无符号整数</p>
+</li>
+<li><p>🤔 uint8 的范围是多少？</p>
+<p>A: 0 到 2 ** 256 - 1</p>
+<p>B: 0 到 2 ** 16 - 1</p>
+<p>C: 0 到 2 ** 8 - 1</p>
+</li>
+<li><p>🤔 bool 变量的默认值是多少？</p>
+<p>A: True</p>
+<p>B: False</p>
+</li>
+<li><p>🤔 地址变量的默认值是多少？</p>
+<p>A: 0x0936f87C98E8009f8C4fff9E3994b295761C30ad</p>
+<p>B: 0x00000000000000000000000000000000000000000</p>
+<p>C: 0xD9cd57AaECf5813FC41E26CFd55f67Fd72112b75</p>
+</li>
+<li><p>🤔 函数声明中 public 关键字的意义是什么？</p>
+<p>A: 函数只能被其他智能合约函数内部调用</p>
+<p>B: 函数只能在外部调用</p>
+<p>C: 它可以从合约内部调用，也可以从外部调用。</p>
+</li>
+<li><p>🤔 函数声明中 view 关键字的意义是什么？</p>
+<p>A: 这意味着该函数可以改变合约的状态</p>
+<p>B: 函数不能改变合约的状态</p>
+<p>C: 它让任意方法不消耗汽油</p>
+</li>
+<li><p>🤔 从函数返回无符号整数数组的正确函数声明是什么？</p>
+<p>A: function getArr(uint[] memory _arr) public view returns (uint[] memory)</p>
+<p>B: function getArr(uint[] memory _arr) public view returns (uint[])</p>
+<p>C: function getArr(uint[] memory _arr) public view returns ([]uint)</p>
+</li>
+<li><p>🤔 如何在 Solidity 中获取数组的长度？</p>
+<p>A: len(arr)</p>
+<p>A: arr.length</p>
+<p>A: arr.size()</p>
+</li>
+<li><p>🤔 如何在 Solidity 中向数组中添加元素？</p>
+<p>A: arr.push(i)</p>
+<p>A: arr.add(i)</p>
+<p>A: arr.back(i)</p>
+</li>
+<li><p>🤔 msg.sender 是什么？</p>
+<p>A: 调用者地址</p>
+<p>B: 一个函数名</p>
+<p>C: 给你发短信的人的电话号码</p>
+</li>
+<li><p>🤔 block.coinbase 的值是什么？</p>
+<p>A: Coinbase 交易所地址</p>
+<p>B: 开采该区块的矿工的地址</p>
+<p>C: 当前区块的 gas 价格</p>
+</li>
+</ol>
+<blockquote>
+<p>参考答案:</p>
+<ol>
+<li>B</li>
+<li>B</li>
+<li>D</li>
+<li>C</li>
+<li>B</li>
+<li>B</li>
+<li>C</li>
+<li>B</li>
+<li>A</li>
+<li>B</li>
+<li>A</li>
+<li>A</li>
+<li>B</li>
+</ol>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/web3/" rel="tag"># web3</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/08/03/web3-freshman-level5/" rel="prev" title="WEB3系列教程之新手篇--level5:Remix IDE">
+                  <i class="fa fa-chevron-left"></i> WEB3系列教程之新手篇--level5:Remix IDE
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.7.2/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"songhanlin","repo":"blog","client_id":"58797e27de182d42ab95","client_secret":"b04eb623dae17584fe8c2246c7af7dc5ea3f1b2b","admin_user":"songhanlin","distraction_free_mode":true,"proxy":"https://glacial-dawn-82467.herokuapp.com/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.7.2/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"580378955b0e530da48a255ac18fca96"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="PQtVM4HDVB0BsS4YeoZ0tnhdbsrCEuwdFaFEgWztqTA">
+  <meta name="baidu-site-verification" content="code-bx6Ior1Y4k">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.julysong.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="WEB3系列教程之入门篇">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React 和 Next.js 简介">
+<meta property="og:url" content="http://blog.julysong.com/2022/08/24/web3-sophomore-level1/index.html">
+<meta property="og:site_name" content="骑驴码梦">
+<meta property="og:description" content="WEB3系列教程之入门篇">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/songhanlin/hexo-image/blob/master/sophomore-level1/1.jpeg?raw=true">
+<meta property="og:image" content="https://github.com/songhanlin/hexo-image/blob/master/sophomore-level1/2.jpeg?raw=true">
+<meta property="og:image" content="https://github.com/songhanlin/hexo-image/blob/master/sophomore-level1/3.png?raw=true">
+<meta property="og:image" content="https://github.com/songhanlin/hexo-image/blob/master/sophomore-level1/4.png?raw=true">
+<meta property="og:image" content="https://github.com/songhanlin/hexo-image/blob/master/sophomore-level1/5.png?raw=true">
+<meta property="og:image" content="https://github.com/songhanlin/hexo-image/blob/master/sophomore-level1/6.png?raw=true">
+<meta property="og:image" content="https://github.com/songhanlin/hexo-image/blob/master/sophomore-level1/7.png?raw=true">
+<meta property="og:image" content="https://github.com/songhanlin/hexo-image/blob/master/sophomore-level1/8.png?raw=true">
+<meta property="article:published_time" content="2022-08-24T09:50:17.000Z">
+<meta property="article:modified_time" content="2022-08-25T07:30:23.821Z">
+<meta property="article:author" content="TeenSong">
+<meta property="article:tag" content="web3">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/songhanlin/hexo-image/blob/master/sophomore-level1/1.jpeg?raw=true">
+
+
+<link rel="canonical" href="http://blog.julysong.com/2022/08/24/web3-sophomore-level1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://blog.julysong.com/2022/08/24/web3-sophomore-level1/","path":"2022/08/24/web3-sophomore-level1/","title":"React 和 Next.js 简介"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>React 和 Next.js 简介 | 骑驴码梦</title>
+  
+
+
+
+
+
+<script type="text/javascript">
+window.onload = function(e){
+  var urls = "https://picsum.photos/"
+  + window.screen.availWidth +
+  "/" + window.screen.availHeight + "/?random";
+  document.body.style.backgroundImage='url('+urls+')';
+}
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126093412-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-126093412-1');
+</script>
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">骑驴码梦</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">我一进门就看到常威在打来福~</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#WTF-%E6%98%AF-React%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">WTF 是 React？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%97%B4%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92"><span class="nav-number">1.1.</span> <span class="nav-text">组件之间的数据传递</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%BB%84%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">交互式组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#React-Hooks-useState-%E5%92%8C-useEffect"><span class="nav-number">1.3.</span> <span class="nav-text">React Hooks - useState 和 useEffect</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#useState"><span class="nav-number">1.3.1.</span> <span class="nav-text">useState</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#useEffect"><span class="nav-number">1.3.2.</span> <span class="nav-text">useEffect</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#useRef"><span class="nav-number">1.3.3.</span> <span class="nav-text">useRef</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E6%B2%A1%E6%9C%89%E9%87%8D%E6%96%B0%E6%B8%B2%E6%9F%93"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">1. 没有重新渲染</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E5%90%8C%E6%AD%A5%E6%9B%B4%E6%96%B0"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">2. 同步更新</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E5%BC%95%E7%94%A8-DOM-%E5%85%83%E7%B4%A0"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">3. 引用 DOM 元素</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#React-%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="nav-number">1.4.</span> <span class="nav-text">React 文件结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E7%AB%AF%E6%97%B6%E9%97%B4"><span class="nav-number">2.</span> <span class="nav-text">后端时间</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Next-%E8%B7%AF%E7%94%B1"><span class="nav-number">2.1.</span> <span class="nav-text">Next 路由</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8-Next-%E4%B8%AD%E7%BC%96%E5%86%99-API"><span class="nav-number">2.2.</span> <span class="nav-text">在 Next 中编写 API</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-number">3.</span> <span class="nav-text">结论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E7%89%A9-x2F-%E8%A7%86%E9%A2%91"><span class="nav-number">4.</span> <span class="nav-text">读物&#x2F;视频</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="nav-number">5.</span> <span class="nav-text">练习题</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="TeenSong"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">TeenSong</p>
+  <div class="site-description" itemprop="description">常威, 你还说你不会武功</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/songhanlin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;songhanlin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/e05ddaee7769" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;e05ddaee7769" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_28153553" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_28153553" rel="noopener" target="_blank"><i class="fa fa-copyright fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/song_hanlin/activities" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;song_hanlin&#x2F;activities" rel="noopener" target="_blank"><i class="fa fa-mortar-board fa-fw"></i>知乎</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.julysong.com/2022/08/24/web3-sophomore-level1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="TeenSong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="骑驴码梦">
+      <meta itemprop="description" content="常威, 你还说你不会武功">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="React 和 Next.js 简介 | 骑驴码梦">
+      <meta itemprop="description" content="WEB3系列教程之入门篇">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          React 和 Next.js 简介
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-08-24 17:50:17" itemprop="dateCreated datePublished" datetime="2022-08-24T17:50:17+08:00">2022-08-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-08-25 15:30:23" itemprop="dateModified" datetime="2022-08-25T15:30:23+08:00">2022-08-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/web3%E7%B3%BB%E5%88%97%E4%B9%8B%E5%85%A5%E9%97%A8%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">web3系列之入门篇</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">WEB3系列教程之入门篇</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+<p>原文地址: <a target="_blank" rel="noopener" href="https://learnweb3.io/courses/c1d7081b-63a9-4c6e-b35c-9fcbbad418b2/lessons/8f589065-2016-42ef-ae2d-0f56d98c79ab">https://learnweb3.io/courses/c1d7081b-63a9-4c6e-b35c-9fcbbad418b2/lessons/8f589065-2016-42ef-ae2d-0f56d98c79ab</a></p>
+<p>翻译: JulySong</p>
+</blockquote>
+<p>在新手篇教程中，我们构建了一个非常简单的 dApp，它使用了 HTML、CSS 和一些 Javascript。然而，在现实世界中，这些类型的“普通”网站实现已成为过去。</p>
+<p>今天，我们使用 Web 框架来简化 Web 开发过程。它更简单吗？取决于你从谁的角度来看。如果您刚刚开始并且以前从未这样做过，那么您可能需要一些时间才能理解所有必要的概念。但是，从长远来看，您会感谢自己并为您花时间学习它而感到高兴。</p>
+<p>当今使用的最大和最常见的 Web 框架是：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://reactjs.org/">React</a></li>
+<li><a target="_blank" rel="noopener" href="https://angular.io/">Angular</a></li>
+<li><a target="_blank" rel="noopener" href="https://vuejs.org/">Vue</a></li>
+</ul>
+<p>尽管它们各有优缺点，但 React 迄今为止已经席卷了 Web 开发世界。在 Web3 领域也是如此，其中 React 是构建 dApp 最常用的 Web 框架。在整个入门篇教程以及所有后续教程中，我们将使用大量 React，因此将此级别视为 React 速成课程，它将教你足够的入门知识。这并不是要替代在专注于 Web2 教学的平台上学习 React，而是用作了解入门需要多少知识的指南，这样您就不会陷入教程地狱。😅</p>
+<blockquote>
+<p>实际上，我们将使用 Next.js——它是 React 本身的扩展——但稍后会详细介绍。让我们先学习一些 React。</p>
+</blockquote>
+<h2 id="WTF-是-React？"><a href="#WTF-是-React？" class="headerlink" title="WTF 是 React？"></a>WTF 是 React？</h2><p>React 是一个 Web 框架，可以轻松构建和推理 Web 应用程序的“视图”。“视图”是屏幕上显示的内容，它如何变化、如何更新等。React 本质上只是为您提供了一种模板语言，您可以创建返回 HTML 的 Javascript 函数。</p>
+<p>普通的 Javascript 函数返回 Javascript 风格的东西——字符串、数字、布尔值、对象等。React 基本上结合了 Javascript 和 HTML 来产生一种他们称为 JSX 的语言。在 JSX 中，类似 Javascript 的函数返回 HTML 而不是常规的 Javascript 内容。基本上就是这样。</p>
+<p>返回 HTML 的 Javascript 函数的组合称为组件。组件是用 JSX 编写的。虽然一开始看起来很尴尬，但一旦你习惯了，它们实际上很容易使用。</p>
+<p>这是一个简单组件的示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function ShoppingList() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div className=&quot;shopping-list&quot;&gt;</span><br><span class="line">        &lt;h1&gt;Shopping List&lt;/h1&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">          &lt;li&gt;Apples&lt;/li&gt;</span><br><span class="line">          &lt;li&gt;Bananas&lt;/li&gt;</span><br><span class="line">          &lt;li&gt;Grapes&lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>很好，但这与 HTML 没有太大区别。但是，如果您想基于数组呈现项目列表怎么办？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function ShoppingList() &#123;</span><br><span class="line">    const items = [&quot;Apples&quot;, &quot;Bananas&quot;, &quot;Grapes&quot;]</span><br><span class="line"></span><br><span class="line">    return (</span><br><span class="line">      &lt;div className=&quot;shopping-list&quot;&gt;</span><br><span class="line">        &lt;h1&gt;Shopping List&lt;/h1&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &#123;items.map((item, index) =&gt; &lt;li key=&#123;index&#125;&gt;&#123;item&#125;&lt;/li&gt;)&#125;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>哇，看那个！我们只是在 HTML 中使用了 Javascript。在 JSX 中，您可以通过将 JS 代码包装在花括号<code>&#123;</code> 和 <code>&#125;</code> 中来在 HTML 中编写 Javascript。但实际上，如果您再考虑一下，您就会意识到正在发生的事情。<code>.map()</code> 是一个 Javascript 函数，它遍历一个数组并为每个项目返回一些内容。在这种情况下，它循环遍历 <code>items</code> 数组并返回一个 <code>li</code> 元素，该元素具有其中的 Javascript 变量 <code>item</code> 的值，即 HTML。得到它？🤔</p>
+<p>在我们的组件内部，我们基本上嵌入了另一个组件。map 函数是一个返回 HTML 的 JS 函数。它是一个组件。即使它没有明确定义为顶级函数，它仍然是一个组件。</p>
+<p>将组件嵌入到其他组件中是 React 的强大功能。这称为组合(<code>Composition</code>)。我们将多个返回 HTML 的 Javascript 函数组合在一起，并从中构建一个组合的 HTML 文档，该文档将显示在 Web 应用程序上。</p>
+<h3 id="组件之间的数据传递"><a href="#组件之间的数据传递" class="headerlink" title="组件之间的数据传递"></a>组件之间的数据传递</h3><p>如果组件只是静态的，它们就不是很有用。当然，遍历数组和其他东西都很好，但当今大多数 Web 应用程序都不是静态文档。今天的大多数 Web 应用程序都会从某种服务器、数据库或区块链中动态获取数据。这意味着经常需要相同的组件来显示不同的数据。</p>
+<p>拥有组件的主要用例是能够编写可重用的代码，并且可以在其中包含不同的信息，而无需再次重写整个代码。</p>
+<p>让我们看一个例子。这两个代码哪个更易读？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;cards&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;card&quot;&gt;</span><br><span class="line">      &lt;img src=&quot;img_avatar.png&quot; alt=&quot;Avatar&quot;&gt;</span><br><span class="line">      &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">        &lt;h4&gt;&lt;b&gt;Alice&lt;/b&gt;&lt;/h4&gt;</span><br><span class="line">        &lt;p&gt;Frontend Developer&lt;/p&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div class=&quot;card&quot;&gt;</span><br><span class="line">      &lt;img src=&quot;img_avatar.png&quot; alt=&quot;Avatar&quot;&gt;</span><br><span class="line">      &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">        &lt;h4&gt;&lt;b&gt;Bob&lt;/b&gt;&lt;/h4&gt;</span><br><span class="line">        &lt;p&gt;Backend Developer&lt;/p&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div class=&quot;card&quot;&gt;</span><br><span class="line">      &lt;img src=&quot;img_avatar.png&quot; alt=&quot;Avatar&quot;&gt;</span><br><span class="line">      &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">        &lt;h4&gt;&lt;b&gt;Charlie&lt;/b&gt;&lt;/h4&gt;</span><br><span class="line">        &lt;p&gt;Full Stack Developer&lt;/p&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">function Cards() &#123;</span><br><span class="line">    return (</span><br><span class="line">        &lt;div className=&quot;cards&quot;&gt;</span><br><span class="line">            &lt;!--Data is passed to children through HTML attributes--&gt;</span><br><span class="line">            &lt;Card name=&quot;Alice&quot; job=&quot;Frontend Developer&quot; /&gt;</span><br><span class="line">            &lt;Card name=&quot;Bob&quot; job=&quot;Backend Developer&quot; /&gt;</span><br><span class="line">            &lt;Card name=&quot;Charlie&quot; job=&quot;Full Stack Developer&quot; /&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Card receives an object as an argument</span><br><span class="line">// We can destructure the object to get specific variables</span><br><span class="line">// from inside the object - name and job</span><br><span class="line">function Card(&#123;name, job&#125;) &#123;</span><br><span class="line">    return (</span><br><span class="line">        &lt;div className=&quot;card&quot;&gt;</span><br><span class="line">            &lt;img src=&quot;img_avatar.png&quot; /&gt;</span><br><span class="line">            &lt;div className=&quot;container&quot;&gt;</span><br><span class="line">                &lt;h4&gt;&lt;b&gt;&#123;name&#125;&lt;/b&gt;&lt;/h4&gt;</span><br><span class="line">                &lt;p&gt;&#123;job&#125;&lt;/p&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>纯 HTML 示例重复使用相同的代码 3 次，尽管真正改变的只是人名和他们的职位。</p>
+<p>在 JSX 中，我们可以将每个 <code>Card</code> 抽象为一个组件，该组件从其父组件（在本例中为 <code>Cards</code>）获取某些数据。父组件通过类似 HTML 的属性（<code>name=&quot;Alice&quot;</code>）将数据传递给子组件，子组件访问它们的值就像 JS 函数接收 JS 对象作为参数一样。然后 <code>Card</code> 组件可以根据从父级接收到的内容返回带有可变数据的 HTML。</p>
+<p>这段代码更容易重用和扩展。想要稍微改变所有卡片的外观吗？只需修改一个组件！并非所有复制粘贴的 HTML。</p>
+<h3 id="交互式组件"><a href="#交互式组件" class="headerlink" title="交互式组件"></a>交互式组件</h3><p>好的，所以我们现在可以在组件之间传递数据。这一切都很好，但我们还没有添加交互性。诸如在单击按钮或在输入框中键入文本时能够运行一些代码等。</p>
+<p>值得庆幸的是，在 Javascript 中，函数可以在其中包含函数。例如，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function someFunc() &#123;</span><br><span class="line"></span><br><span class="line">    function otherFunc() &#123;</span><br><span class="line">        console.log(&quot;Hello!&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    otherFunc();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">someFunc(); // will print &quot;Hello!&quot;</span><br><span class="line"></span><br><span class="line">otherFunc(); // will throw an error! undefined here</span><br></pre></td></tr></table></figure>
+
+<p><code>otherFunc</code> 只能在 <code>someFunc</code> 自身内部使用。这是常规 Javascript 中很少使用的功能，但在使用 React 时使用非常频繁。让我们通过一个例子来看看为什么。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function Button() &#123;</span><br><span class="line"></span><br><span class="line">    function handleClick() &#123;</span><br><span class="line">        console.log(&quot;Hello&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return (</span><br><span class="line">        &lt;button</span><br><span class="line">            className=&quot;button&quot;</span><br><span class="line">            onClick=&#123;handleClick&#125;&gt;</span><br><span class="line">            Click Me!</span><br><span class="line">        &lt;/button&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们有一个名为 <code>Button</code> 的 JSX 函数。在这个函数中，我们有另一个函数叫做 <code>handleClick</code>。在 HTML <code>&lt;button&gt;</code> 标记中，我们指定 <code>onClick=&#123;handleClick&#125;</code> 以便在单击按钮时调用 <code>handleClick</code> 函数。此功能仅在 <code>Button</code> 组件内部可用。单击 Web 应用程序上的按钮将在浏览器控制台中打印 <code>Hello</code>。这就是我们使用 React 构建交互式网站的方式！</p>
+<p>这个例子仍然相当简单，因为 <code>handleClick</code> 没有参数。如果我们想在用户输入输入框时在控制台中打印文本怎么办？我们如何将文本传递给函数？</p>
+<p>就是这样。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function PrintTypedText() &#123;</span><br><span class="line"></span><br><span class="line">    function handleOnChange(text) &#123;</span><br><span class="line">        console.log(text);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return (</span><br><span class="line">        &lt;input</span><br><span class="line">            type=&quot;text&quot;</span><br><span class="line">            onChange=&#123;(e) =&gt; handleOnChange(e.target.value)&#125;</span><br><span class="line">        /&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>HTML <code>input</code>元素提供了一个方便的事件侦听器 - <code>onChange</code> - 每次该输入框中的文本发生更改（键入新字符、删除字符等）时都会触发该事件侦听器。</p>
+<p>但是，除了触发一个函数之外，它还传递了更改的 HTML 元素（此处称为 <code>e</code>）。然后，我们可以获取 HTML 元素 <code>e</code> 并使用 <code>e.target.value</code> 提取文本，并将其作为参数传递给 <code>handleOnChange</code>，它将文本记录到浏览器控制台。</p>
+<p>不同的 HTML 元素有不同的事件处理程序 - <code>onChange</code> 和 <code>onClick</code> 是两个例子，但还有更多！您可以在此处找到所有 HTML 事件的列表。</p>
+<p>通过将 HTML 事件与函数处理程序相结合，我们可以做各种很酷的事情！从服务器加载数据、向服务器发送数据、更新我们的视图等。</p>
+<h3 id="React-Hooks-useState-和-useEffect"><a href="#React-Hooks-useState-和-useEffect" class="headerlink" title="React Hooks - useState 和 useEffect"></a>React Hooks - useState 和 useEffect</h3><p>好的，我们已经讨论了组合、数据传递和交互性。但是，我们的应用程序仍然很愚蠢。交互性将允许您在单击按钮等时运行一些代码，但是如果您想更新一些变量怎么办？</p>
+<p>不幸的是，以下不起作用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function DoesNotWork() &#123;</span><br><span class="line">    let myNumber = 0;</span><br><span class="line"></span><br><span class="line">    function increment() &#123;</span><br><span class="line">        myNumber++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return (</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;p&gt;&#123;myNumber&#125;&lt;/p&gt;</span><br><span class="line">            &lt;button onClick=&#123;increment&#125;&gt;Increment!&lt;/button&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>无论你点击多少次 <code>Increment</code> 按钮，屏幕上显示的数字都会卡在 <code>0</code>。这是因为当你从 React 组件中更新 <code>myNumber</code> 等常规变量时，即使值更新了，React 实际上并没有重新渲染 Web 应用程序的视图。它不会自动更新页面的 HTML 视图。</p>
+<p>React Hooks 是“挂钩”到 React 组件的不同部分的函数，允许您执行诸如在变量的值更改时更新视图，或者在每次加载页面或更改变量时自动运行一些 JS 代码等操作，以及许多更酷的东西！我们将主要关注 95% 的时间使用的三个 React 钩子 - <code>useState</code>、<code>useEffect</code> 和 <code>useRef</code>。</p>
+<h4 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h4><p>很多时候，您希望 HTML 视图根据某些变量的值变化进行更新。我们可以使用 <code>useState</code> 钩子来维护一个变量，该变量会在每次更改其值时自动重新渲染屏幕上显示的 HTML。这是一个例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function ThisWorks() &#123;</span><br><span class="line">    // myNumber is the variable itself</span><br><span class="line">    // setMyNumber is a function that lets us update the value</span><br><span class="line">    // useState(0) initializes the React Hook</span><br><span class="line">    // with the starting value of 0</span><br><span class="line">    const [myNumber, setMyNumber] = useState(0);</span><br><span class="line"></span><br><span class="line">    function increment() &#123;</span><br><span class="line">        // Sets the new value to the old value + 1</span><br><span class="line">        setMyNumber(myNumber + 1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return (</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;p&gt;&#123;myNumber&#125;&lt;/p&gt;</span><br><span class="line">            &lt;button onClick=&#123;increment&#125;&gt;Increment!&lt;/button&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果您尝试运行上述代码，您将看到 Web 应用程序的视图自动更新以反映变量的新值。</p>
+<p><code>useState</code> 在 React 中使用创建的变量称为状态变量。状态变量可以更新并自动更新应用程序的视图。这是另一个在输入框中使用状态变量的示例。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function StateWithInput() &#123;</span><br><span class="line">    // myName is the variable</span><br><span class="line">    // setMyName is the updater function</span><br><span class="line">    // Create a state variable with initial value</span><br><span class="line">    // being an empty string &quot;&quot;</span><br><span class="line">    const [myName, setMyName] = useState(&quot;&quot;);</span><br><span class="line"></span><br><span class="line">    function handleOnChange(text) &#123;</span><br><span class="line">        setMyName(text);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return (</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;input type=&quot;text&quot; onChange=&#123;(e) =&gt; handleOnChange(e.target.value)&#125; /&gt;</span><br><span class="line">            &lt;p&gt;Hello, &#123;myName&#125;!&lt;/p&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>关于 useState，我想说的最后一件事是，您还可以将它用于字符串和数字等基本类型。您还可以使用它们来存储数组和对象。但是，这里有一个警告。让我们看一个例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">function StateArrayDoesNotWork() &#123;</span><br><span class="line">  const [fruits, setFruits] = useState([]);</span><br><span class="line">  const [currentFruit, setCurrentFruit] = useState(&quot;&quot;);</span><br><span class="line"></span><br><span class="line">  function updateCurrentFruit(text) &#123;</span><br><span class="line">    setCurrentFruit(text);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  function addFruitToArray() &#123;</span><br><span class="line">    fruits.push(currentFruit);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;input type=&quot;text&quot; onChange=&#123;(e) =&gt; updateCurrentFruit(e.target.value)&#125; /&gt;</span><br><span class="line">      &lt;button onClick=&#123;addFruitToArray&#125;&gt;Add Fruit&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">      &lt;ul&gt;</span><br><span class="line">        &#123;fruits.map((fruit, index) =&gt; (</span><br><span class="line">          &lt;li key=&#123;index&#125;&gt;&#123;fruit&#125;&lt;/li&gt;</span><br><span class="line">        ))&#125;</span><br><span class="line">      &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果您尝试运行它，您将看到屏幕上没有显示任何水果。另请注意，我们没有在 <code>setFruits</code> 任何地方使用该函数，而只是尝试<code>.push</code> 使用 <code>fruits</code> 数组。</p>
+<p>当我们尝试直接更新数组时，React 不会注册状态更改，这也被认为是无效的状态更新，可能导致应用程序出现意外行为。我们知道我们需要以某种方式使用 <code>setFruits</code>，但是如何使用呢？答案是我们实际上需要创建水果数组的副本，将水果添加到其中，并将状态变量完全设置为新数组。下面的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">function StateArray() &#123;</span><br><span class="line">  const [fruits, setFruits] = useState([]);</span><br><span class="line">  const [currentFruit, setCurrentFruit] = useState(&quot;&quot;);</span><br><span class="line"></span><br><span class="line">  function updateCurrentFruit(text) &#123;</span><br><span class="line">    setCurrentFruit(text);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  function addFruitToArray() &#123;</span><br><span class="line">      // The spread operator `...fruits` adds all elements</span><br><span class="line">      // from the `fruits` array to the `newFruits` array</span><br><span class="line">      // and then we add the `currentFruit` to the array as well</span><br><span class="line">      const newFruits = [...fruits, currentFruit]</span><br><span class="line">      setFruits(newFruits);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;input type=&quot;text&quot; onChange=&#123;(e) =&gt; updateCurrentFruit(e.target.value)&#125; /&gt;</span><br><span class="line">      &lt;button onClick=&#123;addFruitToArray&#125;&gt;Add Fruit&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">      &lt;ul&gt;</span><br><span class="line">        &#123;fruits.map((fruit, index) =&gt; (</span><br><span class="line">          &lt;li key=&#123;index&#125;&gt;&#123;fruit&#125;&lt;/li&gt;</span><br><span class="line">        ))&#125;</span><br><span class="line">      &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果您尝试运行上述代码，您将看到它按预期工作。每次按下按钮时，输入框中的当前文本都会添加到数组中，这会导致 HTML 上显示的水果列表更新。您可以继续添加任意数量的水果！</p>
+<blockquote>
+<p>对象也是如此。如果您的状态变量包含一个对象，您需要先创建该对象的副本，更新一个值，然后将状态变量完全设置为新对象。</p>
+</blockquote>
+<h4 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h4><p>所以我们现在可以管理状态，太好了！状态变化也会影响我们渲染的 HTML，也很棒！</p>
+<p>但是，通常需要在第一次加载页面时自动运行一些代码——也许是为了从服务器或区块链获取数据——并且还需要在某个状态变量发生变化时自动运行一些代码。</p>
+<p>这些类型的功能称为副作用。React 为我们提供了 <code>useEffect</code> 钩子，它允许我们编写这些效果。<code>useEffect</code> 有两个参数——一个函数和一个依赖数组。函数是运行效果时运行的代码，依赖数组指定何时触发副作用。</p>
+<p>考虑一个示例，当网站首次加载时，它想从服务器加载一些数据。这样做时，它希望向用户显示一个加载屏幕，然后在加载数据后，移除加载屏幕并显示实际内容。我们如何做到这一点？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">function LoadDataFromServer() &#123;</span><br><span class="line">  // 创建一个状态变量来保存从服务器返回的数据</span><br><span class="line">  const [data, setData] = useState(&quot;&quot;);</span><br><span class="line">  // 创建一个状态变量来保持加载状态</span><br><span class="line">  const [loading, setLoading] = useState(false);</span><br><span class="line"></span><br><span class="line">  async function loadData() &#123;</span><br><span class="line">    // 将 `loading` 设置为 `true` 直到 API 调用返回响应</span><br><span class="line">    setLoading(true);</span><br><span class="line"></span><br><span class="line">    // 执行 API 调用以从服务器加载数据的虚构函数</span><br><span class="line">    const data = await apiCall();</span><br><span class="line">    setData(data);</span><br><span class="line"></span><br><span class="line">    // 我们有了数据，将 `loading` 设置为 `false`</span><br><span class="line">    setLoading(false);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // loadData 是运行的函数</span><br><span class="line">  // 一个空的依赖数组意味着这段代码在页面加载时运行一次</span><br><span class="line">  useEffect(() =&gt; &#123;</span><br><span class="line">    loadData();</span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  // 当 `loading` 为 `true` 时显示 `&quot;Loading...&quot;`,</span><br><span class="line">  // 否则显示 `data`</span><br><span class="line">  return &lt;div&gt;&#123;loading ? &quot;Loading...&quot; : data&#125;&lt;/div&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果您从链接运行上述代码，您将看到它在屏幕上显示 <code>Loading...</code> 5 秒钟，然后显示 <code>ABCDEF</code>。这是因为 <code>apiCall</code> 是一个只等待 5 秒然后返回字符串 <code>ABCDEF</code> 的函数。</p>
+<p>首次加载页面时 <code>useEffect</code> 调用 <code>loadData</code> - 由于依赖项数组为空 - 并且状态变量使 HTML 呈现适当的内容。</p>
+<p>这对于在页面第一次加载时运行代码很有用，但是每次状态变量的值发生变化时运行一些代码呢？例如，当您在 Facebook 上搜索某人的姓名时，Facebook 如何在您每次添加&#x2F;删除角色时获取并显示推荐？</p>
+<p>您也可以使用 <code>useEffect</code> 来做到这一点，方法是在依赖数组中提供状态变量。每次该变量的值发生变化时，都会运行效果。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">function DependentEffect() &#123;</span><br><span class="line">  const names = [&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;, &quot;David&quot;, &quot;Emily&quot;];</span><br><span class="line"></span><br><span class="line">  const [recommendations, setRecommendations] = useState([]);</span><br><span class="line">  const [searchText, setSearchText] = useState(&quot;&quot;);</span><br><span class="line"></span><br><span class="line">  useEffect(() =&gt; &#123;</span><br><span class="line">    // 如果用户没有搜索任何内容，则不显示任何推荐</span><br><span class="line">    if (searchText.length === 0) &#123;</span><br><span class="line">      setRecommendations([]);</span><br><span class="line">    &#125;</span><br><span class="line">    // 否则，查找推荐</span><br><span class="line">    else if (searchText.length &gt; 0) &#123;</span><br><span class="line">      const newRecs = names.filter((name) =&gt;</span><br><span class="line">        name.toLowerCase().includes(searchText.toLowerCase())</span><br><span class="line">      );</span><br><span class="line">      setRecommendations(newRecs);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, [searchText]);</span><br><span class="line"></span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;input type=&quot;text&quot; onChange=&#123;(e) =&gt; setSearchText(e.target.value)&#125; /&gt;</span><br><span class="line">      &lt;h2&gt;Recommendations:&lt;/h2&gt;</span><br><span class="line">      &lt;ul&gt;</span><br><span class="line">        &#123;recommendations.map((rec, index) =&gt; (</span><br><span class="line">          &lt;li key=&#123;index&#125;&gt;&#123;rec&#125;&lt;/li&gt;</span><br><span class="line">        ))&#125;</span><br><span class="line">      &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果您运行上述代码并尝试输入一些字母，您将看到推荐列表会随着您在搜索框中添加&#x2F;删除新字符而自动更新。这是因为当您更新输入框时，<code>searchText</code> 的值会通过 <code>onChange</code> 处理程序进行更新，该处理程序会触发 <code>useEffect</code>，它会更新 <code>recommendations</code> 列表，从而更新 HTML 视图。</p>
+<p>您也可以类似地创建依赖于多个状态变量的副作用，而不仅仅是一个。如果任何因变量发生变化，就会产生副作用。您只需将更多状态变量添加到依赖项数组即可。</p>
+<h4 id="useRef"><a href="#useRef" class="headerlink" title="useRef"></a>useRef</h4><p><code>useRef</code> 是另一个比较常用的 React 钩子。它表面上与 <code>useState</code> 非常相似，但有一些实际上非常重要的细微差别使得这个 React Hook 学习起来很重要。</p>
+<p><code>useRef</code> 变量的创建方式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function Component() &#123;</span><br><span class="line">    const myValue = useRef();</span><br><span class="line"></span><br><span class="line">    function updateMyValue(newValue) &#123;</span><br><span class="line">        myValue.current = newValue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function printMyValue() &#123;</span><br><span class="line">        console.log(myValue.current);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="1-没有重新渲染"><a href="#1-没有重新渲染" class="headerlink" title="1. 没有重新渲染"></a>1. 没有重新渲染</h5><p>与 <code>useState</code> 类似，<code>useRef</code> 挂钩也允许我们将变量存储在组件中，该变量可以随时间更新。但是，与状态变量不同，更新 ref 变量的值不会导致 HTML 视图重新呈现。</p>
+<p>因此，如果您有一个 <code>useRef</code> 变量并且您在 HTML 视图中显示它的值，则更新该变量不会更新 HTML 视图。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function CounterWithRef() &#123;</span><br><span class="line">    const myNumber = useRef();</span><br><span class="line"></span><br><span class="line">    function increment() &#123;</span><br><span class="line">        if (myNumber.current !== undefined) &#123;</span><br><span class="line">            myNumber.current += 1;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            myNumber.current = 1;</span><br><span class="line">        &#125;</span><br><span class="line">        console.log(myNumber.current);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return (</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;p&gt;&#123;myNumber&#125;&lt;/p&gt;</span><br><span class="line">            &lt;button onClick=&#123;increment&#125;&gt;Increment!&lt;/button&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果您运行上面的代码，您会注意到每次单击按钮时，值都会递增并打印在浏览器控制台中，但 HTML 视图实际上并没有更新。事实上，HTML 视图不显示任何内容，因为 <code>myNumber.current</code> 的初始值是<code>undefined</code>的，并且由于 HTML 没有更新，因此就 HTML 而言，即使值实际上正在更新，它仍保持<code>undefined</code>。</p>
+<h5 id="2-同步更新"><a href="#2-同步更新" class="headerlink" title="2. 同步更新"></a>2. 同步更新</h5><p><img src="https://github.com/songhanlin/hexo-image/blob/master/sophomore-level1/1.jpeg?raw=true"><br><img src="https://github.com/songhanlin/hexo-image/blob/master/sophomore-level1/2.jpeg?raw=true"></p>
+<p>关于 <code>useState</code>，我们之前没有提到的是，当我们使用 <code>setXYZ</code> 函数更新状态变量时，它实际上不会立即更新。</p>
+<p>在 React 中为状态变量设置新值是异步发生的，这意味着如果您在将状态变量设置为新值后立即尝试使用它的值，您可能实际上看不到新值被反映，因为它是异步发生的。</p>
+<p>我们再来看看使用 <code>useState</code> 时的 Counter 例子。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function AsyncStateVariables() &#123;</span><br><span class="line">  const [number, setNumber] = useState(0);</span><br><span class="line"></span><br><span class="line">  function increment() &#123;</span><br><span class="line">    setNumber(number + 1);</span><br><span class="line">    console.log(number);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;p&gt;&#123;number&#125;&lt;/p&gt;</span><br><span class="line">      &lt;button onClick=&#123;increment&#125;&gt;Increment&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当您运行它时，请注意视图上发生了什么以及控制台中发生了什么。当您第一次单击按钮时，状态变量应该更新为 <code>1</code> - 这就是视图上发生的情况，网页显示 <code>1</code>。但是如果您查看浏览器控制台，则会打印值 <code>0</code> 而不是 <code>1</code>。这种模式继续单击按钮。</p>
+<p>这是因为 <code>setNumber</code> 调用是异步运行的，当我们到达 <code>console.log(number)</code> 行时，该值还没有更新，所以它打印了 <code>number</code> 的旧值。当它确实被更新时，HTML 被重新渲染以显示新值。</p>
+<hr>
+<p>另一方面，<code>useRef</code> 允许同步更新。当您使用 <code>myVar.current = newValue</code> 更新参考变量的值时，它会立即更新，并且没有延迟。这有时会派上用场。</p>
+<h5 id="3-引用-DOM-元素"><a href="#3-引用-DOM-元素" class="headerlink" title="3. 引用 DOM 元素"></a>3. 引用 DOM 元素</h5><p><code>useRef</code> 让我们做的另一件很酷的事情是它允许我们直接引用 DOM 元素。这是 <code>useState</code> 无法实现的。</p>
+<p>例如，您可以使用 <code>useRef</code> 直接引用<code>input</code>元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function InputFocus() &#123;</span><br><span class="line">  const inputRef = useRef();</span><br><span class="line"></span><br><span class="line">  useEffect(() =&gt; &#123;</span><br><span class="line">    inputRef.current.focus();</span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  return &lt;input ref=&#123;inputRef&#125; type=&quot;text&quot; /&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当您运行上面的示例时，您会注意到页面加载后，该 <code>input</code> 元素已经在焦点上，即您可以开始输入而无需先单击它。这是因为我们持有对 <code>input</code> 元素的引用，并且由于有一个空的依赖数组，因此在页面加载时运行的 <code>useEffect</code> 专注于 <code>input</code> 元素。</p>
+<h3 id="React-文件结构"><a href="#React-文件结构" class="headerlink" title="React 文件结构"></a>React 文件结构</h3><p>太好了，如果你刚刚开始使用 React，我们已经介绍了你应该知道的主要概念。但到目前为止，我们只处理了孤立的组件示例。一个实际的 React 项目是什么样子的？</p>
+<p>React 应用程序通常使用 <code>create-react-app</code>（CRA）之类的工具创建。CRA 是一个命令行工具，可帮助您设置新的 React 项目并安装所有必需的依赖项，而无需手动创建所有样板。</p>
+<p>当您使用 CRA 时，您最终会得到如下所示的文件结构。</p>
+<p><img src="https://github.com/songhanlin/hexo-image/blob/master/sophomore-level1/3.png?raw=true"></p>
+<p><code>package.json</code> 文件应该是可识别的。CRA 通过 Node.js 环境工作，而 <code>package.json</code> 是创建所有依赖项和项目元数据的地方 - 与任何其他 Node.js 项目一样。</p>
+<p><code>src/</code> 文件夹包含组件和 CSS 样式，基本上是任何特定于 React 的代码。这里的主要组件是<code>App.js</code>，它是您第一次设置 React 应用程序时创建的自动生成的组件。<code>index.js</code> 是 React 应用程序的主要入口点，但通常您不需要太多（或根本不需要）修改它。它只包含一些样板 React 代码，这些代码获取您的组件并将其转换为可以在浏览器中运行的实际 HTML 和 JS。</p>
+<p>然后，<code>public/</code>文件夹默认只包含一个文件 - <code>index.html</code>。你通常不会自己碰这个。这是一个超级简单的准系统 HTML 文件。当一个 React 应用程序运行时，React 会在后台执行一些魔法，它会获取所有组件和 Javascript 代码，将其转换为可以在浏览器中运行的实际 HTML 和 JS，并用所有这些替换 <code>index.html</code> 的内容。然后，更新后的 <code>index.html</code> 就是向用户显示的内容。</p>
+<p>如果您想将图像、字体、音乐等添加到您的网站，它们也会进入 <code>public/</code> 文件夹。<code>public/</code> 文件夹基本上包含您希望在您的网站上直接访问的所有内容。</p>
+<p>例如，如果您在 <code>public/</code> 文件夹中添加了一个名为 <code>avatar.png</code> 的图像，那么您可以在 React 组件中显示该图像，如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;/avatar.png&quot; /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>虽然这可能看起来很奇怪，因为您的组件位于 <code>src/</code> 文件夹中而不是 <code>public/</code> 文件夹中——它起作用的原因是因为图像与 <code>index.html</code> 位于同一文件夹中——而 <code>index.html</code> 是你的 React 代码实际结束的地方向上。因此，当使用 <code>/avatar.png</code> 的相对路径引用图像时，它知道 <code>avatar.png</code> 必须在<code>public</code>文件夹内。</p>
+<h2 id="后端时间"><a href="#后端时间" class="headerlink" title="后端时间"></a>后端时间</h2><p><img src="https://github.com/songhanlin/hexo-image/blob/master/sophomore-level1/4.png?raw=true"></p>
+<p>到目前为止，我们一直在讨论 React，以及它的所有前端功能。但是后端呢？</p>
+<p>React 不是后端框架，因此如果您想创建自己的 API 后端，则必须使用 Node.js 和 Express 之类的东西建立一个单独的项目。然而这很麻烦，就好像后端和前端是同一个项目一样，你可能有很多代码可以在两者之间重用和共享。此外，维护两个项目总是比只维护一个项目更难。</p>
+<p>输入，Next.js</p>
+<p>接下来是 React 的元框架。这是什么意思？嗯，React 本身就是一个构建 Web 应用程序的框架。接下来是一个 React 框架，它还引入了一些 React 没有的附加功能。</p>
+<p>如果你了解 React，那么 Next 90% 是完全一样的东西，你可以很快开始使用它，但是我想谈谈 Next 带来的这些额外功能。</p>
+<p>首先，正如标题和介绍所暗示的那样，Next 允许您在单个项目中编写前端和后端代码。您使用 React 构建前端，并使用与使用 Express 类似的语法编写后端 API 端点 - 但都在同一个项目中。</p>
+<p>其次，Next 使创建多页 Web 应用程序变得非常容易。React 最初旨在帮助创建单页应用程序（SPA），组件非常适合！但是，如果您的网站有多个页面怎么办？例如<code>https://learnweb3.io/</code>和<code>https://learnweb3.io/about</code>和<code>https://learnweb3.io/tracks</code>等等。</p>
+<p>为此，<code>React Router</code> 引入了诸如此类的库，这使之成为可能，但也有点麻烦。“下一步”通过允许基于文件名的自动页面路由大大简化了这一点。</p>
+<p>最后，Next 还具有服务器端渲染 (SSR) 和静态站点生成 (SSG)。这些不是我们将在我们的曲目中使用的功能，所以我不会在这里花太多时间，但如果您想了解更多关于它们的信息，请随时阅读推荐阅读。</p>
+<h3 id="Next-路由"><a href="#Next-路由" class="headerlink" title="Next 路由"></a>Next 路由</h3><p>在讨论创建后端服务器之前，我们将讨论路由，因为这将帮助您了解它是如何工作的。</p>
+<p>与 <code>create-react-app</code> 类似，Next 有一个名为 <code>create-next-app</code> 的工具，可以自动帮助您轻松设置新的 Next.js 项目。</p>
+<p>当您创建一个新的 Next.js 项目时，您最终会得到一个如下所示的文件结构：</p>
+<p><img src="https://github.com/songhanlin/hexo-image/blob/master/sophomore-level1/5.png?raw=true"></p>
+<p>这是很多文件！但别担心，其中很多与我们已经讨论过的 React 类似。</p>
+<p><code>public/</code>文件夹的工作方式完全相同，但不包含 <code>index.html</code> 文件。但是，如果您想添加图像、图标、字体、音乐等，您可以将它们全部放在 <code>public/</code>文件夹中。</p>
+<p><code>styles/</code> 文件夹是一个很好的补充，为您的所有 CSS 文件提供了一个专用位置。</p>
+<p><code>pages/</code> 很棒。<code>_app.js</code> 是一个自动生成的文件，通常你不会自己去碰它，它设置了一些样板代码，允许 Next 渲染正确的组件。</p>
+<p><code>pages/index.js</code> 是您网站的主页。基本上，文件 <code>pages</code> 夹中的每个文件都是您网站的路线。遵循 Javascript&#x2F;HTML 样式的命名约定，这意味着 <code>index</code> 文件是“主”文件。因此，<code>pages/index.js</code> 是您首次打开网站时将加载的视图。</p>
+<p>如果您在 <code>pages</code> 文件夹下添加更多文件，例如名为 <code>about.js</code> 的文件 - 它将在 <code>YOUR_DOMAIN/about</code> 中可用（有趣的事实：LearnWeb3 的网站是使用 Next 创建的，这正是我们的<code>https://learnweb3.io/about</code> 页面工作）。</p>
+<p>这很棒，因为您不必处理诸如 React Router 之类的事情，并且构建多页面网站就像在 <code>pages/</code>文件夹下创建一个新文件一样简单，Next 会自动为您生成基于文件名的路由。</p>
+<p>您还可以通过在文件夹下创建子文件夹来进行多级路由 <code>pages/</code>。例如，类似 <code>pages/tracks/freshman.js</code> 的东西会有 route <code>YOUR_DOMAIN/tracks/freshman</code>。</p>
+<h3 id="在-Next-中编写-API"><a href="#在-Next-中编写-API" class="headerlink" title="在 Next 中编写 API"></a>在 Next 中编写 API</h3><p><code>pages/</code> 下有一个特殊文件夹，但是它也是自动生成的。<code>pages/api</code> 文件夹。与呈现 HTML 视图的常规页面不同，<code>pages/api</code> 文件夹下的任何内容都充当 API 端点。</p>
+<p>让我们看一下自动生成的 <code>pages/api/hello.js</code> 文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export default function handler(req, res) &#123;</span><br><span class="line">  res.status(200).json(&#123; name: &#x27;John Doe&#x27; &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这是一个非常类似于 Express 的功能。如果您要转到 <code>YOUR_DOMAIN/api/hello</code> - 而不是呈现 HTML 视图，这将返回一个 JSON 对象 <code>&#123;name: &#39;John Doe&#39;&#125;</code> - 这是一个超级简单的 API 端点。</p>
+<p>与常规 HTML 视图类似，您可以通过创建新文件在 <code>pages/api</code> 下创建 API 端点，并且端点路由基于文件名。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>我希望这篇文章对您有所帮助，并且可以作为速成课程。我故意在这里更多地关注 React 而不是 Next，因为习惯前端部分对我们来说将比后端部分更相关。此外，后端代码基本上是常规的 Javascript，而前端是 JSX，我想让你更熟悉它。</p>
+<p>我列出了一些额外的阅读材料和视频，我建议这些阅读材料和视频可以更好地理解这些概念。与往常一样，如果您有任何问题，请在<a target="_blank" rel="noopener" href="https://discord.gg/learnweb3">#web2-support</a> 的频道上留言，我们很乐意为您提供帮助。</p>
+<h2 id="读物-x2F-视频"><a href="#读物-x2F-视频" class="headerlink" title="读物&#x2F;视频"></a>读物&#x2F;视频</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=hQAHSlTtcmY">30 分钟学会 React</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=Sklc_fQBmcs">Next.js in 100 Seconds &#x2F;&#x2F; 加上完整的教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://scrimba.com/learn/learnreact">Scrimba 的完整 React 课程</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=mTz0GXj8NN0">Next.js 速成班</a></li>
+</ul>
+<hr>
+<h2 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h2><ol>
+<li><p>🤔 JSX 的强大之处是什么？</p>
+<p>A: 它是 Javascript 的扩展，增加了静态类型</p>
+<p>B: 它是 Javascript 的扩展，允许您从 JS 函数返回 HTML 元素</p>
+<p>C: 它是一个 Web 框架，可以帮助您推断应用程序的视图</p>
+</li>
+<li><p>🤔 什么是组合(<code>Composition</code>)？</p>
+<p>A: 它是多个组件的组合，以创建单个分层 HTML 文档</p>
+<p>B: 它是 React 库的依赖构成</p>
+<p>C: 这是 React 官方歌曲</p>
+</li>
+<li><p>🤔 你可以通过 props 向组件传递任意数据吗？</p>
+<p>A: 是</p>
+<p>B: 否</p>
+</li>
+<li><p>🤔 React 组件如何让你的代码更容易理解？</p>
+<p>A: 通过使用 Github Copilot 自动为您生成代码</p>
+<p>B: 通过数据传递实现组件的可重用性</p>
+<p>C: 使用更简单的编程语言</p>
+</li>
+<li><p>🤔 以下代码在运行时会做什么？</p>
+<p><img src="https://github.com/songhanlin/hexo-image/blob/master/sophomore-level1/6.png?raw=true"></p>
+<p>A: 返回数字 3</p>
+<p>B: 因错误而崩溃</p>
+</li>
+<li><p>🤔 点击增量按钮会发生什么？</p>
+<p><img src="https://github.com/songhanlin/hexo-image/blob/master/sophomore-level1/7.png?raw=true"></p>
+<p>A: 应用程序的视图将更新以显示新的递增值 num</p>
+<p>B: 什么都不会发生</p>
+<p>C: 应用程序会崩溃</p>
+</li>
+<li><p>🤔 为什么在 React 中使用状态变量（useState）？</p>
+<p>A: 它们用于维护在值更改时重新呈现 HTML 的值</p>
+<p>B: 它们只是语法糖，没有真正的用途</p>
+<p>C: 它们是在 React 组件中定义变量的唯一方法</p>
+</li>
+<li><p>🤔 useEffect hook 只能在页面首次加载时运行？</p>
+<p>A: 是</p>
+<p>B: 否</p>
+</li>
+<li><p>🤔 点击开始按钮会发生什么？</p>
+<p><img src="https://github.com/songhanlin/hexo-image/blob/master/sophomore-level1/8.png?raw=true"></p>
+<p>A: <code>num</code>的值加一并且 HTML 视图更新以显示新值</p>
+<p>B: 什么都没发生</p>
+<p>C: React 应用程序陷入无限循环</p>
+</li>
+<li><p>🤔 useEffect 只能依赖一个值？</p>
+<p>A: 是</p>
+<p>B: 否</p>
+</li>
+<li><p>🤔 useRef 和 useState 有什么区别？</p>
+<p>A: 对引用变量的更新是同步完成的，而对状态变量的更新是异步完成的</p>
+<p>B: 没有区别</p>
+<p>C: useRef 仅用于引用 DOM 元素，而 useState 用于维护变量值</p>
+</li>
+<li><p>🤔 在网页间路由方面，React 和 Next.js 的主要区别是什么？</p>
+<p>A: React 自动进行基于文件的路由，而 Next 需要一个路由库</p>
+<p>B: 它们完全一样</p>
+<p>C: React 需要一个路由库，而 Next 自动执行基于文件的路由</p>
+</li>
+<li><p>🤔 如何在 Next.js 应用程序中编写 REST API 端点？</p>
+<p>A: 通过在 pages&#x2F; 子目录中创建文件</p>
+<p>B: 通过在 pages&#x2F;api&#x2F; 子目录中创建文件</p>
+<p>C: 通过在 api&#x2F; 子目录中创建文件</p>
+</li>
+<li><p>🤔 React 组件在 JSX 中使用时必须以大写字母开头？</p>
+<p>A: 是</p>
+<p>B: 否</p>
+</li>
+</ol>
+<blockquote>
+<p>参考答案:</p>
+<ol>
+<li>B</li>
+<li>A</li>
+<li>A</li>
+<li>B</li>
+<li>B</li>
+<li>B</li>
+<li>A</li>
+<li>B</li>
+<li>C</li>
+<li>B</li>
+<li>A</li>
+<li>C</li>
+<li>B</li>
+<li>A</li>
+</ol>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/web3/" rel="tag"># web3</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/08/04/web3-freshman-level9/" rel="prev" title="WEB3系列教程之新手篇--level9:NFT教程">
+                  <i class="fa fa-chevron-left"></i> WEB3系列教程之新手篇--level9:NFT教程
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.7.2/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"songhanlin","repo":"blog","client_id":"58797e27de182d42ab95","client_secret":"b04eb623dae17584fe8c2246c7af7dc5ea3f1b2b","admin_user":"songhanlin","distraction_free_mode":true,"proxy":"https://glacial-dawn-82467.herokuapp.com/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.7.2/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"ebece1355c7b1d96f1f3631a8844d9ad"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="PQtVM4HDVB0BsS4YeoZ0tnhdbsrCEuwdFaFEgWztqTA">
+  <meta name="baidu-site-verification" content="code-bx6Ior1Y4k">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.julysong.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="web3系列之新手篇">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WEB3系列教程之新手篇--level5:Remix IDE">
+<meta property="og:url" content="http://blog.julysong.com/2022/08/03/web3-freshman-level5/index.html">
+<meta property="og:site_name" content="骑驴码梦">
+<meta property="og:description" content="web3系列之新手篇">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level5/1.png?raw=true">
+<meta property="article:published_time" content="2022-08-03T09:43:52.000Z">
+<meta property="article:modified_time" content="2025-02-20T06:39:02.267Z">
+<meta property="article:author" content="TeenSong">
+<meta property="article:tag" content="web3">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level5/1.png?raw=true">
+
+
+<link rel="canonical" href="http://blog.julysong.com/2022/08/03/web3-freshman-level5/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://blog.julysong.com/2022/08/03/web3-freshman-level5/","path":"2022/08/03/web3-freshman-level5/","title":"WEB3系列教程之新手篇--level5:Remix IDE"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>WEB3系列教程之新手篇--level5:Remix IDE | 骑驴码梦</title>
+  
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+window.onload = function(e){
+  var urls = "https://picsum.photos/"
+  + window.screen.availWidth +
+  "/" + window.screen.availHeight + "/?random";
+  document.body.style.backgroundImage='url('+urls+')';
+}
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126093412-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-126093412-1');
+</script>
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="骑驴码梦" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">骑驴码梦</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">我一进门就看到常威在打来福~</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E8%88%AA-Remix"><span class="nav-number">1.</span> <span class="nav-text">导航 Remix</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Remix-%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">Remix 工作流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E8%8D%90"><span class="nav-number">3.</span> <span class="nav-text">推荐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">练习题</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="TeenSong"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">TeenSong</p>
+  <div class="site-description" itemprop="description">常威, 你还说你不会武功</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">59</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/songhanlin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;songhanlin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/e05ddaee7769" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;e05ddaee7769" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i>简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_28153553" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_28153553" rel="noopener me" target="_blank"><i class="fa fa-copyright fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/song_hanlin/activities" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;song_hanlin&#x2F;activities" rel="noopener me" target="_blank"><i class="fa fa-mortar-board fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml" rel="noopener me"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+    
+    <div class="post-gallery-image">
+      <img src="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level5/1.png?raw=true" itemprop="contentUrl">
+    </div>
+    </div>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.julysong.com/2022/08/03/web3-freshman-level5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="TeenSong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="骑驴码梦">
+      <meta itemprop="description" content="常威, 你还说你不会武功">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="WEB3系列教程之新手篇--level5:Remix IDE | 骑驴码梦">
+      <meta itemprop="description" content="web3系列之新手篇">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          WEB3系列教程之新手篇--level5:Remix IDE
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-08-03 17:43:52" itemprop="dateCreated datePublished" datetime="2022-08-03T17:43:52+08:00">2022-08-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-02-20 14:39:02" itemprop="dateModified" datetime="2025-02-20T14:39:02+08:00">2025-02-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/web3%E7%B3%BB%E5%88%97%E4%B9%8B%E6%96%B0%E6%89%8B%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">web3系列之新手篇</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">web3系列之新手篇</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>原文地址: <a target="_blank" rel="noopener" href="https://www.learnweb3.io/tracks/freshman/remix-ide">https://www.learnweb3.io/tracks/freshman/remix-ide</a></p>
+<p>翻译: JulySong</p>
+</blockquote>
+<p>Remix 是用于以太坊开发的开源、Web 和桌面集成开发环境 (IDE)。它是开始在以太坊上构建的最简单的开发工具，并且拥有大量插件来扩展其体验。</p>
+<p>Remix 可帮助您直接在浏览器中编写 Solidity 代码，并提供用于测试、调试和将智能合约部署到区块链的工具。</p>
+<p>你可以在<a target="_blank" rel="noopener" href="https://remix.ethereum.org/%E8%AE%BF%E9%97%AE">https://remix.ethereum.org/访问</a> Remix</p>
+<h2 id="导航-Remix"><a href="#导航-Remix" class="headerlink" title="导航 Remix"></a>导航 Remix</h2><p>当您第一次打开 Remix 时，您会看到这样的屏幕。</p>
+<p><img src="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level5/2.png?raw=true"><br><code>File Explorer</code>在左侧边栏中，您可以在、<code>Solidity Compiler</code>、<code>Deployer</code>和<code>Extensions</code>面板之间切换。</p>
+<p>在底部，有一个输出面板，显示编译、部署和函数调用的输出。</p>
+<p>中间是您将编辑代码的地方。目前它显示 IDE 的主屏幕，但是一旦我们打开一个文件，它将成为代码编辑器。</p>
+<h2 id="Remix-工作流程"><a href="#Remix-工作流程" class="headerlink" title="Remix 工作流程"></a>Remix 工作流程</h2><p>在侧边栏中，如果您查看<code>contracts</code>文件夹下方 - Remix 附带 3 个基本智能合约，以帮助人们学习 Solidity。让我们来看看<code>1_Storage.sol</code>。</p>
+<p><img src="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level5/3.png?raw=true"><br>我们现在可以看到代码编辑器了。</p>
+<p>在文件资源管理器中，我们还可以看到创建新文件或目录、上传本地文件或从 Github 导入文件的选项。</p>
+<p>为了编译我们的合约，我们切换到 <code>Solidity Compiler</code> 选项卡，我们将在侧边栏中看到类似的内容。<br><img src="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level5/4.png?raw=true"><br>在这里，我们可以选择<code>Compiler Version</code>我们想要的、我们使用的智能合约编程语言（大多数情况下你只会使用 Solidity），以及一些进一步的配置选项。</p>
+<p>注意：Remix 中列出的另一种编程语言 <code>Yul</code> 是低级语言。它用于中间编译，比 Solidity 更接近硬件。99% 的时间你不会在 Yul 中编码。<br>在此处阅读有关 Yul 的更多信息 - <a target="_blank" rel="noopener" href="https://docs.soliditylang.org/en/v0.8.9/yul.html">https://docs.soliditylang.org/en/v0.8.9/yul.html</a></p>
+<p>单击 <code>Compile 1_Storage.sol</code> 将编译合约并使其准备好部署。<br><img src="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level5/5.png?raw=true"><br>转到<code>Deployment</code>选项卡，我们将在侧边栏中看到类似的内容。</p>
+<p><img src="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level5/6.png?raw=true"><br>这里首先要注意的是<code>Environment</code>. Remix 附带一个<code>Javascript VM</code>- 这是浏览器中以太坊虚拟机 (EVM) 的模拟器。只要您的合约不依赖于部署到真实以太坊网络的另一个合约，这便可以快速测试和调试您的智能合约。谢天谢地，我们的存储合约没有，所以我们可以在 Javascript VM 中测试它。</p>
+<p>要部署到实际网络，我们将希望将我们更改<code>Environment</code>为那里列出的其他选项之一（稍后会详细介绍）。</p>
+<p>除了<code>Javascript VM</code>，Remix 还创建了一组虚假账户，所有账户都装有 100 ETH，以供测试。</p>
+<p>从下拉列表中选择<code>1_Storage.sol</code>合约，然后单击<code>Deploy</code>以部署合约。<br><img src="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level5/7.png?raw=true"><br>部署合约后，您将在该<code>Deployed Contracts</code>部分下看到它 - 您现在可以在其中调用智能合约上的函数。</p>
+<p>调用该<code>retrieve</code>函数将返回一个<code>0</code>right now 值，这是 Solidity 中整数的默认值。<br><img src="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level5/8.png?raw=true"><br>此外，我们将在“输出”面板中看到一些关于<code>Storage.retrieve</code>我们的函数调用的日志。</p>
+<p>现在，让我们尝试<code>store</code>使用 number 调用该值<code>5</code>。<br><img src="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level5/9.png?raw=true"><br>同样，我们在输出面板中看到一些关于调用的日志<code>Storage.store</code>。现在，如果我们再次尝试<code>retrieve</code>，输出将是<code>5</code>.</p>
+<p><img src="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level5/10.png?raw=true"></p>
+<p>注意- 我们所做的这些函数调用&#x2F;交易都没有打开您的数字钱包 (Metamask)。这是因为我们<code>Javascript VM</code>目前正在测试，而那只是一个使用假账户的模拟器。部署到真实网络（测试网或主网）时，需要通过您的数字钱包确认和签署交易。</p>
+<h2 id="推荐"><a href="#推荐" class="headerlink" title="推荐"></a>推荐</h2><p>要了解有关 Remix 的更多信息，我们建议：</p>
+<ul>
+<li>浏览 <a target="_blank" rel="noopener" href="https://remix-ide.readthedocs.io/en/latest/">Remix IDE Docs 上的文档</a></li>
+<li>使用 Remix 附带的默认智能合约来处理工作流程</li>
+</ul>
+<hr>
+<h2 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h2><ol>
+<li><p>🤔 IDE 代表什么？</p>
+<p>A: 集成开发环境</p>
+<p>B: 智能不和谐环境</p>
+<p>C: 有意的开发人员体验</p>
+<p>D: 恼怒的开发者愤怒</p>
+</li>
+<li><p>🤔 Remix 可以写什么?</p>
+<p>A: Solidity 合约</p>
+<p>B: 可靠性测试</p>
+<p>C: Javascript 脚本</p>
+<p>D: 上述所有的</p>
+</li>
+<li><p>🤔 以下哪一项不是 Remix 中的面板？</p>
+<p>A: 文件管理器</p>
+<p>B: 版本控制历史</p>
+<p>C: Solidity 编译器</p>
+</li>
+<li><p>🤔 Remix 不支持以下哪个环境？</p>
+<p>A: Javascript 虚拟机</p>
+<p>B: Rinkeby 测试网</p>
+<p>C: Solana 测试网</p>
+<p>D: 以太坊主网</p>
+</li>
+<li><p>🤔 你可以用 Solidity 以外的语言在 Remix 上写代码吗？</p>
+<p>A: 真的</p>
+<p>B: 错误的</p>
+</li>
+<li><p>🤔 Remix 不支持以下哪些功能？</p>
+<p>A: 与已部署的智能合约交互</p>
+<p>B: 从 Github 存储库导入代码</p>
+<p>C: 提供免费的测试网以太</p>
+</li>
+<li><p>🤔 Remix 允许您与未部署的合约进行交互</p>
+<p>A: 真的</p>
+<p>B: 错误的</p>
+</li>
+</ol>
+<blockquote>
+<p>参考答案:</p>
+<ol>
+<li>A</li>
+<li>D</li>
+<li>B</li>
+<li>C</li>
+<li>A</li>
+<li>C</li>
+<li>A</li>
+</ol>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/web3/" rel="tag"># web3</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/08/03/web3-freshman-level4/" rel="prev" title="WEB3系列教程之新手篇--level4:加密钱包">
+                  <i class="fa fa-angle-left"></i> WEB3系列教程之新手篇--level4:加密钱包
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/08/03/web3-freshman-level6/" rel="next" title="WEB3系列教程之新手篇--level6:Solidity">
+                  WEB3系列教程之新手篇--level6:Solidity <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"songhanlin","repo":"blog","client_id":"58797e27de182d42ab95","client_secret":"b04eb623dae17584fe8c2246c7af7dc5ea3f1b2b","admin_user":"songhanlin","distraction_free_mode":true,"proxy":"https://glacial-dawn-82467.herokuapp.com/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"a36e7eff72ecfe507c161183b2029ad5"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="PQtVM4HDVB0BsS4YeoZ0tnhdbsrCEuwdFaFEgWztqTA">
+  <meta name="baidu-site-verification" content="code-bx6Ior1Y4k">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.julysong.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="在某些场景下, 我们可能需要在一个环境中同时安装多个版本的JDK, 本文主要描述如何在Mac和Linux下管理多个版本的JDK">
+<meta property="og:type" content="article">
+<meta property="og:title" content="管理JDK多个版本">
+<meta property="og:url" content="http://blog.julysong.com/2022/07/14/manager-jdk-versions/index.html">
+<meta property="og:site_name" content="骑驴码梦">
+<meta property="og:description" content="在某些场景下, 我们可能需要在一个环境中同时安装多个版本的JDK, 本文主要描述如何在Mac和Linux下管理多个版本的JDK">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/songhanlin/hexo-image/blob/master/manager-jdk-versions/1.png?raw=true">
+<meta property="article:published_time" content="2022-07-14T01:54:23.000Z">
+<meta property="article:modified_time" content="2025-02-20T06:39:02.261Z">
+<meta property="article:author" content="TeenSong">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Mac">
+<meta property="article:tag" content="JDK">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/songhanlin/hexo-image/blob/master/manager-jdk-versions/1.png?raw=true">
+
+
+<link rel="canonical" href="http://blog.julysong.com/2022/07/14/manager-jdk-versions/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://blog.julysong.com/2022/07/14/manager-jdk-versions/","path":"2022/07/14/manager-jdk-versions/","title":"管理JDK多个版本"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>管理JDK多个版本 | 骑驴码梦</title>
+  
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+window.onload = function(e){
+  var urls = "https://picsum.photos/"
+  + window.screen.availWidth +
+  "/" + window.screen.availHeight + "/?random";
+  document.body.style.backgroundImage='url('+urls+')';
+}
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126093412-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-126093412-1');
+</script>
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="骑驴码梦" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">骑驴码梦</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">我一进门就看到常威在打来福~</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MAC"><span class="nav-number">1.</span> <span class="nav-text">MAC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E8%BF%87%E5%93%AA%E4%BA%9B-JDK-%E7%89%88%E6%9C%AC-%E8%8B%A5%E4%B8%8D%E5%AD%98%E5%9C%A8-%E8%AF%B7%E5%85%88%E8%87%AA%E8%A1%8C%E5%AE%89%E8%A3%85"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. 查看当前系统安装过哪些 JDK 版本(若不存在, 请先自行安装)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%A0%B9%E6%8D%AE%E5%85%B3%E9%94%AE%E5%AD%97%E6%9F%A5%E7%9C%8B-jdk-%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. 根据关键字查看 jdk 安装目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E7%BC%96%E8%BE%91-bash-profile-%E4%B9%9F%E8%AE%B8%E6%98%AF-zshrc-%E7%AD%89%E5%85%B6%E4%BB%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">1.0.3.</span> <span class="nav-text">3. 编辑~&#x2F;.bash_profile(也许是.zshrc 等其他配置文件)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%88%87%E6%8D%A2-JDK-%E7%89%88%E6%9C%AC"><span class="nav-number">1.0.4.</span> <span class="nav-text">4. 切换 JDK 版本</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux"><span class="nav-number">2.</span> <span class="nav-text">Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%B1%E8%B4%A5%E6%A1%88%E4%BE%8B"><span class="nav-number">2.0.1.</span> <span class="nav-text">失败案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BD%BF%E7%94%A8-alertnatives-%E5%88%9B%E5%BB%BA%E8%BD%AF%E8%BF%9E%E6%8E%A5"><span class="nav-number">2.0.2.</span> <span class="nav-text">1. 使用 alertnatives 创建软连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">2.0.3.</span> <span class="nav-text">2. 配置环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%88%87%E6%8D%A2-jdk-%E7%89%88%E6%9C%AC"><span class="nav-number">2.0.4.</span> <span class="nav-text">3. 切换 jdk 版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E7%BB%AD"><span class="nav-number">2.0.5.</span> <span class="nav-text">后续</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="TeenSong"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">TeenSong</p>
+  <div class="site-description" itemprop="description">常威, 你还说你不会武功</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">59</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/songhanlin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;songhanlin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/e05ddaee7769" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;e05ddaee7769" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i>简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_28153553" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_28153553" rel="noopener me" target="_blank"><i class="fa fa-copyright fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/song_hanlin/activities" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;song_hanlin&#x2F;activities" rel="noopener me" target="_blank"><i class="fa fa-mortar-board fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml" rel="noopener me"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+    
+    <div class="post-gallery-image">
+      <img src="https://github.com/songhanlin/hexo-image/blob/master/manager-jdk-versions/1.png?raw=true" itemprop="contentUrl">
+    </div>
+    </div>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.julysong.com/2022/07/14/manager-jdk-versions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="TeenSong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="骑驴码梦">
+      <meta itemprop="description" content="常威, 你还说你不会武功">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="管理JDK多个版本 | 骑驴码梦">
+      <meta itemprop="description" content="在某些场景下, 我们可能需要在一个环境中同时安装多个版本的JDK, 本文主要描述如何在Mac和Linux下管理多个版本的JDK">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          管理JDK多个版本
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-07-14 09:54:23" itemprop="dateCreated datePublished" datetime="2022-07-14T09:54:23+08:00">2022-07-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-02-20 14:39:02" itemprop="dateModified" datetime="2025-02-20T14:39:02+08:00">2025-02-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">在某些场景下, 我们可能需要在一个环境中同时安装多个版本的JDK, 本文主要描述如何在Mac和Linux下管理多个版本的JDK</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="MAC"><a href="#MAC" class="headerlink" title="MAC"></a>MAC</h1><blockquote>
+<p>mac 下我们使用&#x2F;usr&#x2F;libexec&#x2F;java_home 来控制 jdk 版本的切换</p>
+</blockquote>
+<h3 id="1-查看当前系统安装过哪些-JDK-版本-若不存在-请先自行安装"><a href="#1-查看当前系统安装过哪些-JDK-版本-若不存在-请先自行安装" class="headerlink" title="1. 查看当前系统安装过哪些 JDK 版本(若不存在, 请先自行安装)"></a>1. 查看当前系统安装过哪些 JDK 版本(若不存在, 请先自行安装)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usr/libexec/java_home -V</span><br></pre></td></tr></table></figure>
+
+<p>结果如下(忽略安装了两个版本的 JDK1.8)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Matching Java Virtual Machines (4):</span><br><span class="line">    11.0.2 (x86_64) &quot;Oracle Corporation&quot; - &quot;Java SE 11.0.2&quot; /Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home</span><br><span class="line">    1.8.0_292 (x86_64) &quot;AdoptOpenJDK&quot; - &quot;AdoptOpenJDK 8&quot; /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home</span><br><span class="line">    1.8.0_102 (x86_64) &quot;Oracle Corporation&quot; - &quot;Java SE 8&quot; /Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home</span><br><span class="line">    1.7.0_80 (x86_64) &quot;Oracle Corporation&quot; - &quot;Java SE 7&quot; /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home</span><br><span class="line">/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-根据关键字查看-jdk-安装目录"><a href="#2-根据关键字查看-jdk-安装目录" class="headerlink" title="2. 根据关键字查看 jdk 安装目录"></a>2. 根据关键字查看 jdk 安装目录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/libexec/java_home -v 11</span><br></pre></td></tr></table></figure>
+
+<p>结果如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home</span><br></pre></td></tr></table></figure>
+
+<p>同样的, 查看 JDK8 如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/libexec/java_home -v 1.8</span><br></pre></td></tr></table></figure>
+
+<p>结果如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home</span><br></pre></td></tr></table></figure>
+
+<p>当如上命令正确执行无误的时候, 我们就可以开始来通过编辑环境变量来动态的进行改变 JDK 环境</p>
+<h3 id="3-编辑-bash-profile-也许是-zshrc-等其他配置文件"><a href="#3-编辑-bash-profile-也许是-zshrc-等其他配置文件" class="headerlink" title="3. 编辑~&#x2F;.bash_profile(也许是.zshrc 等其他配置文件)"></a>3. 编辑~&#x2F;.bash_profile(也许是.zshrc 等其他配置文件)</h3><p>内容如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># jdk</span><br><span class="line"># 计算当前版本JDK的安装位置，因为在上面我们已经将2个JDK都放在了 /Library/Java/JavaVir    tualMachines/</span><br><span class="line">export JAVA_8_HOME=`/usr/libexec/java_home -v 1.8`</span><br><span class="line">export JAVA_11_HOME=`/usr/libexec/java_home -v 11`</span><br><span class="line"></span><br><span class="line"># 设置默认的环境是JDK11</span><br><span class="line">export JAVA_HOME=$JAVA_11_HOME</span><br><span class="line"># 添加两个别名，用来快速更好JDK环境</span><br><span class="line">alias JDK8=&quot;export JAVA_HOME=$JAVA_8_HOME&quot;</span><br><span class="line">alias JDK11=&quot;export JAVA_HOME=$JAVA_11_HOME&quot;</span><br></pre></td></tr></table></figure>
+
+<p>应用编辑过后的环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bash_profile</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-切换-JDK-版本"><a href="#4-切换-JDK-版本" class="headerlink" title="4. 切换 JDK 版本"></a>4. 切换 JDK 版本</h3><p>执行完毕之后, 我们就可以使用别名来动态的切换 jdk 版本了, 如下</p>
+<p>查看当前系统 jdk 版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> ~ java -version</span><br><span class="line">java version &quot;11.0.2&quot; 2019-01-15 LTS</span><br><span class="line">Java(TM) SE Runtime Environment 18.9 (build 11.0.2+9-LTS)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.2+9-LTS, mixed mode)</span><br></pre></td></tr></table></figure>
+
+<p>切换为 jdk8</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~ JDK8</span><br></pre></td></tr></table></figure>
+
+<p>查看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> ~ java -version</span><br><span class="line">openjdk version &quot;1.8.0_292&quot;</span><br><span class="line">OpenJDK Runtime Environment (AdoptOpenJDK)(build 1.8.0_292-b10)</span><br><span class="line">OpenJDK 64-Bit Server VM (AdoptOpenJDK)(build 25.292-b10, mixed mode)</span><br></pre></td></tr></table></figure>
+
+<p>重新切换为 jdk11</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~ JDK11</span><br></pre></td></tr></table></figure>
+
+<p>查看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> ~ java -version</span><br><span class="line">java version &quot;11.0.2&quot; 2019-01-15 LTS</span><br><span class="line">Java(TM) SE Runtime Environment 18.9 (build 11.0.2+9-LTS)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.2+9-LTS, mixed mode)</span><br></pre></td></tr></table></figure>
+
+<p>至此, MAC 下多个版本的 JDK 管理脚本调整完毕</p>
+<hr>
+<h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><blockquote>
+<p>思路: 尝试过使用了上述的方式, 来动态调整 JAVA_HOME 的目录, 但是发现, PATH 内的 JAVA_HOME 没有动态获取改变后的目录, 因此尝试使用软连接的思路来动态改变 jdk 的目录.</p>
+</blockquote>
+<h3 id="失败案例"><a href="#失败案例" class="headerlink" title="失败案例"></a>失败案例</h3><p>使用 ln -sf 把 jdk8 和 jdk11 指向同样的目录下, 第一次可以正常执行, 第二次执行的时候会进入到软连接的真实目录下创建一个软连接, 大家可以自行尝试, 也可能我的方式不对. 当然了, 也可以先删除, 后创建, 但是感觉略显麻烦.</p>
+<h3 id="1-使用-alertnatives-创建软连接"><a href="#1-使用-alertnatives-创建软连接" class="headerlink" title="1. 使用 alertnatives 创建软连接"></a>1. 使用 alertnatives 创建软连接</h3><p>jdk8</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 命令 --安装 软连接 名称 安装路径</span><br><span class="line">alternatives --install /data/java java /data/jdk8 1</span><br></pre></td></tr></table></figure>
+
+<p>jdk11</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 命令 --安装 软连接 名称 安装路径</span><br><span class="line">alternatives --install /data/java java /data/jdk11 2</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-配置环境变量"><a href="#2-配置环境变量" class="headerlink" title="2. 配置环境变量"></a>2. 配置环境变量</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 执行软连接目录</span><br><span class="line">export JAVA_HOME=/data/java</span><br><span class="line"></span><br><span class="line">export PATH=$&#123;JAVA_HOME&#125;/bin:$&#123;PATH&#125;</span><br><span class="line">export CLASSPATH=$&#123;JAVA_HOME&#125;/lib:$&#123;CLASSPATH&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-切换-jdk-版本"><a href="#3-切换-jdk-版本" class="headerlink" title="3. 切换 jdk 版本"></a>3. 切换 jdk 版本</h3><ol>
+<li>手动选择切换</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# alternatives --config java</span><br><span class="line"></span><br><span class="line">共有 2 个提供“java”的程序。</span><br><span class="line"></span><br><span class="line">  选项    命令</span><br><span class="line">-----------------------------------------------</span><br><span class="line"> + 1           /data/jdk8</span><br><span class="line">*  2           /data/jdk11</span><br><span class="line"></span><br><span class="line">按 Enter 保留当前选项[+]，或者键入选项编号：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>命令直接切换</li>
+</ol>
+<p>jdk11</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# alternatives --set java /data/jdk11</span><br></pre></td></tr></table></figure>
+
+<p>查看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# java -version</span><br><span class="line">openjdk version &quot;11&quot; 2018-09-25</span><br><span class="line">OpenJDK Runtime Environment 18.9 (build 11+28)</span><br><span class="line">OpenJDK 64-Bit Server VM 18.9 (build 11+28, mixed mode)</span><br></pre></td></tr></table></figure>
+
+<p>jdk8</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# alternatives --set java /data/jdk8</span><br></pre></td></tr></table></figure>
+
+<p>查看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# java -version</span><br><span class="line">java version &quot;1.8.0_112&quot;</span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_112-b15)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.112-b15, mixed mode)</span><br></pre></td></tr></table></figure>
+
+<p>这种方式有一种弊端, 就是切换的时候是全局的, 当多人访问该服务器, 一个人切换了软连接, 那所有人都会跟着变了当前的 jdk 版本</p>
+<h3 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h3><p>当然前面那种通过更改环境变量的方式, 也可以通过更改 PATH 来实现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alias JDK8=&quot;export JAVA_HOME=/data/jdk8 &amp;&amp; export PATH=/data/jdk8/bin:$&#123;M2_HOME&#125;/bin:$&#123;PATH&#125; &amp;&amp; export CLASSPATH=/data/jdk8/lib:$&#123;CLASSPATH&#125;&quot;</span><br><span class="line"></span><br><span class="line">alias JDK11=&quot;JAVA_HOME=/data/jdk11 &amp;&amp; PATH=$/data/jdk8/bin:$&#123;M2_HOME&#125;/bin:$&#123;PATH&#125; &amp;&amp; CLASSPATH=$/data/jdk8/lib:$&#123;CLASSPATH&#125;&quot;</span><br></pre></td></tr></table></figure>
+
+<p>但是该方式可能会导致 PATH 变的很长, 如果 PATH 本身不是很长, 可以考虑把 PATH 路径写完整, 不持续拼接上一个 PATH</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/Mac/" rel="tag"># Mac</a>
+              <a href="/tags/JDK/" rel="tag"># JDK</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/05/25/greedy-algoritm-by-car/" rel="prev" title="贪心算法买车">
+                  <i class="fa fa-angle-left"></i> 贪心算法买车
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/08/02/web3-freshman-level0/" rel="next" title="WEB3系列教程之新手篇--level0:基础编程">
+                  WEB3系列教程之新手篇--level0:基础编程 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"songhanlin","repo":"blog","client_id":"58797e27de182d42ab95","client_secret":"b04eb623dae17584fe8c2246c7af7dc5ea3f1b2b","admin_user":"songhanlin","distraction_free_mode":true,"proxy":"https://glacial-dawn-82467.herokuapp.com/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"c31712d4dc6abcb6ee097c8a66029727"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

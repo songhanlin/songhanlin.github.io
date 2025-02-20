@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="PQtVM4HDVB0BsS4YeoZ0tnhdbsrCEuwdFaFEgWztqTA">
+  <meta name="baidu-site-verification" content="code-bx6Ior1Y4k">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.julysong.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="WEB3系列教程之入门篇">
+<meta property="og:type" content="article">
+<meta property="og:title" content="白名单-Dapp">
+<meta property="og:url" content="http://blog.julysong.com/2022/09/01/web3-sophomore-level8/index.html">
+<meta property="og:site_name" content="骑驴码梦">
+<meta property="og:description" content="WEB3系列教程之入门篇">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/songhanlin/hexo-image/blob/master/sophomore-level8/1.png?raw=true">
+<meta property="og:image" content="https://github.com/songhanlin/hexo-image/blob/master/sophomore-level8/2.png?raw=true">
+<meta property="article:published_time" content="2022-09-01T07:47:18.000Z">
+<meta property="article:modified_time" content="2025-02-20T06:39:02.270Z">
+<meta property="article:author" content="TeenSong">
+<meta property="article:tag" content="web3">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/songhanlin/hexo-image/blob/master/sophomore-level8/1.png?raw=true">
+
+
+<link rel="canonical" href="http://blog.julysong.com/2022/09/01/web3-sophomore-level8/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://blog.julysong.com/2022/09/01/web3-sophomore-level8/","path":"2022/09/01/web3-sophomore-level8/","title":"白名单-Dapp"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>白名单-Dapp | 骑驴码梦</title>
+  
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+window.onload = function(e){
+  var urls = "https://picsum.photos/"
+  + window.screen.availWidth +
+  "/" + window.screen.availHeight + "/?random";
+  document.body.style.backgroundImage='url('+urls+')';
+}
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126093412-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-126093412-1');
+</script>
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="骑驴码梦" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">骑驴码梦</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">我一进门就看到常威在打来福~</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A6%81%E6%B1%82"><span class="nav-number">1.</span> <span class="nav-text">要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%88%E5%86%B3%E6%9D%A1%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">先决条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%96%9C%E6%AC%A2%E8%A7%86%E9%A2%91%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">喜欢视频？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E9%80%A0"><span class="nav-number">4.</span> <span class="nav-text">建造</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6"><span class="nav-number">4.1.</span> <span class="nav-text">智能合约</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%AB%99"><span class="nav-number">4.2.</span> <span class="nav-text">网站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A8%E9%80%81%E5%88%B0-github"><span class="nav-number">4.3.</span> <span class="nav-text">推送到 github</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E4%BD%A0%E7%9A%84-dApp"><span class="nav-number">5.</span> <span class="nav-text">部署你的 dApp</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="TeenSong"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">TeenSong</p>
+  <div class="site-description" itemprop="description">常威, 你还说你不会武功</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">59</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/songhanlin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;songhanlin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/e05ddaee7769" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;e05ddaee7769" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i>简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_28153553" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_28153553" rel="noopener me" target="_blank"><i class="fa fa-copyright fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/song_hanlin/activities" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;song_hanlin&#x2F;activities" rel="noopener me" target="_blank"><i class="fa fa-mortar-board fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml" rel="noopener me"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.julysong.com/2022/09/01/web3-sophomore-level8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="TeenSong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="骑驴码梦">
+      <meta itemprop="description" content="常威, 你还说你不会武功">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="白名单-Dapp | 骑驴码梦">
+      <meta itemprop="description" content="WEB3系列教程之入门篇">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          白名单-Dapp
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-09-01 15:47:18" itemprop="dateCreated datePublished" datetime="2022-09-01T15:47:18+08:00">2022-09-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-02-20 14:39:02" itemprop="dateModified" datetime="2025-02-20T14:39:02+08:00">2025-02-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/web3%E7%B3%BB%E5%88%97%E4%B9%8B%E5%85%A5%E9%97%A8%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">web3系列之入门篇</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">WEB3系列教程之入门篇</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>原文地址: <a target="_blank" rel="noopener" href="https://learnweb3.io/courses/c1d7081b-63a9-4c6e-b35c-9fcbbad418b2/lessons/acd04999-1230-4533-b6de-6b4e4978914c">Whitelist-Dapp</a></p>
+<p>翻译: JulySong</p>
+</blockquote>
+<p>您正在启动名为<code>Crypto Devs</code>. 你想让你的早期支持者访问你收藏的白名单，所以在这里你要创建一个白名单 dapp<code>Crypto Devs</code></p>
+<p><img src="https://github.com/songhanlin/hexo-image/blob/master/sophomore-level8/1.png?raw=true"></p>
+<h2 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h2><ul>
+<li>名单访问权应该<code>10</code>免费提供给想要进入的第一批用户。</li>
+<li>应该有一个网站，人们可以进入白名单。</li>
+</ul>
+<p>让我们开始建造 🚀</p>
+<hr>
+<h2 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件</h2><ul>
+<li>您可以使用 JavaScript 编写代码 (Beginner Track - <a target="_blank" rel="noopener" href="https://github.com/LearnWeb3DAO/Basic-Programming">Level-0</a>)</li>
+<li>已设置 Metamask 钱包 (Beginner Track - <a target="_blank" rel="noopener" href="https://github.com/LearnWeb3DAO/Crypto-Wallets">Level-4</a>)</li>
+<li>您的计算机已安装 Node.js。如果不是从 <a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">here</a></li>
+</ul>
+<hr>
+<h2 id="喜欢视频？"><a href="#喜欢视频？" class="headerlink" title="喜欢视频？"></a>喜欢视频？</h2><p>如果您想从视频中学习，我们的 YouTube 上有本教程的录音。单击下面的屏幕截图观看视频，或继续阅读教程！</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=eSS0vZ7rqpU&t=4757s">视频 1</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=iMOAUkL09pU">视频 2</a></p>
+<h2 id="建造"><a href="#建造" class="headerlink" title="建造"></a>建造</h2><h3 id="智能合约"><a href="#智能合约" class="headerlink" title="智能合约"></a>智能合约</h3><p>为了构建智能合约，我们将使用 <a target="_blank" rel="noopener" href="https://hardhat.org/">Hardhat</a>. Hardhat 是一个以太坊开发环境和框架，专为 Solidity 中的全栈开发而设计。简单来说，您可以编写智能合约、部署它们、运行测试和调试代码。</p>
+<ul>
+<li>首先，您需要创建一个 Whitelist-Daap 文件夹，Hardhat 项目和您的 Next.js 应用程序稍后将进入该文件夹</li>
+<li>打开终端并执行这些命令</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir Whitelist-Dapp</span><br><span class="line">cd Whitelist-Dapp</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>然后，在 Whitelist-Daap 文件夹中，您将设置 Hardhat 项目</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir hardhat-tutorial</span><br><span class="line">cd hardhat-tutorial</span><br><span class="line">npm init --yes</span><br><span class="line">npm install --save-dev hardhat</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在安装 Hardhat 的同一目录中运行：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx hardhat</span><br></pre></td></tr></table></figure>
+
+<pre><code>- Select `Create a Javascript project`
+- Press enter for the already specified `Hardhat Project root`
+- Press enter for the question on if you want to add a `.gitignore`
+- Press enter for `Do you want to install this sample project&#39;s dependencies with npm (@nomicfoundation/hardhat-toolbox)?`
+</code></pre>
+<p>现在你有一个安全帽项目准备好了！</p>
+<p>如果您不在 Mac 上，请执行此额外步骤并安装这些库：)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev @nomicfoundation/hardhat-toolbox</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>首先在<code>contracts</code>文件夹下创建一个名为<code>Whitelist.sol</code>的文件.</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">//SPDX-License-Identifier: Unlicense</span><br><span class="line">pragma solidity ^0.8.0;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">contract Whitelist &#123;</span><br><span class="line"></span><br><span class="line">    // 允许的最大白名单地址数</span><br><span class="line">    uint8 public maxWhitelistedAddresses;</span><br><span class="line"></span><br><span class="line">    // 创建 whitelistedAddresses 的映射</span><br><span class="line">    // 如果地址被列入白名单，我们会将其设置为 true，对于所有其他地址默认为 false。</span><br><span class="line">    mapping(address =&gt; bool) public whitelistedAddresses;</span><br><span class="line"></span><br><span class="line">    // numAddressesWhitelisted 将用于跟踪有多少地址被列入白名单</span><br><span class="line">    // 注意：不要更改此变量名，因为它将是验证的一部分</span><br><span class="line">    uint8 public numAddressesWhitelisted;</span><br><span class="line"></span><br><span class="line">    // 设置白名单地址的最大数量</span><br><span class="line">    // 用户将在部署时放置该值</span><br><span class="line">    constructor(uint8 _maxWhitelistedAddresses) &#123;</span><br><span class="line">        maxWhitelistedAddresses =  _maxWhitelistedAddresses;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">        addAddressToWhitelist - 此函数将发送者的地址添加到白名单</span><br><span class="line">     */</span><br><span class="line">    function addAddressToWhitelist() public &#123;</span><br><span class="line">        // 检查用户是否已被列入白名单</span><br><span class="line">        require(!whitelistedAddresses[msg.sender], &quot;Sender has already been whitelisted&quot;);</span><br><span class="line">        // 检查是否 numAddressesWhitelisted &lt; maxWhitelistedAddresses，如果不是则抛出错误。</span><br><span class="line">        require(numAddressesWhitelisted &lt; maxWhitelistedAddresses, &quot;More addresses cant be added, limit reached&quot;);</span><br><span class="line">        // 将调用函数的地址添加到 whitelistedAddress 数组</span><br><span class="line">        whitelistedAddresses[msg.sender] = true;</span><br><span class="line">        // 增加白名单地址数量</span><br><span class="line">        numAddressesWhitelisted += 1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>让我们将合约部署到<code>rinkeby</code>网络。创建一个新文件，或者替换文件夹<code>scripts</code>下命名的默认文件<code>deploy.js</code></p>
+</li>
+<li><p>现在我们将编写一些代码来在<code>deploy.js</code>文件中部署合约。</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">const &#123; ethers &#125; = require(&quot;hardhat&quot;);</span><br><span class="line"></span><br><span class="line">async function main() &#123;</span><br><span class="line">  /*</span><br><span class="line">  ethers.js 中的 ContractFactory 是用于部署新智能合约的抽象，</span><br><span class="line">  所以 whitelistContract 这里是我们白名单合约实例的工厂。</span><br><span class="line">  */</span><br><span class="line">  const whitelistContract = await ethers.getContractFactory(&quot;Whitelist&quot;);</span><br><span class="line"></span><br><span class="line">  // 这里我们部署合约</span><br><span class="line">  const deployedWhitelistContract = await whitelistContract.deploy(10);</span><br><span class="line">  // 10 是允许的最大白名单地址数</span><br><span class="line"></span><br><span class="line">  // 等待它完成部署</span><br><span class="line">  await deployedWhitelistContract.deployed();</span><br><span class="line"></span><br><span class="line">  // 打印部署合约的地址</span><br><span class="line">  console.log(</span><br><span class="line">    &quot;Whitelist Contract Address:&quot;,</span><br><span class="line">    deployedWhitelistContract.address</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 调用main函数，如果有错误就catch</span><br><span class="line">main()</span><br><span class="line">  .then(() =&gt; process.exit(0))</span><br><span class="line">  .catch((error) =&gt; &#123;</span><br><span class="line">    console.error(error);</span><br><span class="line">    process.exit(1);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>现在在<code>hardhat-tutorial</code>文件夹中创建一个<code>.env</code>文件并添加以下行，使用注释中的说明获取您的 Alchemy API key URL 和 RINKEBY Private Key。确保您获得 rinkeby 私钥的帐户由 Rinkeby 以太币提供资金。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 转到 https://www.alchemyapi.io, 注册，</span><br><span class="line">//在其仪表板中创建一个新应用程序并选择网络为 Rinkeby，并将“add-the-alchemy-key-url-here”替换为其密钥 url its key url</span><br><span class="line">ALCHEMY_API_KEY_URL=&quot;add-the-alchemy-key-url-here&quot;</span><br><span class="line"></span><br><span class="line">// 将此私钥替换为您的 RINKEBY 帐户私钥</span><br><span class="line">// 要从 Metamask 导出您的私钥，请打开 Metamask 并</span><br><span class="line">// 转到 Account Details &gt; Export Private Key</span><br><span class="line">// 请注意永远不要将真实的 Ether 放入测试帐户</span><br><span class="line">RINKEBY_PRIVATE_KEY=&quot;add-the-rinkeby-private-key-here&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>现在我们将安装<code>dotenv</code>包以便能够导入 env 文件并在我们的配置中使用它。打开指向<code>hardhat-tutorial</code>目录的终端并执行此命令</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install dotenv</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>现在打开 hardhat.config.js 文件，我们将在此处添加<code>rinkeby</code>网络，以便我们可以将合约部署到 rinkeby。用下面给出的行替换<code>hardhar.config.js</code>文件中的所有行</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">require(&quot;@nomicfoundation/hardhat-toolbox&quot;);</span><br><span class="line">require(&quot;dotenv&quot;).config(&#123; path: &quot;.env&quot; &#125;);</span><br><span class="line"></span><br><span class="line">const ALCHEMY_API_KEY_URL = process.env.ALCHEMY_API_KEY_URL;</span><br><span class="line"></span><br><span class="line">const RINKEBY_PRIVATE_KEY = process.env.RINKEBY_PRIVATE_KEY;</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  solidity: &quot;0.8.9&quot;,</span><br><span class="line">  networks: &#123;</span><br><span class="line">    rinkeby: &#123;</span><br><span class="line">      url: ALCHEMY_API_KEY_URL,</span><br><span class="line">      accounts: [RINKEBY_PRIVATE_KEY],</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>编译合约，打开一个指向 hardhat-tutorial 目录的终端并执行这个命令</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx hardhat compile</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>要部署，请打开指向<code>hardhat-tutorial</code>目录的终端并执行此命令</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx hardhat run scripts/deploy.js --network rinkeby</span><br></pre></td></tr></table></figure>
+
+<p>将打印在终端上的白名单合约地址保存在记事本中，您将在教程中进一步使用它。</p>
+<h3 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h3><ul>
+<li><p>为了开发网站，我们将使用 React 和 Next Js。React 是一个用于制作网站的 javascript 框架，Next.js 是一个 React 框架，它还允许与前端一起编写后端 API 代码，因此您不需要两个单独的前端和后端服务。</p>
+</li>
+<li><p>首先，您需要创建一个新<code>next</code>应用程序。</p>
+</li>
+<li><p>要创建它<code>next-app</code>，在终端指向 Whitelist-Dapp 文件夹并输入</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx create-next-app@latest</span><br></pre></td></tr></table></figure>
+
+<p>并按下<code>enter</code>所有问题</p>
+<ul>
+<li>您的文件夹结构应该类似于</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- Whitelist-Dapp</span><br><span class="line">    - hardhat-tutorial</span><br><span class="line">    - my-app</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>现在运行应用程序，在终端中执行这些命令</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd my-app</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>现在转到<code>http://localhost:3000</code>，您的应用程序应该正在运行 🤘</p>
+</li>
+<li><p>现在让我们安装<a target="_blank" rel="noopener" href="https://github.com/Web3Modal/web3modal">Web3Modal library</a>。Web3Modal 是一个易于使用的库，可帮助开发人员轻松地让他们的用户使用各种不同的钱包连接到您的 dApp。默认情况下，Web3Modal 库支持注入的提供程序，如（Metamask、Dapper、Gnosis Safe、Frame、Web3 浏览器等）和 WalletConnect，您还可以轻松配置库以支持 Portis、Fortmatic、Squarelink、Torus、Authereum、D’CENT 钱包和阿卡内。（这是<a target="_blank" rel="noopener" href="https://codesandbox.io/s/j43b10">Codesandbox.io</a>上的一个活生生的例子）</p>
+</li>
+<li><p>打开指向<code>my-app</code>目录的终端并执行此命令</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install web3modal</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在同一个终端也安装<code>ethers.js</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install ethers</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>在您的 my-app&#x2F;public 文件夹中，下载<a target="_blank" rel="noopener" href="https://github.com/LearnWeb3DAO/Whitelist-Dapp/blob/main/my-app/public/crypto-devs.svg">此图像</a>并将其重命名为<code>crypto-devs.svg</code></p>
+</li>
+<li><p>现在转到样式文件夹并用<code>Home.modules.css</code>以下代码替换文件的所有内容，这将为您的 dapp 添加一些样式：</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">.main &#123;</span><br><span class="line">  min-height: 90vh;</span><br><span class="line">  display: flex;</span><br><span class="line">  flex-direction: row;</span><br><span class="line">  justify-content: center;</span><br><span class="line">  align-items: center;</span><br><span class="line">  font-family: &quot;Courier New&quot;, Courier, monospace;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.footer &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  padding: 2rem 0;</span><br><span class="line">  border-top: 1px solid #eaeaea;</span><br><span class="line">  justify-content: center;</span><br><span class="line">  align-items: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.image &#123;</span><br><span class="line">  width: 70%;</span><br><span class="line">  height: 50%;</span><br><span class="line">  margin-left: 20%;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.title &#123;</span><br><span class="line">  font-size: 2rem;</span><br><span class="line">  margin: 2rem 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.description &#123;</span><br><span class="line">  line-height: 1;</span><br><span class="line">  margin: 2rem 0;</span><br><span class="line">  font-size: 1.2rem;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.button &#123;</span><br><span class="line">  border-radius: 4px;</span><br><span class="line">  background-color: blue;</span><br><span class="line">  border: none;</span><br><span class="line">  color: #ffffff;</span><br><span class="line">  font-size: 15px;</span><br><span class="line">  padding: 20px;</span><br><span class="line">  width: 200px;</span><br><span class="line">  cursor: pointer;</span><br><span class="line">  margin-bottom: 2%;</span><br><span class="line">&#125;</span><br><span class="line">@media (max-width: 1000px) &#123;</span><br><span class="line">  .main &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    flex-direction: column;</span><br><span class="line">    justify-content: center;</span><br><span class="line">    align-items: center;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>打开 pages 文件夹下的 index.js 文件并粘贴以下代码，代码解释可以在评论中找到。如果您不熟悉 React 和<a target="_blank" rel="noopener" href="https://reactjs.org/docs/hooks-overview.html">React Hooks</a>和<a target="_blank" rel="noopener" href="https://www.w3schools.com/react/react_hooks.asp">React Hooks Tutorial</a>，请务必阅读它们。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br></pre></td><td class="code"><pre><span class="line">import Head from &quot;next/head&quot;;</span><br><span class="line">import styles from &quot;../styles/Home.module.css&quot;;</span><br><span class="line">import Web3Modal from &quot;web3modal&quot;;</span><br><span class="line">import &#123; providers, Contract &#125; from &quot;ethers&quot;;</span><br><span class="line">import &#123; useEffect, useRef, useState &#125; from &quot;react&quot;;</span><br><span class="line">import &#123; WHITELIST_CONTRACT_ADDRESS, abi &#125; from &quot;../constants&quot;;</span><br><span class="line"></span><br><span class="line">export default function Home() &#123;</span><br><span class="line">  // walletConnected 跟踪用户的钱包是否连接</span><br><span class="line">  const [walletConnected, setWalletConnected] = useState(false);</span><br><span class="line">  // joinedWhitelist 跟踪当前元掩码地址是否加入白名单</span><br><span class="line">  const [joinedWhitelist, setJoinedWhitelist] = useState(false);</span><br><span class="line">  // 当我们等待交易被挖掘时，loading 设置为 true</span><br><span class="line">  const [loading, setLoading] = useState(false);</span><br><span class="line">  // numberOfWhitelisted 跟踪地址的白名单数量</span><br><span class="line">  const [numberOfWhitelisted, setNumberOfWhitelisted] = useState(0);</span><br><span class="line">  // 创建对 Web3 Modal 的引用（用于连接到 Metamask），只要页面打开，它就会一直存在</span><br><span class="line">  const web3ModalRef = useRef();</span><br><span class="line"></span><br><span class="line">  /**</span><br><span class="line">   * 返回代表以太坊 RPC 的 Provider 或 Signer 对象，带有或不带有</span><br><span class="line">   * 附加元掩码的签名功能</span><br><span class="line">   *</span><br><span class="line">   * 需要一个 `Provider` 来与区块链交互 - 读取交易、读取余额、读取状态等</span><br><span class="line">   *</span><br><span class="line">   * `Signer` 是一种特殊类型的 Provider，用于在需要对区块链进行`write` 交易的情况下，这涉及到连接的帐户</span><br><span class="line">   * 需要进行数字签名以授权正在发送的交易。Metamask 公开了一个 Signer API 以允许您的网站</span><br><span class="line">   * 使用 Signer 函数向用户请求签名。</span><br><span class="line">   *</span><br><span class="line">   * @param &#123;*&#125; needSigner - 如果需要签名者则为真，否则默认为假</span><br><span class="line">   */</span><br><span class="line">  const getProviderOrSigner = async (needSigner = false) =&gt; &#123;</span><br><span class="line">    // 连接到 Metamask</span><br><span class="line">    // 因为我们存储 `web3Modal` 作为参考，我们需要访问 `current` 值来访问底层对象</span><br><span class="line">    const provider = await web3ModalRef.current.connect();</span><br><span class="line">    const web3Provider = new providers.Web3Provider(provider);</span><br><span class="line"></span><br><span class="line">    // 如果用户没有连接到 Rinkeby 网络，让他们知道并抛出错误</span><br><span class="line">    const &#123; chainId &#125; = await web3Provider.getNetwork();</span><br><span class="line">    if (chainId !== 4) &#123;</span><br><span class="line">      window.alert(&quot;Change the network to Rinkeby&quot;);</span><br><span class="line">      throw new Error(&quot;Change network to Rinkeby&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (needSigner) &#123;</span><br><span class="line">      const signer = web3Provider.getSigner();</span><br><span class="line">      return signer;</span><br><span class="line">    &#125;</span><br><span class="line">    return web3Provider;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  /**</span><br><span class="line">   * addAddressToWhitelist：将当前连接的地址添加到白名单</span><br><span class="line">   */</span><br><span class="line">  const addAddressToWhitelist = async () =&gt; &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">      // 我们在这里需要一个签名者，因为这是一个“写入”事务。</span><br><span class="line">      const signer = await getProviderOrSigner(true);</span><br><span class="line">      // 使用 Signer 创建一个新的 Contract 实例，它允许</span><br><span class="line">      // 更新方法</span><br><span class="line">      const whitelistContract = new Contract(</span><br><span class="line">        WHITELIST_CONTRACT_ADDRESS,</span><br><span class="line">        abi,</span><br><span class="line">        signer</span><br><span class="line">      );</span><br><span class="line">      // 从合约中调用 addAddressToWhitelist</span><br><span class="line">      const tx = await whitelistContract.addAddressToWhitelist();</span><br><span class="line">      setLoading(true);</span><br><span class="line">      // 等待交易被挖掘</span><br><span class="line">      await tx.wait();</span><br><span class="line">      setLoading(false);</span><br><span class="line">      // 获取更新后的白名单地址数</span><br><span class="line">      await getNumberOfWhitelisted();</span><br><span class="line">      setJoinedWhitelist(true);</span><br><span class="line">    &#125; catch (err) &#123;</span><br><span class="line">      console.error(err);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  /**</span><br><span class="line">   * getNumberOfWhitelisted: 获取白名单地址的数量</span><br><span class="line">   */</span><br><span class="line">  const getNumberOfWhitelisted = async () =&gt; &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">      // 从 web3Modal 获取提供者，在我们的例子中是 MetaMask</span><br><span class="line">      // 这里不需要签名者，因为我们仅从区块链中读取状态</span><br><span class="line">      const provider = await getProviderOrSigner();</span><br><span class="line">      // 我们使用提供者连接到合约，因此我们将只有</span><br><span class="line">      // 对合约拥有只读权限</span><br><span class="line">      const whitelistContract = new Contract(</span><br><span class="line">        WHITELIST_CONTRACT_ADDRESS,</span><br><span class="line">        abi,</span><br><span class="line">        provider</span><br><span class="line">      );</span><br><span class="line">      // 从合约中调用 numAddressesWhitelisted</span><br><span class="line">      const _numberOfWhitelisted = await whitelistContract.numAddressesWhitelisted();</span><br><span class="line">      setNumberOfWhitelisted(_numberOfWhitelisted);</span><br><span class="line">    &#125; catch (err) &#123;</span><br><span class="line">      console.error(err);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  /**</span><br><span class="line">   * checkIfAddressInWhitelist: 检查地址是否在白名单中</span><br><span class="line">   */</span><br><span class="line">  const checkIfAddressInWhitelist = async () =&gt; &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">      // 我们稍后需要签名者来获取用户的地址</span><br><span class="line">      // 即使它是一个读交易，因为签名者只是特殊类型的提供者，</span><br><span class="line">      // 我们可以在它的位置使用它</span><br><span class="line">      const signer = await getProviderOrSigner(true);</span><br><span class="line">      const whitelistContract = new Contract(</span><br><span class="line">        WHITELIST_CONTRACT_ADDRESS,</span><br><span class="line">        abi,</span><br><span class="line">        signer</span><br><span class="line">      );</span><br><span class="line">      // 获取与 MetaMask 连接的签名者关联的地址</span><br><span class="line">      const address = await signer.getAddress();</span><br><span class="line">      // 从合约中调用 whitelistedAddresses</span><br><span class="line">      const _joinedWhitelist = await whitelistContract.whitelistedAddresses(</span><br><span class="line">        address</span><br><span class="line">      );</span><br><span class="line">      setJoinedWhitelist(_joinedWhitelist);</span><br><span class="line">    &#125; catch (err) &#123;</span><br><span class="line">      console.error(err);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  /*</span><br><span class="line">    connectWallet: 连接 MetaMask 钱包</span><br><span class="line">  */</span><br><span class="line">  const connectWallet = async () =&gt; &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">      // 从 web3Modal 获取提供者，在我们的例子中是 MetaMask</span><br><span class="line">      // 第一次使用时提示用户连接他们的钱包</span><br><span class="line">      await getProviderOrSigner();</span><br><span class="line">      setWalletConnected(true);</span><br><span class="line"></span><br><span class="line">      checkIfAddressInWhitelist();</span><br><span class="line">      getNumberOfWhitelisted();</span><br><span class="line">    &#125; catch (err) &#123;</span><br><span class="line">      console.error(err);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  /*</span><br><span class="line">    renderButton: 根据 dapp 的状态返回一个按钮</span><br><span class="line">  */</span><br><span class="line">  const renderButton = () =&gt; &#123;</span><br><span class="line">    if (walletConnected) &#123;</span><br><span class="line">      if (joinedWhitelist) &#123;</span><br><span class="line">        return (</span><br><span class="line">          &lt;div className=&#123;styles.description&#125;&gt;</span><br><span class="line">            Thanks for joining the Whitelist!</span><br><span class="line">          &lt;/div&gt;</span><br><span class="line">        );</span><br><span class="line">      &#125; else if (loading) &#123;</span><br><span class="line">        return &lt;button className=&#123;styles.button&#125;&gt;Loading...&lt;/button&gt;;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        return (</span><br><span class="line">          &lt;button onClick=&#123;addAddressToWhitelist&#125; className=&#123;styles.button&#125;&gt;</span><br><span class="line">            Join the Whitelist</span><br><span class="line">          &lt;/button&gt;</span><br><span class="line">        );</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      return (</span><br><span class="line">        &lt;button onClick=&#123;connectWallet&#125; className=&#123;styles.button&#125;&gt;</span><br><span class="line">          Connect your wallet</span><br><span class="line">        &lt;/button&gt;</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  // useEffects 用于对网站状态的变化做出反应</span><br><span class="line">  // 函数调用末尾的数组表示什么状态变化会触发这个效果</span><br><span class="line">  // 在这种情况下，只要 `walletConnected` 的值发生变化 - 这个效果就会被称为</span><br><span class="line">  useEffect(() =&gt; &#123;</span><br><span class="line">    // 如果钱包没有连接，则创建一个新的 Web3Modal 实例并连接 MetaMask 钱包</span><br><span class="line">    if (!walletConnected) &#123;</span><br><span class="line">      // 通过将 Web3Modal 类设置为 `current` 将其分配给引用对象value</span><br><span class="line">      // 只要此页面打开，`current` 值就会一直保持</span><br><span class="line">      web3ModalRef.current = new Web3Modal(&#123;</span><br><span class="line">        network: &quot;rinkeby&quot;,</span><br><span class="line">        providerOptions: &#123;&#125;,</span><br><span class="line">        disableInjectedProvider: false,</span><br><span class="line">      &#125;);</span><br><span class="line">      connectWallet();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, [walletConnected]);</span><br><span class="line"></span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;Head&gt;</span><br><span class="line">        &lt;title&gt;Whitelist Dapp&lt;/title&gt;</span><br><span class="line">        &lt;meta name=&quot;description&quot; content=&quot;Whitelist-Dapp&quot; /&gt;</span><br><span class="line">        &lt;link rel=&quot;icon&quot; href=&quot;/favicon.ico&quot; /&gt;</span><br><span class="line">      &lt;/Head&gt;</span><br><span class="line">      &lt;div className=&#123;styles.main&#125;&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">          &lt;h1 className=&#123;styles.title&#125;&gt;Welcome to Crypto Devs!&lt;/h1&gt;</span><br><span class="line">          &lt;div className=&#123;styles.description&#125;&gt;</span><br><span class="line">            Its an NFT collection for developers in Crypto.</span><br><span class="line">          &lt;/div&gt;</span><br><span class="line">          &lt;div className=&#123;styles.description&#125;&gt;</span><br><span class="line">            &#123;numberOfWhitelisted&#125; have already joined the Whitelist</span><br><span class="line">          &lt;/div&gt;</span><br><span class="line">          &#123;renderButton()&#125;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">          &lt;img className=&#123;styles.image&#125; src=&quot;./crypto-devs.svg&quot; /&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">      &lt;footer className=&#123;styles.footer&#125;&gt;</span><br><span class="line">        Made with &amp;#10084; by Crypto Devs</span><br><span class="line">      &lt;/footer&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>现在在 my-app 文件夹下创建一个新文件夹并将其命名为<code>constants</code>。</p>
+</li>
+<li><p>在常量文件夹中创建一个文件<code>index.js</code>，然后粘贴以下代码。</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export const WHITELIST_CONTRACT_ADDRESS = &quot;YOUR_WHITELIST_CONTRACT_ADDRESS&quot;;</span><br><span class="line">export const abi = YOUR_ABI;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>替换<code>&quot;YOUR_WHITELIST_CONTRACT_ADDRESS&quot;</code>为您部署的白名单合约的地址。</p>
+</li>
+<li><p>替换<code>&quot;YOUR_ABI&quot;</code>为您的白名单合约的 ABI。要为您的合同获取 ABI，请转到您的<code>hardhat-tutorial/artifacts/contracts/Whitelist.sol</code>文件夹并从您的<code>Whitelist.json</code>文件中获取标记在<code>&quot;abi&quot;</code>密钥下的数组（这将是一个巨大的数组，如果不是更多的话，接近 100 行）。</p>
+</li>
+<li><p>现在在指向<code>my-app</code>文件夹的终端中，执行</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+
+<p>您的白名单 dapp 现在应该可以正常运行了 🚀</p>
+<h3 id="推送到-github"><a href="#推送到-github" class="headerlink" title="推送到 github"></a>推送到 github</h3><p>确保在继续之前您已将 <a target="_blank" rel="noopener" href="https://medium.com/hackernoon/a-gentle-introduction-to-git-and-github-the-eli5-way-43f0aa64f2e4">所有代码推送到 github</a> :)</p>
+<h2 id="部署你的-dApp"><a href="#部署你的-dApp" class="headerlink" title="部署你的 dApp"></a>部署你的 dApp</h2><p>我们现在将部署您的 dApp，以便每个人都可以看到您的网站，并且您可以与所有 LearnWeb3 DAO 朋友分享它。</p>
+<ul>
+<li>转到<a target="_blank" rel="noopener" href="https://vercel.com/">Vercel</a>并使用您的 GitHub 登录</li>
+<li>然后单击<code>New Project</code>按钮，然后选择您的白名单 dApp 存储库</li>
+<li><img src="https://github.com/songhanlin/hexo-image/blob/master/sophomore-level8/2.png?raw=true"></li>
+<li>在配置您的新项目时，Vercel 将允许您自定义您的<code>Root Directory</code></li>
+<li>单击<code>Edit</code>旁边<code>Root Directory</code>并将其设置为<code>my-app</code></li>
+<li>选择框架为<code>Next.js</code></li>
+<li>点击<code>Deploy</code></li>
+<li>现在，您可以通过转到仪表板、选择您的项目并复制 URL 来查看您部署的网站 - 从那里！</li>
+</ul>
+<p>在 Discord 中分享您的网站 :D</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/web3/" rel="tag"># web3</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/09/01/web3-sophomore-level7/" rel="prev" title="入门混合主题">
+                  <i class="fa fa-angle-left"></i> 入门混合主题
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/09/01/web3-sophomore-level9/" rel="next" title="NFT-集合">
+                  NFT-集合 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"songhanlin","repo":"blog","client_id":"58797e27de182d42ab95","client_secret":"b04eb623dae17584fe8c2246c7af7dc5ea3f1b2b","admin_user":"songhanlin","distraction_free_mode":true,"proxy":"https://glacial-dawn-82467.herokuapp.com/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"eaa3180f08dcb6d946906e79c966fc23"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

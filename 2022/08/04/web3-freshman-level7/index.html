@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="PQtVM4HDVB0BsS4YeoZ0tnhdbsrCEuwdFaFEgWztqTA">
+  <meta name="baidu-site-verification" content="code-bx6Ior1Y4k">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.julysong.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="web3系列之新手篇">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WEB3系列教程之新手篇--level7:使用Ethers.js创建以太坊Dapp">
+<meta property="og:url" content="http://blog.julysong.com/2022/08/04/web3-freshman-level7/index.html">
+<meta property="og:site_name" content="骑驴码梦">
+<meta property="og:description" content="web3系列之新手篇">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level7/1.png?raw=true">
+<meta property="article:published_time" content="2022-08-04T03:07:46.000Z">
+<meta property="article:modified_time" content="2025-02-20T06:39:02.267Z">
+<meta property="article:author" content="TeenSong">
+<meta property="article:tag" content="web3">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level7/1.png?raw=true">
+
+
+<link rel="canonical" href="http://blog.julysong.com/2022/08/04/web3-freshman-level7/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://blog.julysong.com/2022/08/04/web3-freshman-level7/","path":"2022/08/04/web3-freshman-level7/","title":"WEB3系列教程之新手篇--level7:使用Ethers.js创建以太坊Dapp"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>WEB3系列教程之新手篇--level7:使用Ethers.js创建以太坊Dapp | 骑驴码梦</title>
+  
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+window.onload = function(e){
+  var urls = "https://picsum.photos/"
+  + window.screen.availWidth +
+  "/" + window.screen.availHeight + "/?random";
+  document.body.style.backgroundImage='url('+urls+')';
+}
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126093412-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-126093412-1');
+</script>
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="骑驴码梦" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">骑驴码梦</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">我一进门就看到常威在打来福~</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%88%E6%9D%A5%E8%87%AABlockDevsUnited-BasicFrontEndTutorial%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">（来自BlockDevsUnited&#x2F;BasicFrontEndTutorial）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%96%9C%E6%AC%A2%E8%A7%86%E9%A2%91"><span class="nav-number">2.</span> <span class="nav-text">喜欢视频?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87"><span class="nav-number">3.</span> <span class="nav-text">准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%B8%8B%E8%BD%BD%E5%B9%B6%E5%AE%89%E8%A3%85-MetaMask"><span class="nav-number">3.1.</span> <span class="nav-text">1. 下载并安装 MetaMask</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BB%8E%E5%8A%A0%E8%BD%BD%E5%88%B0-Metamask-%E9%92%B1%E5%8C%85%E4%B8%AD%E7%9A%84%E6%B0%B4%E9%BE%99%E5%A4%B4%E8%AF%B7%E6%B1%82%E4%B8%80%E4%BA%9B-Ropsten-Tesnet-%E4%BB%A5%E5%A4%AA%E5%B8%81%E3%80%82"><span class="nav-number">3.2.</span> <span class="nav-text">2. 从加载到 Metamask 钱包中的水龙头请求一些 Ropsten Tesnet 以太币。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AE%89%E8%A3%85-http-%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%82%E4%BD%BF%E7%94%A8%E4%BB%BB%E4%BD%95%E4%BD%A0%E5%96%9C%E6%AC%A2%E7%9A%84%EF%BC%8C%E4%BD%86%E6%88%91%E4%BB%AC%E5%BB%BA%E8%AE%AE-lite-server-%E5%88%9D%E5%AD%A6%E8%80%85%EF%BC%9A"><span class="nav-number">3.3.</span> <span class="nav-text">3. 安装 http 服务器。使用任何你喜欢的，但我们建议 lite-server 初学者：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%B9%B6%E6%8F%90%E4%BE%9B%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E7%BD%91%E9%A1%B5"><span class="nav-number">4.</span> <span class="nav-text">创建并提供一个简单的网页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6"><span class="nav-number">5.</span> <span class="nav-text">创建一个基本的智能合约</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%86%E6%82%A8%E7%9A%84%E7%BD%91%E9%A1%B5%E8%BF%9E%E6%8E%A5%E5%88%B0%E6%82%A8%E7%9A%84%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6"><span class="nav-number">6.</span> <span class="nav-text">将您的网页连接到您的智能合约</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E4%BD%A0%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="nav-number">7.</span> <span class="nav-text">测试你的例子!</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%AF%95%EF%BC%81"><span class="nav-number">8.</span> <span class="nav-text">完毕！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E6%82%A8%E5%9C%A8%E6%9C%AC%E6%95%99%E7%A8%8B%E4%B8%AD%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98%EF%BC%8C%E5%8F%AF%E4%BB%A5%E8%AF%95%E7%94%A8%E6%8F%90%E4%BE%9B%E7%9A%84%E7%A4%BA%E4%BE%8B%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E3%80%82"><span class="nav-number">9.</span> <span class="nav-text">如果您在本教程中遇到问题，可以试用提供的示例应用程序。</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="TeenSong"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">TeenSong</p>
+  <div class="site-description" itemprop="description">常威, 你还说你不会武功</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">59</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/songhanlin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;songhanlin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/e05ddaee7769" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;e05ddaee7769" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i>简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_28153553" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_28153553" rel="noopener me" target="_blank"><i class="fa fa-copyright fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/song_hanlin/activities" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;song_hanlin&#x2F;activities" rel="noopener me" target="_blank"><i class="fa fa-mortar-board fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml" rel="noopener me"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.julysong.com/2022/08/04/web3-freshman-level7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="TeenSong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="骑驴码梦">
+      <meta itemprop="description" content="常威, 你还说你不会武功">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="WEB3系列教程之新手篇--level7:使用Ethers.js创建以太坊Dapp | 骑驴码梦">
+      <meta itemprop="description" content="web3系列之新手篇">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          WEB3系列教程之新手篇--level7:使用Ethers.js创建以太坊Dapp
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-08-04 11:07:46" itemprop="dateCreated datePublished" datetime="2022-08-04T11:07:46+08:00">2022-08-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-02-20 14:39:02" itemprop="dateModified" datetime="2025-02-20T14:39:02+08:00">2025-02-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/web3%E7%B3%BB%E5%88%97%E4%B9%8B%E6%96%B0%E6%89%8B%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">web3系列之新手篇</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">web3系列之新手篇</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>原文地址: <a target="_blank" rel="noopener" href="https://www.learnweb3.io/tracks/freshman/dapp-tutorial">https://www.learnweb3.io/tracks/freshman/dapp-tutorial</a></p>
+<p>翻译: JulySong</p>
+</blockquote>
+<hr>
+<h2 id="（来自BlockDevsUnited-BasicFrontEndTutorial）"><a href="#（来自BlockDevsUnited-BasicFrontEndTutorial）" class="headerlink" title="（来自BlockDevsUnited&#x2F;BasicFrontEndTutorial）"></a>（来自<a target="_blank" rel="noopener" href="https://github.com/BlockDevsUnited/BasicFrontEndTutorial">BlockDevsUnited&#x2F;BasicFrontEndTutorial</a>）</h2><p>这是一个关于如何创建前端、部署 Solidity 智能合约并将它们连接在一起的分步教程。我们将使用<a target="_blank" rel="noopener" href="https://metamask.io/">Metamask</a>、<a target="_blank" rel="noopener" href="https://remix.ethereum.org/">Remix IDE</a>和<a target="_blank" rel="noopener" href="https://github.com/ethers-io/ethers.js/">Ethers.js</a>。</p>
+<p>在本教程结束时，您将能够创建一个简单的 HTML 前端，其中包含可以与智能合约功能交互的按钮。本教程分 3 个阶段进行</p>
+<ul>
+<li>创建一个基本的 HTML 网页</li>
+<li>创建一个基本的 Solidity 智能合约</li>
+<li>使用 Ethers.js 将网页与智能合约连接起来。</li>
+</ul>
+<h2 id="喜欢视频"><a href="#喜欢视频" class="headerlink" title="喜欢视频?"></a>喜欢视频?</h2><p>如果您想从视频中学习，我们的 YouTube 上有本教程的录音。单击下面的屏幕截图观看视频，或继续阅读教程！<br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=aqxAWLi6UMA"><img src="https://github.com/songhanlin/hexo-image/blob/master/web3-freshman-level7/1.png?raw=true"></a></p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><h3 id="1-下载并安装-MetaMask"><a href="#1-下载并安装-MetaMask" class="headerlink" title="1. 下载并安装 MetaMask"></a>1. 下载并安装 <a target="_blank" rel="noopener" href="https://metamask.io/">MetaMask</a></h3><ul>
+<li><p>从未使用过 Metamask？观看<a target="_blank" rel="noopener" href="https://youtu.be/wlm4QcA8c4Q?t=66">此解释器视频</a></p>
+<p>对我们来说重要的是：<code>1:06 to 4:14</code></p>
+</li>
+<li><p>单击顶部的以太坊主网。切换到 Ropsten Tesnet 并在您的 Metamask 钱包上获取帐户公共地址的副本。</p>
+</li>
+</ul>
+<h3 id="2-从加载到-Metamask-钱包中的水龙头请求一些-Ropsten-Tesnet-以太币。"><a href="#2-从加载到-Metamask-钱包中的水龙头请求一些-Ropsten-Tesnet-以太币。" class="headerlink" title="2. 从加载到 Metamask 钱包中的水龙头请求一些 Ropsten Tesnet 以太币。"></a>2. 从加载到 Metamask 钱包中的水龙头请求一些 Ropsten Tesnet 以太币。</h3><ul>
+<li><p><a target="_blank" rel="noopener" href="https://faucet.egorfine.com/">请求资金的水龙头链接</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.b9lab.com/when-we-first-built-our-faucet-we-deployed-it-on-the-morden-testnet-70bfbf4e317e">解释水龙头及其使用方法的博客</a></p>
+</li>
+</ul>
+<h3 id="3-安装-http-服务器。使用任何你喜欢的，但我们建议-lite-server-初学者："><a href="#3-安装-http-服务器。使用任何你喜欢的，但我们建议-lite-server-初学者：" class="headerlink" title="3. 安装 http 服务器。使用任何你喜欢的，但我们建议 lite-server 初学者："></a>3. 安装 http 服务器。使用任何你喜欢的，但我们建议 lite-server 初学者：</h3><ul>
+<li><p>安装 Node.js（<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">下载和说明</a>）</p>
+</li>
+<li><p>安装 lite-server（在终端&#x2F;命令提示符下使用 NPM）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g lite-server #install lite-server globally</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h2 id="创建并提供一个简单的网页"><a href="#创建并提供一个简单的网页" class="headerlink" title="创建并提供一个简单的网页"></a>创建并提供一个简单的网页</h2><p>第一步是创建一个基本的 HTML 页面。</p>
+<ol>
+<li>使用在终端中创建一个新文件夹（目录）<code>mkdir &lt;directory name&gt;</code></li>
+<li>在代码编辑器（例如 Atom 或 Visual Studio Code）中，打开文件夹</li>
+<li>创建一个名为的新文件 <code>index.html</code></li>
+<li>打开 index.html</li>
+<li>创建 HTML 样板</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span><br><span class="line">    &lt;title&gt;My First dApp&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>我们将创建一个简单地向区块链读取和写入值的应用程序。我们将需要一个标签、一个输入和按钮。</p>
+<ol start="6">
+<li>在 body 标签内，添加一些文本、标签和输入。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;This is my dApp!&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;Here we can set or get the mood:&lt;/p&gt;</span><br><span class="line">    &lt;label for=&quot;mood&quot;&gt;Input Mood:&lt;/label&gt; &lt;br /&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; id=&quot;mood&quot; /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>在 div 标签内添加一些按钮。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onclick=&quot;getMood()&quot;&gt;Get Mood&lt;/button&gt;</span><br><span class="line">&lt;button onclick=&quot;setMood()&quot;&gt;Set Mood&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可选：在<head>标签内，添加一些样式使其看起来更好看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">  body &#123;</span><br><span class="line">    text-align: center;</span><br><span class="line">    font-family: Arial, Helvetica, sans-serif;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  div &#123;</span><br><span class="line">    width: 20%;</span><br><span class="line">    margin: 0 auto;</span><br><span class="line">    display: flex;</span><br><span class="line">    flex-direction: column;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  button &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    margin: 10px 0px 5px 0px;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="8">
+<li>通过终端&#x2F;命令提示符从其中包含的目录中提供网页<code>index.html</code>并运行：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lite-server</span><br></pre></td></tr></table></figure>
+
+<ol start="9">
+<li><p>在浏览器中访问<a target="_blank" rel="noopener" href="http://127.0.0.1:3000/[%E4%BB%A5%E6%9F%A5%E7%9C%8B%E6%82%A8%E7%9A%84%E9%A1%B5%E9%9D%A2%EF%BC%81](http://127.0.0.1:3000/)">http://127.0.0.1:3000/[以查看您的页面！](http://127.0.0.1:3000/)</a></p>
+</li>
+<li><p>您的前端现已完成！</p>
+</li>
+</ol>
+<hr>
+<h2 id="创建一个基本的智能合约"><a href="#创建一个基本的智能合约" class="headerlink" title="创建一个基本的智能合约"></a>创建一个基本的智能合约</h2><p>现在是时候创建一个 Solidity 智能合约了。</p>
+<ol>
+<li><p>您可以使用任何您喜欢的编辑器来制作合同。对于本教程，我们推荐在线 IDE <a target="_blank" rel="noopener" href="https://remix.ethereum.org/">Remix</a></p>
+<ul>
+<li>以前从未使用过 Remix？看<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=pdJttvcAV1c">此视频</a></li>
+</ul>
+</li>
+<li><p>去 <a target="_blank" rel="noopener" href="https://remix.ethereum.org/">Remix</a></p>
+</li>
+<li><p>查看“Solidity Compiler”和“Deploy and Run Transactions”选项卡。如果它们不存在，请在插件管理器中启用它们</p>
+</li>
+<li><p>在 remix 中创建一个新的 Solidity 文件，命名为 <code>mood.sol</code></p>
+</li>
+<li><p>编写合约</p>
+<ul>
+<li>指定 solidity 版本并添加 license</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.1;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>定义合约</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">contract MoodDiary&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在合约内部创建一个名为 mood 的变量</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string mood;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>接下来，创建读取和写入函数</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//create a function that writes a mood to the smart contract</span><br><span class="line"> function setMood(string memory _mood) public&#123;</span><br><span class="line">     mood = _mood;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> //create a function the reads the mood from the smart contract</span><br><span class="line"> function getMood() public view returns(string memory)&#123;</span><br><span class="line">     return mood;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>就是这样！您的代码应如下<a target="_blank" rel="noopener" href="https://github.com/LearnWeb3DAO/BasicFrontEndTutorial/blob/master/contracts/mood.sol">所示</a></li>
+</ul>
+</li>
+<li><p>在 Ropsten 测试网上部署合约。</p>
+<ul>
+<li>确保您的 Metamask 已连接到 Ropsten 测试网。</li>
+<li>确保选择正确的编译器版本以匹配 solidity 合约。（在编译选项卡中）</li>
+<li>使用“Solidity Compiler”选项卡编译代码。请注意，加载编译器可能需要一些时间</li>
+<li>在“部署和运行事务”选项卡下部署合约</li>
+<li>在 Deployed Contracts 部分下，您可以在 Remix Run 选项卡上测试您的函数，以确保您的合约按预期工作！</li>
+</ul>
+</li>
+</ol>
+<p>一定要在<code>Injected Web3</code>环境下通过 Remix 部署到 Ropsten 上，并在 Metamask 中确认部署事务</p>
+<p>制作一个新的临时文件来保存：</p>
+<ul>
+<li>部署的合约地址<ul>
+<li>通过 remix 的 Run 选项卡中已部署的合同下拉列表旁边的复制按钮复制它</li>
+</ul>
+</li>
+<li>合约 ABI（<a target="_blank" rel="noopener" href="https://solidity.readthedocs.io/en/develop/abi-spec.html">那是什么？</a>）<ul>
+<li>通过 remix 的 Compile 选项卡中的合同下的复制按钮将其复制（也在详细信息中）</li>
+</ul>
+</li>
+</ul>
+<h2 id="将您的网页连接到您的智能合约"><a href="#将您的网页连接到您的智能合约" class="headerlink" title="将您的网页连接到您的智能合约"></a>将您的网页连接到您的智能合约</h2><p>回到您的本地文本编辑器中<code>index.html</code>，将以下代码添加到您的 html 页面：</p>
+<ol>
+<li><code>index.html</code>在一组新的脚本标签中将 Ethers.js 源代码导入您的页面：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script</span><br><span class="line">  src=&quot;https://cdn.ethers.io/lib/ethers-5.2.umd.min.js&quot;</span><br><span class="line">  type=&quot;application/javascript&quot;</span><br><span class="line">&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  ////////////////////</span><br><span class="line">  //ADD YOUR CODE HERE</span><br><span class="line">  ////////////////////</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>在 script 标签中，导入合约 ABI（<a target="_blank" rel="noopener" href="https://solidity.readthedocs.io/en/develop/abi-spec.html">那是什么？</a>）并在我们的供应商区块链上指定合约地址：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const MoodContractAddress = &quot;&lt;contract address&gt;&quot;;</span><br><span class="line">const MoodContractABI = &lt;contract ABI&gt;</span><br><span class="line">let MoodContract;</span><br><span class="line">let signer;</span><br></pre></td></tr></table></figure>
+
+<p>对于合约 ABI，我们希望专门导航到<a target="_blank" rel="noopener" href="https://docs.soliditylang.org/en/develop/abi-spec.html#json">JSON 部分</a>。我们需要以 JSON 格式描述我们的智能合约。</p>
+<p>由于我们有两个方法，这应该从一个数组开始，有 2 个对象：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const MoodContractABI = [&#123;&#125;, &#123;&#125;]</span><br></pre></td></tr></table></figure>
+
+<p>在上面的页面中，每个对象都应具有以下字段：<code>constant</code>、<code>inputs</code>、<code>name</code>、<code>outputs</code>、<code>payable</code>、<code>stateMutability</code>和<code>type</code></p>
+<p>对于<code>setMood</code>，我们在下面描述每个字段：</p>
+<ul>
+<li>名称：<code>setMood</code>，不言自明</li>
+<li>类型：<code>function</code>，不言自明</li>
+<li>输出：应该是<code>[]</code>因为这不返回任何东西</li>
+<li>stateMutability：这是<code>nonpayable</code>因为这个函数不接受 Ether</li>
+<li>输入：这是函数的输入数组。数组中的每个对象都应该有<code>internalType</code>,<code>name</code>和<code>type</code>, 这些分别是<code>string</code>,<code>_mood</code>和<code>string</code></li>
+</ul>
+<p>对于<code>getMood</code>，我们在下面描述每个字段：</p>
+<ul>
+<li>名称：<code>getMood</code>，不言自明</li>
+<li>类型：<code>function</code>，不言自明</li>
+<li>输出：这与中的类型相同 <code>inputs</code>。<code>setMood</code> 对于 <code>internalType</code>,<code>name</code> 和 <code>type</code>, 这应该分别是 <code>string</code>, <code>&quot;&quot;</code>, 和 <code>string</code></li>
+<li>stateMutability：这是 <code>view</code> 因为这是一个视图函数</li>
+<li>输入：这没有参数，所以这应该是[]</li>
+</ul>
+<p>您的最终结果应如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">const MoodContractABI = [</span><br><span class="line">	&#123;</span><br><span class="line">		&quot;inputs&quot;: [],</span><br><span class="line">		&quot;name&quot;: &quot;getMood&quot;,</span><br><span class="line">		&quot;outputs&quot;: [</span><br><span class="line">			&#123;</span><br><span class="line">				&quot;internalType&quot;: &quot;string&quot;,</span><br><span class="line">				&quot;name&quot;: &quot;&quot;,</span><br><span class="line">				&quot;type&quot;: &quot;string&quot;</span><br><span class="line">			&#125;</span><br><span class="line">		],</span><br><span class="line">		&quot;stateMutability&quot;: &quot;view&quot;,</span><br><span class="line">		&quot;type&quot;: &quot;function&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&#123;</span><br><span class="line">		&quot;inputs&quot;: [</span><br><span class="line">			&#123;</span><br><span class="line">				&quot;internalType&quot;: &quot;string&quot;,</span><br><span class="line">				&quot;name&quot;: &quot;_mood&quot;,</span><br><span class="line">				&quot;type&quot;: &quot;string&quot;</span><br><span class="line">			&#125;</span><br><span class="line">		],</span><br><span class="line">		&quot;name&quot;: &quot;setMood&quot;,</span><br><span class="line">		&quot;outputs&quot;: [],</span><br><span class="line">		&quot;stateMutability&quot;: &quot;nonpayable&quot;,</span><br><span class="line">		&quot;type&quot;: &quot;function&quot;</span><br><span class="line">	&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>接下来，定义一个 ethers 提供者。在我们的例子中，它是 Ropsten：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const provider = new ethers.providers.Web3Provider(window.ethereum, &quot;ropsten&quot;);</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>请求访问用户的钱包并将签名者连接到您的元掩码帐户（我们使用<code>[0]</code>默认），并使用您的合约地址、ABI 和签名者定义合约对象</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">provider.send(&quot;eth_requestAccounts&quot;, []).then(() =&gt; &#123;</span><br><span class="line">  provider.listAccounts().then((accounts) =&gt; &#123;</span><br><span class="line">    signer = provider.getSigner(accounts[0]);</span><br><span class="line">    MoodContract = new ethers.Contract(</span><br><span class="line">      MoodContractAddress,</span><br><span class="line">      MoodContractABI,</span><br><span class="line">      signer</span><br><span class="line">    );</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>创建异步函数来调用你的智能合约函数</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">async function getMood() &#123;</span><br><span class="line">  const getMoodPromise = MoodContract.getMood();</span><br><span class="line">  const Mood = await getMoodPromise;</span><br><span class="line">  console.log(Mood);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function setMood() &#123;</span><br><span class="line">  const mood = document.getElementById(&quot;mood&quot;).value;</span><br><span class="line">  const setMoodPromise = MoodContract.setMood(mood);</span><br><span class="line">  await setMoodPromise;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>将您的功能连接到您的 html 按钮</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onclick=&quot;getMood()&quot;&gt;Get Mood&lt;/button&gt;</span><br><span class="line">&lt;button onclick=&quot;setMood()&quot;&gt;Set Mood&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试你的例子"><a href="#测试你的例子" class="headerlink" title="测试你的例子!"></a>测试你的例子!</h2><ol>
+<li>你的网络服务器启动了吗？在浏览器中访问<a target="_blank" rel="noopener" href="http://127.0.0.1:3000/[%E4%BB%A5%E6%9F%A5%E7%9C%8B%E6%82%A8%E7%9A%84%E9%A1%B5%E9%9D%A2%EF%BC%81](http://127.0.0.1:3000/)">http://127.0.0.1:3000/[以查看您的页面！](http://127.0.0.1:3000/)</a></li>
+<li>通过 Metamask 测试您的功能并根据需要批准交易。注意块时间约为 15 秒……所以请稍等一下以读取区块链的状态</li>
+<li><a target="_blank" rel="noopener" href="https://ropsten.etherscan.io/">通过 https://ropsten.etherscan.io/</a>查看您的合约和交易信息</li>
+<li>在浏览器中打开控制台 (<code>Ctrl + Shift + i</code>) 以查看按下这些按钮时发生的奇迹</li>
+</ol>
+<h2 id="完毕！"><a href="#完毕！" class="headerlink" title="完毕！"></a>完毕！</h2><p>庆祝！您刚刚制作了一个网页，该网页与互联网上真实的以太坊测试网进行了交互！这不是很多人可以说他们做过的事情！</p>
+<h2 id="如果您在本教程中遇到问题，可以试用提供的示例应用程序。"><a href="#如果您在本教程中遇到问题，可以试用提供的示例应用程序。" class="headerlink" title="如果您在本教程中遇到问题，可以试用提供的示例应用程序。"></a>如果您在本教程中遇到问题，可以试用提供的示例应用程序。</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/LearnWeb3DAO/BasicFrontEndTutorial.git</span><br><span class="line">cd BasicFrontEndTutorial</span><br><span class="line">lite-server</span><br></pre></td></tr></table></figure>
+
+<p>尝试使用以下信息与我们在 Roptsen 测试网上发布的现有合约进行交互：</p>
+<ul>
+<li>我们在此<a target="_blank" rel="noopener" href="https://ropsten.etherscan.io/tx/0x8da093fdc4ae3e1b469dfff97b414a9800c9fdd8c1c897b6b746faf43aa3b7f8">交易</a>MoodDiary 中创建了一个合约实例</li>
+<li>这是合同（<a target="_blank" rel="noopener" href="https://ropsten.etherscan.io/address/0xc5afd2d92750612a9619db2282d9037c58fc22cb">在 etherscan 上</a>）<ul>
+<li>我们还向<a target="_blank" rel="noopener" href="https://ropsten.etherscan.io/address/0xc5afd2d92750612a9619db2282d9037c58fc22cb#code">ropsten.etherscan.io</a>验证了我们的源代码，作为您验证合约到底是什么的附加措施，并且 ABI 也可供全世界使用！</li>
+</ul>
+</li>
+<li>ABI 也在<a target="_blank" rel="noopener" href="https://github.com/LearnWeb3DAO/BasicFrontEndTutorial/blob/master/Mood_ABI.json">这个文件中</a></li>
+</ul>
+<p>这说明了一个重点：您也可以构建一个 dApp ，而无需自己编写以太坊合约！如果你想使用已经在以太坊上编写的现有合约，你可以！</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/web3/" rel="tag"># web3</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/08/03/web3-freshman-level6/" rel="prev" title="WEB3系列教程之新手篇--level6:Solidity">
+                  <i class="fa fa-angle-left"></i> WEB3系列教程之新手篇--level6:Solidity
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/08/04/web3-freshman-level8/" rel="next" title="WEB3系列教程之新手篇--level8:加密货币(ERC20)">
+                  WEB3系列教程之新手篇--level8:加密货币(ERC20) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"songhanlin","repo":"blog","client_id":"58797e27de182d42ab95","client_secret":"b04eb623dae17584fe8c2246c7af7dc5ea3f1b2b","admin_user":"songhanlin","distraction_free_mode":true,"proxy":"https://glacial-dawn-82467.herokuapp.com/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"c6b4645a639eabc014fd72e28ebb8286"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

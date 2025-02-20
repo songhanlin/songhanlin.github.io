@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="PQtVM4HDVB0BsS4YeoZ0tnhdbsrCEuwdFaFEgWztqTA">
+  <meta name="baidu-site-verification" content="code-bx6Ior1Y4k">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.julysong.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="使用SecureCRT痛苦之后的崛起">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac 电脑下最新实用ssh免密码登录脚本">
+<meta property="og:url" content="http://blog.julysong.com/2019/05/16/mac-ssh/index.html">
+<meta property="og:site_name" content="骑驴码梦">
+<meta property="og:description" content="使用SecureCRT痛苦之后的崛起">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190517113118673.png">
+<meta property="article:published_time" content="2019-05-16T14:03:20.000Z">
+<meta property="article:modified_time" content="2025-02-20T06:39:02.261Z">
+<meta property="article:author" content="TeenSong">
+<meta property="article:tag" content="ssh">
+<meta property="article:tag" content="bash">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190517113118673.png">
+
+
+<link rel="canonical" href="http://blog.julysong.com/2019/05/16/mac-ssh/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://blog.julysong.com/2019/05/16/mac-ssh/","path":"2019/05/16/mac-ssh/","title":"Mac 电脑下最新实用ssh免密码登录脚本"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Mac 电脑下最新实用ssh免密码登录脚本 | 骑驴码梦</title>
+  
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+window.onload = function(e){
+  var urls = "https://picsum.photos/"
+  + window.screen.availWidth +
+  "/" + window.screen.availHeight + "/?random";
+  document.body.style.backgroundImage='url('+urls+')';
+}
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126093412-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-126093412-1');
+</script>
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="骑驴码梦" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">骑驴码梦</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">我一进门就看到常威在打来福~</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80-%E6%9B%B4%E6%8D%A2%E7%B3%BB%E7%BB%9F%E7%9A%84-bash-%E9%9C%80%E8%A6%81%E9%87%8D%E5%90%AF%E7%94%B5%E8%84%91"><span class="nav-number">1.</span> <span class="nav-text">方法一: 更换系统的 bash, 需要重启电脑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C-%E7%9B%B4%E6%8E%A5%E4%B8%8B%E8%BD%BD%E6%96%B0%E7%9A%84-bash-%E6%97%A0%E9%9C%80%E9%87%8D%E5%90%AF%E7%94%B5%E8%84%91"><span class="nav-number">2.</span> <span class="nav-text">方法二: 直接下载新的 bash, 无需重启电脑</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="TeenSong"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">TeenSong</p>
+  <div class="site-description" itemprop="description">常威, 你还说你不会武功</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">59</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/songhanlin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;songhanlin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/e05ddaee7769" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;e05ddaee7769" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i>简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_28153553" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_28153553" rel="noopener me" target="_blank"><i class="fa fa-copyright fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/song_hanlin/activities" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;song_hanlin&#x2F;activities" rel="noopener me" target="_blank"><i class="fa fa-mortar-board fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml" rel="noopener me"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+    
+    <div class="post-gallery-image">
+      <img src="https://img-blog.csdnimg.cn/20190517113118673.png" itemprop="contentUrl">
+    </div>
+    </div>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.julysong.com/2019/05/16/mac-ssh/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="TeenSong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="骑驴码梦">
+      <meta itemprop="description" content="常威, 你还说你不会武功">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Mac 电脑下最新实用ssh免密码登录脚本 | 骑驴码梦">
+      <meta itemprop="description" content="使用SecureCRT痛苦之后的崛起">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Mac 电脑下最新实用ssh免密码登录脚本
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-05-16 22:03:20" itemprop="dateCreated datePublished" datetime="2019-05-16T22:03:20+08:00">2019-05-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-02-20 14:39:02" itemprop="dateModified" datetime="2025-02-20T14:39:02+08:00">2025-02-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">使用SecureCRT痛苦之后的崛起</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>mac 系统上我一直少有发现一款好用的 ssh 工具, 免去我记住多个密码的烦恼.</p>
+<p>经过大量时间的寻找, 我发现了一款名为 SecureCRT 的工具, 可以在 mac 系统上使用, 的确可以免除我记住大量密码的烦恼, 但是使用的痛苦也随之而来.</p>
+<ol>
+<li>不存在清理屏幕的快捷键<br>经常登录服务器进行测试环境的日志查阅, 这个时候, 界面上停留的可能有进入多少级目录, 然后打了什么命令, 已经其他很多无关紧要的东西在上面. 这个时候清理屏幕就显的很重要, 但是 CRT 不支持. 只能傻傻的通过工具栏上方的按钮去清除屏幕.</li>
+<li>vim 之后不能滚轮滑动<br>文字已经很能说明问题了, 我就不多赘述.</li>
+<li>我自己的 Iterm2 上操作的很开心, 不能用他我就不开心<br>这一点尤为重要.</li>
+</ol>
+<p>基于以上三个问题, 我决定翻出去年写的那个已经不能用的脚本来搞好他.</p>
+<p>之前的脚本存在几个问题</p>
+<ol>
+<li>不能展示出来列表<br>我目前存了多少个服务器, 我记不住, 也不能展示出来</li>
+<li>好端端的坏了<br>进入服务器之后, 啥也不能干.</li>
+</ol>
+<p>通过网上苦苦的搜索, 我找到一个朋友写的一个东西非常棒. fork 了他的项目, 改编了一下, 使其能更好的适用于我的电脑.<br>此处感谢 AlicFeng 的文章给我的帮助, 此处是<a target="_blank" rel="noopener" href="https://github.com/alicfeng/sshAutoLogin">github 地址</a>.</p>
+<p>首先说说为什么要重写</p>
+<ol>
+<li>电脑上下载的时候总是提示需要管理员的权限, 但是已经使用了, 不厌其烦</li>
+<li>废了好多功夫弄到本地之后, 感觉不是太会用. 这一点很尴尬.</li>
+<li>简书评论区 2 楼回复的很好, 在此引用一下<blockquote>
+<p>-s 登录的时候，后面的编号并不是 ini 文件中的 Index 项，而是取决于 shell 过滤出来的 ini 文件顺序</p>
+</blockquote>
+</li>
+</ol>
+<p>基于上面 3 点功能, 打算小小的改造一下.</p>
+<p>首先解决重点解决第三个问题.<br>AlicFeng 之前使用的是集合, 顺序得不到保证. 因此, 我在想, 是不是可以用 Map 类型来存储.<br>经过查阅资料, 发现 Map 数据类型和 bash 相关, mac 下的 bash 是 3.x, 但是 Map 数据类型必须要 4.x 以上.<br>于是乎, 需要升级个 bash.</p>
+<h3 id="方法一-更换系统的-bash-需要重启电脑"><a href="#方法一-更换系统的-bash-需要重启电脑" class="headerlink" title="方法一: 更换系统的 bash, 需要重启电脑"></a>方法一: 更换系统的 bash, 需要重启电脑</h3><table><td bgcolor=pink>
+mac 升级 bash 之前需要关闭 SIP(System Integrity Protection).
+网上有很多文章关于如何操作, 先简单介绍一下, 不清楚的可以去查阅资料.
+首先重启电脑, 并按住 command+r 键, 进入恢复模式.
+
+<p>进入恢复模式的系统之后, 打开上方工具栏中”实用工具”下的”终端”.</p>
+<p>在终端中输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">csrutil disable</span><br></pre></td></tr></table></figure>
+
+<p>成功之后, 重启电脑.</p>
+<p>这个时候就可以升级 bash 了.</p>
+<p>打开 iterm2, 输入命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install bash</span><br></pre></td></tr></table></figure>
+
+<p>升级成功之后输入如下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 替换bash</span><br><span class="line">sudo mv /bin/bash /bin/bash.origin</span><br><span class="line">sudo ln -s /usr/local/opt/bash/bin/bash /bin/bash</span><br><span class="line"># 由于本mac版本下的sh并不是直接链接bash，而是bash的一个文件拷贝。因此，还要替换默认的sh指向的命令为bash，如下：</span><br><span class="line">sudo mv /bin/sh /bin/sh.origin</span><br><span class="line">sudo ln -s /usr/local/opt/bash/bin/bash /bin/sh</span><br></pre></td></tr></table></figure>
+
+<p>这个时候可以通过命令来查看是否成功</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash --version</span><br></pre></td></tr></table></figure>
+
+<p>安装之后, 就可以重启电脑, 把 SIP 给启动.<br>同样进入恢复模式下输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">csrutil enable</span><br></pre></td></tr></table></figure>
+
+<p>然后重启电脑.</p>
+</td></table>
+
+<h3 id="方法二-直接下载新的-bash-无需重启电脑"><a href="#方法二-直接下载新的-bash-无需重启电脑" class="headerlink" title="方法二: 直接下载新的 bash, 无需重启电脑"></a>方法二: 直接下载新的 bash, 无需重启电脑</h3><table><td bgcolor=PaleGreen>
+
+<p>打开 iterm2, 输入命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install bash</span><br></pre></td></tr></table></figure>
+
+<p>这个时候需要把下载下来的 lucy 脚本的 “开头”部分, 加上一小段说明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/local/bin/bash</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>表示使用我们当前下载下来的 bash, 而不是系统目录下面的 bash</p>
+</td></table>
+
+<p>还是打开 iterm2, 这个时候, 安装一个小插件, 让界面更漂亮</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install toilet</span><br></pre></td></tr></table></figure>
+
+<p>安装好之后, 就进入了正文.</p>
+<p>首先介绍下, 文件路径.</p>
+<p>首先到~目录下, 创建一个文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir ssh-lucy</span><br></pre></td></tr></table></figure>
+
+<p>创建一个 servers 的文件. (无后缀).</p>
+<p>文件中内容放入以下东西</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#服务器IP	       账号	       密码		             	端口	    主机</span><br></pre></td></tr></table></figure>
+
+<p>实际最后放入的东西内容如下图所示</p>
+<p><img src="https://img-blog.csdnimg.cn/20190517113153953.png"></p>
+<p>最后的主机一列, 存放的是我们用于寻找登录哪个服务器的名称, 也就是我们存入 Map 中的 key, 可以自定义.</p>
+<p>存好服务器地址之后, 就可以使用我们真正的脚本.</p>
+<p>服务器脚本最后保留一个空行.</p>
+<p>我给她起了一个非常人性化的名字, 也是我心心念念的名字”lucy”([人类的始祖](&lt;<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Lucy_(Australopithecus)">https://en.wikipedia.org/wiki/Lucy_(Australopithecus)</a>)</p>
+<p>从 <a target="_blank" rel="noopener" href="https://github.com/songhanlin/ssh-lucy">gayhub</a> 上下载文件”lucy”之后, 放入本地的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/bin</span><br></pre></td></tr></table></figure>
+
+<p>目录.</p>
+<p>修改文件中的第十行内容”目录”为 servers 存在的绝对路径.</p>
+<p>然后赋予这个文件生命</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x lucy</span><br></pre></td></tr></table></figure>
+
+<p>此刻大公告成.</p>
+<p>此刻存在的命令如下, 延续了 AlicFeng 之前的命名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// l表示list, 表示查看列表(不包含密码)</span><br><span class="line">lucy -l</span><br><span class="line"></span><br><span class="line">// h表示help, 表示帮助</span><br><span class="line">lucy -h</span><br><span class="line"></span><br><span class="line">// s 表示ssh, 也就是平时我们使用的登陆方式</span><br><span class="line">lucy -s 主机名</span><br><span class="line"></span><br><span class="line">// p表示password, 展示包含密码的查看列表</span><br><span class="line">lucy -p</span><br></pre></td></tr></table></figure>
+
+<p>效果如下:<br><img src="https://img-blog.csdnimg.cn/20190517113005821.png"><br><img src="https://img-blog.csdnimg.cn/20190517113023583.png"><br>如果您使用了这个小脚本, 希望可以保留 lucy 的名字, 让我们给他一个生命的延续.<br><img src="https://img-blog.csdnimg.cn/20190517113040464.jpeg"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ssh/" rel="tag"># ssh</a>
+              <a href="/tags/bash/" rel="tag"># bash</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/12/12/rn-android-run-error/" rel="prev" title="React Native Android 启动异常">
+                  <i class="fa fa-angle-left"></i> React Native Android 启动异常
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/05/10/from-Linear-Search-to-Binary-Search/" rel="next" title="从线性搜索到二分搜索">
+                  从线性搜索到二分搜索 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"songhanlin","repo":"blog","client_id":"58797e27de182d42ab95","client_secret":"b04eb623dae17584fe8c2246c7af7dc5ea3f1b2b","admin_user":"songhanlin","distraction_free_mode":true,"proxy":"https://glacial-dawn-82467.herokuapp.com/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"b68fc15ed989ec312a678f7bc127ba86"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

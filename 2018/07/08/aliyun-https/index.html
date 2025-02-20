@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="PQtVM4HDVB0BsS4YeoZ0tnhdbsrCEuwdFaFEgWztqTA">
+  <meta name="baidu-site-verification" content="code-bx6Ior1Y4k">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.julysong.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="超文本传输安全协议（英语：Hypertext Transfer Protocol Secure，缩写：HTTPS，常称为HTTP over TLS，HTTP over SSL或HTTP Secure）是一种透过计算机网络进行安全通信的传输协议。HTTPS经由HTTP进行通信，但利用SSL&#x2F;TLS来加密数据包。HTTPS开发的主要目的，是提供对网站服务器的身份认证，保护交换数据的隐私与完整性。这个协">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿里云免费Https证书申请使用">
+<meta property="og:url" content="http://blog.julysong.com/2018/07/08/aliyun-https/index.html">
+<meta property="og:site_name" content="骑驴码梦">
+<meta property="og:description" content="超文本传输安全协议（英语：Hypertext Transfer Protocol Secure，缩写：HTTPS，常称为HTTP over TLS，HTTP over SSL或HTTP Secure）是一种透过计算机网络进行安全通信的传输协议。HTTPS经由HTTP进行通信，但利用SSL&#x2F;TLS来加密数据包。HTTPS开发的主要目的，是提供对网站服务器的身份认证，保护交换数据的隐私与完整性。这个协">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-9266065cd40584b20fd6f7a3589980e5_1440w.jpg?source=172ae18b">
+<meta property="article:published_time" content="2018-07-08T07:34:56.000Z">
+<meta property="article:modified_time" content="2025-02-20T06:39:02.257Z">
+<meta property="article:author" content="TeenSong">
+<meta property="article:tag" content="阿里云">
+<meta property="article:tag" content="https">
+<meta property="article:tag" content="Nginx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic1.zhimg.com/v2-9266065cd40584b20fd6f7a3589980e5_1440w.jpg?source=172ae18b">
+
+
+<link rel="canonical" href="http://blog.julysong.com/2018/07/08/aliyun-https/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://blog.julysong.com/2018/07/08/aliyun-https/","path":"2018/07/08/aliyun-https/","title":"阿里云免费Https证书申请使用"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>阿里云免费Https证书申请使用 | 骑驴码梦</title>
+  
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+window.onload = function(e){
+  var urls = "https://picsum.photos/"
+  + window.screen.availWidth +
+  "/" + window.screen.availHeight + "/?random";
+  document.body.style.backgroundImage='url('+urls+')';
+}
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126093412-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-126093412-1');
+</script>
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="骑驴码梦" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">骑驴码梦</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">我一进门就看到常威在打来福~</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Why-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">1. Why?(为什么要使用?)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-What-%E4%BC%98%E7%BC%BA%E7%82%B9%E5%90%84%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">2.</span> <span class="nav-text">2. What?(优缺点各是什么?)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E7%82%B9"><span class="nav-number">2.1.</span> <span class="nav-text">优点:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E6%96%B9%E9%9D%A2"><span class="nav-number">2.1.1.</span> <span class="nav-text">安全方面</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9"><span class="nav-number">2.2.</span> <span class="nav-text">缺点:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%96%B9%E9%9D%A2"><span class="nav-number">2.2.1.</span> <span class="nav-text">技术方面</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%88%90%E6%9C%AC%E6%96%B9%E9%9D%A2"><span class="nav-number">2.2.2.</span> <span class="nav-text">成本方面</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-How-%E6%80%8E%E4%B9%88%E5%81%9A"><span class="nav-number">3.</span> <span class="nav-text">3. How?(怎么做?)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%89%BE%E5%88%B0%E8%AF%81%E4%B9%A6%E6%9C%8D%E5%8A%A1"><span class="nav-number">3.1.</span> <span class="nav-text">1. 找到证书服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%B4%AD%E4%B9%B0%E8%AF%81%E4%B9%A6"><span class="nav-number">3.2.</span> <span class="nav-text">2. 购买证书</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="TeenSong"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">TeenSong</p>
+  <div class="site-description" itemprop="description">常威, 你还说你不会武功</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">59</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/songhanlin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;songhanlin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/e05ddaee7769" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;e05ddaee7769" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i>简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_28153553" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_28153553" rel="noopener me" target="_blank"><i class="fa fa-copyright fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/song_hanlin/activities" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;song_hanlin&#x2F;activities" rel="noopener me" target="_blank"><i class="fa fa-mortar-board fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml" rel="noopener me"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+    
+    <div class="post-gallery-image">
+      <img src="https://pic1.zhimg.com/v2-9266065cd40584b20fd6f7a3589980e5_1440w.jpg?source=172ae18b" itemprop="contentUrl">
+    </div>
+    </div>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.julysong.com/2018/07/08/aliyun-https/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="TeenSong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="骑驴码梦">
+      <meta itemprop="description" content="常威, 你还说你不会武功">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="阿里云免费Https证书申请使用 | 骑驴码梦">
+      <meta itemprop="description" content="超文本传输安全协议（英语：Hypertext Transfer Protocol Secure，缩写：HTTPS，常称为HTTP over TLS，HTTP over SSL或HTTP Secure）是一种透过计算机网络进行安全通信的传输协议。HTTPS经由HTTP进行通信，但利用SSL/TLS来加密数据包。HTTPS开发的主要目的，是提供对网站服务器的身份认证，保护交换数据的隐私与完整性。这个协议由网景公司（Netscape）在1994年首次提出，随后扩展到互联网上。本文主要介绍如何申请免费的https证书, 以及使用。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          阿里云免费Https证书申请使用
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-07-08 15:34:56" itemprop="dateCreated datePublished" datetime="2018-07-08T15:34:56+08:00">2018-07-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-02-20 14:39:02" itemprop="dateModified" datetime="2025-02-20T14:39:02+08:00">2025-02-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" itemprop="url" rel="index"><span itemprop="name">问题解决</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">超文本传输安全协议（英语：Hypertext Transfer Protocol Secure，缩写：HTTPS，常称为HTTP over TLS，HTTP over SSL或HTTP Secure）是一种透过计算机网络进行安全通信的传输协议。HTTPS经由HTTP进行通信，但利用SSL/TLS来加密数据包。HTTPS开发的主要目的，是提供对网站服务器的身份认证，保护交换数据的隐私与完整性。这个协议由网景公司（Netscape）在1994年首次提出，随后扩展到互联网上。本文主要介绍如何申请免费的https证书, 以及使用。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="1-Why-为什么要使用"><a href="#1-Why-为什么要使用" class="headerlink" title="1. Why?(为什么要使用?)"></a>1. Why?(为什么要使用?)</h3><blockquote>
+<p>传统的 HTTP 模式，存在着大量的灰色中间环节，相关信息很容易被窃取，但 HTTPS 却是通过认证用户与服务器，将数据准确地发送到客户机与服务器，并采用加密方式以防数据中途被盗取，大大降低了第三方窃取信息、篡改冒充身份的风险.</p>
+</blockquote>
+<h3 id="2-What-优缺点各是什么"><a href="#2-What-优缺点各是什么" class="headerlink" title="2. What?(优缺点各是什么?)"></a>2. What?(优缺点各是什么?)</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点:"></a>优点:</h4><blockquote>
+<h5 id="安全方面"><a href="#安全方面" class="headerlink" title="安全方面"></a>安全方面</h5><p>1、使用 HTTPS 协议可认证用户和服务器，确保数据发送到正确的客户机和服务器;</p>
+<p>2、HTTPS 协议是由 SSL+HTTP 协议构建的可进行加密传输、身份认证的网络协议，要比 http 协议安全，可防止数据在传输过程中不被窃取、改变，确保数据的完整性。</p>
+<p>3、HTTPS 是现行架构下最安全的解决方案，虽然不是绝对安全，但它大幅增加了中间人攻击的成本。</p>
+</blockquote>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点:"></a>缺点:</h4><blockquote>
+<h5 id="技术方面"><a href="#技术方面" class="headerlink" title="技术方面"></a>技术方面</h5><p>1、相同网络环境下，HTTPS 协议会使页面的加载时间延长近 50%，增加 10%到 20%的耗电。此外，HTTPS 协议还会影响缓存，增加数据开销和功耗。</p>
+<p>2、HTTPS 协议的安全是有范围的，在黑客攻击、拒绝服务攻击、服务器劫持等方面几乎起不到什么作用。</p>
+<p>3、最关键的，SSL 证书的信用链体系并不安全。特别是在某些国家可以控制 CA 根证书的情况下，中间人攻击一样可行。</p>
+<h5 id="成本方面"><a href="#成本方面" class="headerlink" title="成本方面"></a>成本方面</h5><p>1、SSL 的专业证书需要购买，功能越强大的证书费用越高。个人网站、小网站可以选择入门级免费证书。</p>
+<p>2、SSL 证书通常需要绑定 固定 IP，为服务器增加固定 IP 会增加一定费用。</p>
+<p>3、HTTPS 连接服务器端资源占用高较高多，相同负载下会增加带宽和服务器投入成本。</p>
+</blockquote>
+<p>以上主要参考该文章<a target="_blank" rel="noopener" href="http://www.chinaz.com/web/2017/0224/663236.shtml#content-media5">(传送门)</a>, 此处不做多说, 想了解的可以去参考.</p>
+<h3 id="3-How-怎么做"><a href="#3-How-怎么做" class="headerlink" title="3. How?(怎么做?)"></a>3. How?(怎么做?)</h3><blockquote>
+<p>以下的前提建立于你已有阿里云服务器.</p>
+</blockquote>
+<h4 id="1-找到证书服务"><a href="#1-找到证书服务" class="headerlink" title="1. 找到证书服务"></a>1. 找到证书服务</h4><p>首先点击”产品与服务”, 输入”证书”, 选择”安全(云盾)”下的”SSL 证书(应用安全)”, 如下图所示<br><img src="https://pic2.zhimg.com/80/v2-d9d24b8e6ce98dc7812f886ae1923a21_720w.jpg"></p>
+<h4 id="2-购买证书"><a href="#2-购买证书" class="headerlink" title="2. 购买证书"></a>2. 购买证书</h4><p>点击右侧按钮”购买证书”, 跳转新页面<br><img src="https://pic1.zhimg.com/80/v2-7586af28c0d858b5c313387fe76ab150_720w.jpg"><br>此时跳转新页面, 可以看到价格不菲的证书<br><img src="https://pic1.zhimg.com/80/v2-62ee9ca5868529a7485645bec26bb4bc_720w.jpg"><br>此时点击第四个 tab”Symantec”<br><img src="https://pic4.zhimg.com/80/v2-3f48099d5bc37b659d67d4a2cf78ef97_720w.jpg"><br>不需要被更加昂贵的价格吓到, 此时在证书类型里面选择”增强型 OV SSL”时, 会看到奇迹<br><img src="https://pic2.zhimg.com/80/v2-1fe29292f35f35d03703c2c17f43f389_720w.jpg"><br>是的, 你没看错, 免费的出现了.<br>此时, 按照正常流程进行购买.</p>
+<p>免费证书的有几个缺点:</p>
+<ol>
+<li>年限短(1 年), 也就是说, 明年你需要继续购买</li>
+<li>不能使用通配符, 也就是说, 如果你有多个域名(子域名, 例如: a.test.com, test.com, b.c.test.com), 那么, 相应的如果你需要就要购买多个.</li>
+</ol>
+<p>根据需要, 选择相应数量的证书, 然后去购买<br><img src="https://pic2.zhimg.com/80/v2-69a908e27376098a747fa279b24ca221_720w.jpg"><br>支付流程走完之后, 跳转证书控制台, 我们可以看到购买成功的几个证书, 此时点击”补全”, 进行信息完善<br><img src="https://pic3.zhimg.com/80/v2-ac5644a5658bae23532f4bd257018536_720w.jpg"><br>此后流程非常简单, 首先录入需要 https 的域名, 然后填写个人资料. 最后点击提交审核.<br>返回证书列表之后, 我们可以看到正在审核中的证书<br><img src="https://pic3.zhimg.com/80/v2-8b26b1a74224b3684ffe84a21e1fa4b2_720w.jpg"><br>点击”进度”进入详情.<br><img src="https://pic2.zhimg.com/80/v2-bd5148bc7416073ec4015ba6895a7a15_720w.jpg"><br>此时看到”主机记录”和”记录值”<br>主机记录这里, 不清楚前面为什么有一个_dnsauth. , 后面的 a 其实就是我刚才随便写的一个二级域名(a.lizi.com)<br>复制记录值, 进入左侧菜单”域名与网站(万网)”下面的”云解析(DNS)”</p>
+<p>选择”解析设置”<br><img src="https://pic2.zhimg.com/80/v2-da1f55e86609a6897e93fe30c886f3e5_720w.jpg"><br>记录类型选择”TXT”, 然后依次输入”主机记录”, 也就是你的二级域名, 然后在”记录值”中填入刚刚复制的值<br><img src="https://pic3.zhimg.com/80/v2-b433f3df529cc3b92c0e24b2006d60aa_720w.jpg">.<br>此时点击”确定”, 等到审核即可, 审核的速度还是很快的.<br><img src="https://pic3.zhimg.com/80/v2-774ea34d27737cdac518f711baa00912_720w.jpg"><br>成功之后, 即可点击”下载”<br>根据服务器的不同, 选择不同的下载方式<br><img src="https://pic1.zhimg.com/80/v2-a854e74bd8350151e82cd819b762f5dc_720w.jpg"><br>因为我是 Nginx, 所以选择第一个.<br>接下来存放证书, 以及 nginx 的配置信息都有给出, 如果不明白的, 还可以看下面的视频.<br>需要注意的是, 一定要替换</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssl_certificate   cert/214824738550150.pem;</span><br><span class="line">ssl_certificate_key  cert/214824738550150.key;</span><br></pre></td></tr></table></figure>
+
+<p>这两个文件的名字, 我比较了一下, 配置信息中这串码和下载之后的文件中名字非常”相似”, 但是不一样, 之前曾经因为这个地方查了很久.最后发现居然是名字不一样.<br>nginx reload 之后, 使用 https:&#x2F;&#x2F; +你的域名, 即可访问你的网站了. 如果看到网页上的 https 不是绿色的, 则说明你的网站中含有 http 的请求, 需要更改替换.<br>但是不满足于此, 此时的网站同时支持 http 和 https, 我不想让人以 http 方式请求我的网站.<br>此时需要在 nginx 的配置文件中加上如下配置, 完整信息如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line">  ...</span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  server &#123;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    if ($server_port = 80)&#123;</span><br><span class="line">      return 301 https://$server_name$request_uri;</span><br><span class="line">    &#125;</span><br><span class="line">    if ($scheme = http)&#123;</span><br><span class="line">      return 301 https://$server_name$request_uri;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line">  ...</span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>想要了解这两个 if 的含义, 可以另外自行查阅资料.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" rel="tag"># 阿里云</a>
+              <a href="/tags/https/" rel="tag"># https</a>
+              <a href="/tags/Nginx/" rel="tag"># Nginx</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/07/08/nginx-404/" rel="prev" title="Nginx设置404页面">
+                  <i class="fa fa-angle-left"></i> Nginx设置404页面
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/09/20/ios12-iphone-crash/" rel="next" title="ios12升级, App应用崩溃闪退">
+                  ios12升级, App应用崩溃闪退 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"songhanlin","repo":"blog","client_id":"58797e27de182d42ab95","client_secret":"b04eb623dae17584fe8c2246c7af7dc5ea3f1b2b","admin_user":"songhanlin","distraction_free_mode":true,"proxy":"https://glacial-dawn-82467.herokuapp.com/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"86585f48043100d6222e94b5f214bb38"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

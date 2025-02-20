@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="PQtVM4HDVB0BsS4YeoZ0tnhdbsrCEuwdFaFEgWztqTA">
+  <meta name="baidu-site-verification" content="code-bx6Ior1Y4k">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.julysong.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="WEB3系列教程之入门篇">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高级 Solidity 主题">
+<meta property="og:url" content="http://blog.julysong.com/2022/08/31/web3-sophomore-level6/index.html">
+<meta property="og:site_name" content="骑驴码梦">
+<meta property="og:description" content="WEB3系列教程之入门篇">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-31T11:36:26.000Z">
+<meta property="article:modified_time" content="2025-02-20T06:39:02.269Z">
+<meta property="article:author" content="TeenSong">
+<meta property="article:tag" content="web3">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://blog.julysong.com/2022/08/31/web3-sophomore-level6/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://blog.julysong.com/2022/08/31/web3-sophomore-level6/","path":"2022/08/31/web3-sophomore-level6/","title":"高级 Solidity 主题"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>高级 Solidity 主题 | 骑驴码梦</title>
+  
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+window.onload = function(e){
+  var urls = "https://picsum.photos/"
+  + window.screen.availWidth +
+  "/" + window.screen.availHeight + "/?random";
+  document.body.style.backgroundImage='url('+urls+')';
+}
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126093412-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-126093412-1');
+</script>
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="骑驴码梦" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">骑驴码梦</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">我一进门就看到常威在打来福~</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%96%9C%E6%AC%A2%E8%A7%86%E9%A2%91%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">喜欢视频？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC-1-%E9%83%A8%E5%88%86"><span class="nav-number">1.1.</span> <span class="nav-text">第 1 部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC-2-%E9%83%A8%E5%88%86"><span class="nav-number">1.2.</span> <span class="nav-text">第 2 部分</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95"><span class="nav-number">2.</span> <span class="nav-text">索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%A0%E5%B0%84-Mappings"><span class="nav-number">3.</span> <span class="nav-text">映射(Mappings)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%9A%E4%B8%BE-Enums"><span class="nav-number">4.</span> <span class="nav-text">枚举(Enums)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9E%84-Structs"><span class="nav-number">5.</span> <span class="nav-text">结构(Structs)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE%E5%92%8C%E7%BA%AF%E5%87%BD%E6%95%B0-View-and-Pure-Functions"><span class="nav-number">6.</span> <span class="nav-text">视图和纯函数(View and Pure Functions)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E4%BF%AE%E9%A5%B0%E7%AC%A6-Function-Modifiers"><span class="nav-number">7.</span> <span class="nav-text">函数修饰符(Function Modifiers)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B4%BB%E5%8A%A8-Events"><span class="nav-number">8.</span> <span class="nav-text">活动(Events)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0-Constructors"><span class="nav-number">9.</span> <span class="nav-text">构造函数(Constructors)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%97%E4%BA%A7-Inheritance"><span class="nav-number">10.</span> <span class="nav-text">遗产(Inheritance)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AC%E7%A7%BB-ETH-Transferring-ETH"><span class="nav-number">11.</span> <span class="nav-text">转移 ETH(Transferring ETH)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%9C%A8%E6%99%AE%E9%80%9A%E7%9A%84%E4%BB%A5%E5%A4%AA%E5%9D%8A%E8%B4%A6%E6%88%B7%E5%9C%B0%E5%9D%80%E6%8E%A5%E6%94%B6%E4%BB%A5%E5%A4%AA%E5%B8%81"><span class="nav-number">11.1.</span> <span class="nav-text">如何在普通的以太坊账户地址接收以太币</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%9C%A8%E5%90%88%E7%BA%A6%E4%B8%AD%E6%8E%A5%E6%94%B6-ETH"><span class="nav-number">11.2.</span> <span class="nav-text">如何在合约中接收 ETH</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E5%A4%96%E9%83%A8%E5%90%88%E7%BA%A6-Calling-External-Contracts"><span class="nav-number">12.</span> <span class="nav-text">调用外部合约(Calling External Contracts)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Import-%E5%A3%B0%E6%98%8E-Import-Statements"><span class="nav-number">13.</span> <span class="nav-text">Import 声明(Import Statements)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0-Import"><span class="nav-number">13.1.</span> <span class="nav-text">本地 Import</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%96%E9%83%A8-Import"><span class="nav-number">13.2.</span> <span class="nav-text">外部 Import</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solidity-%E5%BA%93"><span class="nav-number">14.</span> <span class="nav-text">Solidity 库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="nav-number">15.</span> <span class="nav-text">练习题</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="TeenSong"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">TeenSong</p>
+  <div class="site-description" itemprop="description">常威, 你还说你不会武功</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">59</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/songhanlin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;songhanlin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/e05ddaee7769" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;e05ddaee7769" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i>简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_28153553" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_28153553" rel="noopener me" target="_blank"><i class="fa fa-copyright fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/song_hanlin/activities" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;song_hanlin&#x2F;activities" rel="noopener me" target="_blank"><i class="fa fa-mortar-board fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml" rel="noopener me"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.julysong.com/2022/08/31/web3-sophomore-level6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="TeenSong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="骑驴码梦">
+      <meta itemprop="description" content="常威, 你还说你不会武功">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="高级 Solidity 主题 | 骑驴码梦">
+      <meta itemprop="description" content="WEB3系列教程之入门篇">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          高级 Solidity 主题
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-08-31 19:36:26" itemprop="dateCreated datePublished" datetime="2022-08-31T19:36:26+08:00">2022-08-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-02-20 14:39:02" itemprop="dateModified" datetime="2025-02-20T14:39:02+08:00">2025-02-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/web3%E7%B3%BB%E5%88%97%E4%B9%8B%E5%85%A5%E9%97%A8%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">web3系列之入门篇</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">WEB3系列教程之入门篇</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>原文地址: <a target="_blank" rel="noopener" href="https://learnweb3.io/courses/c1d7081b-63a9-4c6e-b35c-9fcbbad418b2/lessons/18dad5bd-3a51-4d2e-944e-db37edd74855">Advanced Solidity Topics</a></p>
+<p>翻译: JulySong</p>
+</blockquote>
+<p>在新生课程中，我们查看了一些基本的 Solidity 语法。我们涵盖了变量、数据类型、函数、循环、条件流和数组。</p>
+<p>然而，Solidity 还有一些东西，这些东西对于大二及以后的编码任务很重要。在本教程中，我们将介绍一些更重要的 Solidity 主题。</p>
+<h2 id="喜欢视频？"><a href="#喜欢视频？" class="headerlink" title="喜欢视频？"></a>喜欢视频？</h2><p>如果您想从视频中学习，我们的 YouTube 上有本教程的录音。它分为两部分，并且有时间戳。单击下面的屏幕截图观看视频，或继续阅读教程！</p>
+<h3 id="第-1-部分"><a href="#第-1-部分" class="headerlink" title="第 1 部分"></a>第 1 部分</h3><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=Z5P3rKBRmEM">视频</a></p>
+<h3 id="第-2-部分"><a href="#第-2-部分" class="headerlink" title="第 2 部分"></a>第 2 部分</h3><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=ILY3fIbwjk0">视频</a></p>
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://learnweb3.io/courses/c1d7081b-63a9-4c6e-b35c-9fcbbad418b2/lessons/18dad5bd-3a51-4d2e-944e-db37edd74855#mappings">映射(Mappings)</a></li>
+<li><a target="_blank" rel="noopener" href="https://learnweb3.io/courses/c1d7081b-63a9-4c6e-b35c-9fcbbad418b2/lessons/18dad5bd-3a51-4d2e-944e-db37edd74855#enums">枚举(Enums)</a></li>
+<li><a target="_blank" rel="noopener" href="https://learnweb3.io/courses/c1d7081b-63a9-4c6e-b35c-9fcbbad418b2/lessons/18dad5bd-3a51-4d2e-944e-db37edd74855#structs">结构(Structs)</a></li>
+<li><a target="_blank" rel="noopener" href="https://learnweb3.io/courses/c1d7081b-63a9-4c6e-b35c-9fcbbad418b2/lessons/18dad5bd-3a51-4d2e-944e-db37edd74855#view-and-pure-functions">视图和纯函数(View and Pure Functions)</a></li>
+<li><a target="_blank" rel="noopener" href="https://learnweb3.io/courses/c1d7081b-63a9-4c6e-b35c-9fcbbad418b2/lessons/18dad5bd-3a51-4d2e-944e-db37edd74855#function-modifiers">函数修饰符(Function Modifiers)</a></li>
+<li><a target="_blank" rel="noopener" href="https://learnweb3.io/courses/c1d7081b-63a9-4c6e-b35c-9fcbbad418b2/lessons/18dad5bd-3a51-4d2e-944e-db37edd74855#events">活动(Events)</a></li>
+<li><a target="_blank" rel="noopener" href="https://learnweb3.io/courses/c1d7081b-63a9-4c6e-b35c-9fcbbad418b2/lessons/18dad5bd-3a51-4d2e-944e-db37edd74855#constructors">构造函数(Constructors)</a></li>
+<li><a target="_blank" rel="noopener" href="https://learnweb3.io/courses/c1d7081b-63a9-4c6e-b35c-9fcbbad418b2/lessons/18dad5bd-3a51-4d2e-944e-db37edd74855#inheritance">遗产(Inheritance)</a></li>
+<li><a target="_blank" rel="noopener" href="https://learnweb3.io/courses/c1d7081b-63a9-4c6e-b35c-9fcbbad418b2/lessons/18dad5bd-3a51-4d2e-944e-db37edd74855#transferring-eth">转移 ETH(Transferring ETH)</a></li>
+<li><a target="_blank" rel="noopener" href="https://learnweb3.io/courses/c1d7081b-63a9-4c6e-b35c-9fcbbad418b2/lessons/18dad5bd-3a51-4d2e-944e-db37edd74855#calling-external-contracts">调用外部合约(Calling external contracts)</a></li>
+<li><a target="_blank" rel="noopener" href="https://learnweb3.io/courses/c1d7081b-63a9-4c6e-b35c-9fcbbad418b2/lessons/18dad5bd-3a51-4d2e-944e-db37edd74855#import-statements">导入语句(Import statements)</a></li>
+<li><a target="_blank" rel="noopener" href="https://learnweb3.io/courses/c1d7081b-63a9-4c6e-b35c-9fcbbad418b2/lessons/18dad5bd-3a51-4d2e-944e-db37edd74855#solidity-libraries">Solidity 库(Solidity Libraries)</a></li>
+</ul>
+<h2 id="映射-Mappings"><a href="#映射-Mappings" class="headerlink" title="映射(Mappings)"></a>映射(Mappings)</h2><p>Solidity 中的映射就像其他编程语言中的哈希图或字典一样。它们用于将数据存储在键值对中。</p>
+<p>映射是使用语法创建的 <code>mapping (keyType =&gt; valueType)</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.10;</span><br><span class="line"></span><br><span class="line">contract Mapping &#123;</span><br><span class="line">    // 从地址映射到 uint</span><br><span class="line">    mapping(address =&gt; uint) public myMap;</span><br><span class="line"></span><br><span class="line">    function get(address _addr) public view returns (uint) &#123;</span><br><span class="line">        // 映射总是返回一个值。</span><br><span class="line">        // 如果该值从未设置，它将返回默认值。</span><br><span class="line">        // uint 的默认值为 0</span><br><span class="line">        return myMap[_addr];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function set(address _addr, uint _i) public &#123;</span><br><span class="line">        // 更新这个地址的值</span><br><span class="line">        myMap[_addr] = _i;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function remove(address _addr) public &#123;</span><br><span class="line">        // 将值重置为默认值。</span><br><span class="line">        delete myMap[_addr];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们还可以创建嵌套映射，其中<code>key</code>指向第二个嵌套映射。为此，我们将 设置<code>valueType</code>为映射本身。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">contract NestedMappings &#123;</span><br><span class="line">    // 从地址映射 =&gt; (从 uint 映射到 bool)</span><br><span class="line">    mapping(address =&gt; mapping(uint =&gt; bool)) public nestedMap;</span><br><span class="line"></span><br><span class="line">    function get(address _addr1, uint _i) public view returns (bool) &#123;</span><br><span class="line">        // 你可以从嵌套映射中获取值</span><br><span class="line">        // 即使它没有初始化</span><br><span class="line">        // bool 类型的默认值为 false</span><br><span class="line">        return nestedMap[_addr1][_i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function set(</span><br><span class="line">        address _addr1,</span><br><span class="line">        uint _i,</span><br><span class="line">        bool _boo</span><br><span class="line">    ) public &#123;</span><br><span class="line">        nestedMap[_addr1][_i] = _boo;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function remove(address _addr1, uint _i) public &#123;</span><br><span class="line">        delete nestedMap[_addr1][_i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="枚举-Enums"><a href="#枚举-Enums" class="headerlink" title="枚举(Enums)"></a>枚举(Enums)</h2><p>这个词<code>Enum</code>代表<code>Enumerable</code>。它们是用户定义的类型，其中包含一组常量（称为成员）的人类可读名称。它们通常用于将变量限制为仅具有几个预定义值之一。由于它们只是人类可读常量的抽象，实际上，它们在内部表示为<code>uint</code>s。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.10;</span><br><span class="line"></span><br><span class="line">contract Enum &#123;</span><br><span class="line">    // 代表不同可能运输状态的</span><br><span class="line">    enum Status &#123;</span><br><span class="line">        Pending,</span><br><span class="line">        Shipped,</span><br><span class="line">        Accepted,</span><br><span class="line">        Rejected,</span><br><span class="line">        Canceled</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 声明一个 Status 类型的变量</span><br><span class="line">    // 这只能包含一个预定义的值</span><br><span class="line">    Status public status;</span><br><span class="line"></span><br><span class="line">    // 因为枚举在内部由uint 表示</span><br><span class="line">    // 此函数将始终返回一个 uint</span><br><span class="line">    // Pending = 0</span><br><span class="line">    // Shipped = 1</span><br><span class="line">    // Accepted = 2</span><br><span class="line">    // Rejected = 3</span><br><span class="line">    // Canceled = 4</span><br><span class="line">    // 不能大于 4被返回</span><br><span class="line">    function get() public view returns (Status) &#123;</span><br><span class="line">        return status;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 为输入传递一个 uint 以更新值</span><br><span class="line">    function set(Status _status) public &#123;</span><br><span class="line">        status = _status;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 更新特定枚举成员的值</span><br><span class="line">    function cancel() public &#123;</span><br><span class="line">        status = Status.Canceled; // 将设置状态 = 4</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="结构-Structs"><a href="#结构-Structs" class="headerlink" title="结构(Structs)"></a>结构(Structs)</h2><p>结构的概念存在于许多高级编程语言中。它们用于定义您自己的数据类型，这些数据类型将相关数据组合在一起。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.10;</span><br><span class="line"></span><br><span class="line">contract TodoList &#123;</span><br><span class="line">    // 声明一个将两种数据类型组合在一起的</span><br><span class="line">    struct TodoItem &#123;</span><br><span class="line">        string text;</span><br><span class="line">        bool completed;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 创建一个 TodoItem 结构数组</span><br><span class="line">    TodoItem[] public todos;</span><br><span class="line"></span><br><span class="line">    function createTodo(string memory _text) public &#123;</span><br><span class="line">        // 有多种初始化结构的方法</span><br><span class="line"></span><br><span class="line">        // 方法 1 - 像函数一样调用它</span><br><span class="line">        todos.push(TodoItem(_text, false));</span><br><span class="line"></span><br><span class="line">        // 方法 2 - 显式设置其键</span><br><span class="line">        todos.push(TodoItem(&#123; text: _text, completed: false &#125;));</span><br><span class="line"></span><br><span class="line">        // 方法 3 - 初始化一个空结构体，然后设置单个属性</span><br><span class="line">        TodoItem memory todo;</span><br><span class="line">        todo.text = _text;</span><br><span class="line">        todo.completed = false;</span><br><span class="line">        todos.push(todo);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 更新一个结构体值</span><br><span class="line">    function update(uint _index, string memory _text) public &#123;</span><br><span class="line">        todos[_index].text = _text;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 更新完成</span><br><span class="line">    function toggleCompleted(uint _index) public &#123;</span><br><span class="line">        todos[_index].completed = !todos[_index].completed;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="视图和纯函数-View-and-Pure-Functions"><a href="#视图和纯函数-View-and-Pure-Functions" class="headerlink" title="视图和纯函数(View and Pure Functions)"></a>视图和纯函数(View and Pure Functions)</h2><p>您可能已经注意到，我们一直在编写的一些函数在函数头中指定了<code>view</code>或<code>pure</code>关键字之一。这些是特殊关键字，表示函数的特定行为。</p>
+<p>Getter 函数（返回值的函数）可以声明为<code>view</code>或<code>pure</code>。</p>
+<ul>
+<li><code>View</code>: 不改变任何状态值的函数</li>
+<li><code>Pure</code>: 不改变任何状态值，但也不读取任何状态值的函数</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.10;</span><br><span class="line"></span><br><span class="line">contract ViewAndPure &#123;</span><br><span class="line">    // 声明一个状态变量</span><br><span class="line">    uint public x = 1;</span><br><span class="line"></span><br><span class="line">    // 承诺不修改状态（但可以读取状态）</span><br><span class="line">    function addToX(uint y) public view returns (uint) &#123;</span><br><span class="line">        return x + y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 承诺不修改或读取状态</span><br><span class="line">    function add(uint i, uint j) public pure returns (uint) &#123;</span><br><span class="line">        return i + j;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="函数修饰符-Function-Modifiers"><a href="#函数修饰符-Function-Modifiers" class="headerlink" title="函数修饰符(Function Modifiers)"></a>函数修饰符(Function Modifiers)</h2><p>修饰符是可以在函数调用之前和&#x2F;或之后运行的代码。它们通常用于限制对某些功能的访问、验证输入参数、防止某些类型的攻击等。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.10;</span><br><span class="line"></span><br><span class="line">contract Modifiers &#123;</span><br><span class="line">    address public owner;</span><br><span class="line"></span><br><span class="line">    constructor() &#123;</span><br><span class="line">        // 设置合约部署者为合约</span><br><span class="line">        owner = msg.sender;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 创建一个只允许所有者调用函数的</span><br><span class="line">    modifier onlyOwner() &#123;</span><br><span class="line">        require(msg.sender == owner, &quot;You are not the owner&quot;);</span><br><span class="line"></span><br><span class="line">        // 下划线是修饰符内部使用的特殊字符</span><br><span class="line">        // 它告诉 Solidity 此时执行该修饰符所用的函数</span><br><span class="line">        // 因此，这个修饰符将首先执行上述检查</span><br><span class="line">        // 然后运行其余代码</span><br><span class="line">        _;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 创建一个函数并对其应用 onlyOwner 修饰符</span><br><span class="line">    function changeOwner(address _newOwner) public onlyOwner &#123;</span><br><span class="line">        // 只有当修饰符通过检查成功时，我们才会到达这一点</span><br><span class="line">        // 所以这个事务的调用者必须是当前的所有者</span><br><span class="line">        owner = _newOwner;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="活动-Events"><a href="#活动-Events" class="headerlink" title="活动(Events)"></a>活动(Events)</h2><p>事件允许合约在以太坊区块链上执行日志记录。例如，可以稍后解析给定合约的日志以在前端界面上执行更新。它们通常用于允许前端界面侦听特定事件并更新用户界面，或用作廉价的存储形式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.10;</span><br><span class="line"></span><br><span class="line">contract Events &#123;</span><br><span class="line">    // 声明一个记录地址和字符串事件的</span><br><span class="line">    event TestCalled(address sender, string message);</span><br><span class="line"></span><br><span class="line">    function test() public &#123;</span><br><span class="line">        // 记录一个事件</span><br><span class="line">        emit TestCalled(msg.sender, &quot;Someone called test()!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="构造函数-Constructors"><a href="#构造函数-Constructors" class="headerlink" title="构造函数(Constructors)"></a>构造函数(Constructors)</h2><p><code>constructor</code> 是一个可选函数，在首次部署合约时执行。您还可以将参数传递给构造函数。</p>
+<p>P.S. - 如果你还记得，我们实际上在新生跟踪加密货币和 NFT 教程中使用了构造函数！</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.10;</span><br><span class="line"></span><br><span class="line">contract X &#123;</span><br><span class="line">    string public name;</span><br><span class="line"></span><br><span class="line">    // 部署合约时需要提供一个字符串参数</span><br><span class="line">    constructor(string memory _name) &#123;</span><br><span class="line">        // 部署合约时会立即设置</span><br><span class="line">        name = _name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="遗产-Inheritance"><a href="#遗产-Inheritance" class="headerlink" title="遗产(Inheritance)"></a>遗产(Inheritance)</h2><p>继承是一个合同可以继承另一个合同的属性和方法的过程。Solidity 支持多重继承。合约可以使用<code>is</code>关键字继承其他合约。</p>
+<p>注意：我们实际上还在 Freshman Track Cryptocurrency 和 NFT 教程中进行了继承——我们分别从<code>ERC20</code>和<code>ERC721</code>合约继承。</p>
+<p>具有可以被子合约覆盖的函数的父合约必须声明为<code>virtual</code>函数。</p>
+<p>将要覆盖父函数的子合约必须使用<code>override</code>关键字。</p>
+<p>如果父合约以相同的名称共享方法或属性，则继承顺序很重要。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.10;</span><br><span class="line"></span><br><span class="line">/* 继承图</span><br><span class="line">    A</span><br><span class="line">   / \</span><br><span class="line">  B   C</span><br><span class="line"> /   /</span><br><span class="line">D   E</span><br><span class="line"></span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">contract A &#123;</span><br><span class="line">    // 声明一个可以被子函数覆盖的虚函数 foo()</span><br><span class="line">    function foo() public pure virtual returns (string memory) &#123;</span><br><span class="line">        return &quot;A&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract B is A &#123;</span><br><span class="line">    // 覆盖 A.foo();</span><br><span class="line">    // 但也允许这个函数被更多的子函数覆盖</span><br><span class="line">    // 所以我们指定了两个关键字 - virtual 和 override</span><br><span class="line">    function foo() public pure virtual override returns (string memory) &#123;</span><br><span class="line">        return &quot;B&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract C is A &#123;</span><br><span class="line">    // 类似于上面的合约 B</span><br><span class="line">    function foo() public pure virtual override returns (string memory) &#123;</span><br><span class="line">        return &quot;C&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 从多个合约继承时，如果一个函数被多次定义，则使用最右边的父合约的函数。</span><br><span class="line">contract D is B, C &#123;</span><br><span class="line">    // D.foo() 返回 &quot;C&quot;</span><br><span class="line">    // 因为 C 是函数 foo() 的最右边父级；</span><br><span class="line">    // override (B,C) 表示我们要覆盖两个父级中存在的方法</span><br><span class="line">    function foo() public pure override (B, C) returns (string memory) &#123;</span><br><span class="line">        // super 是一个特殊的关键字，用于调用functions</span><br><span class="line">        // 在父合约中</span><br><span class="line">        return super.foo();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract E is C, B &#123;</span><br><span class="line">    // E.foo() 返回 &quot;B&quot;</span><br><span class="line">    // 因为 B 是函数 foo() 的最右边父级；</span><br><span class="line">    function foo() public pure override (C, B) returns (string memory) &#123;</span><br><span class="line">        return super.foo();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="转移-ETH-Transferring-ETH"><a href="#转移-ETH-Transferring-ETH" class="headerlink" title="转移 ETH(Transferring ETH)"></a>转移 ETH(Transferring ETH)</h2><p>有三种方法可以将 ETH 从合约转移到其他地址。但是，其中两种方法在最新版本中不再是 Solidity 推荐的方法，因此我们将跳过它们。</p>
+<p>目前，从合约中转移 ETH 的推荐方式是使用该<code>call</code>功能。该<code>call</code>函数返回一个<code>bool</code>指示传输成功或失败的信息。</p>
+<h3 id="如何在普通的以太坊账户地址接收以太币"><a href="#如何在普通的以太坊账户地址接收以太币" class="headerlink" title="如何在普通的以太坊账户地址接收以太币"></a>如何在普通的以太坊账户地址接收以太币</h3><p>如果将 ETH 转移到普通账户（如 Metamask 地址），您无需做任何特殊的事情，因为所有此类账户都可以自动接受 ETH 转移。</p>
+<h3 id="如何在合约中接收-ETH"><a href="#如何在合约中接收-ETH" class="headerlink" title="如何在合约中接收 ETH"></a>如何在合约中接收 ETH</h3><p>但是，如果您正在编写一份合约，希望能够直接接收 ETH 转账，您必须至少具有以下功能之一</p>
+<ul>
+<li><code>receive() external payable</code></li>
+<li><code>fallback() external payable</code></li>
+</ul>
+<p>如果<code>msg.data</code>是空值则调用<code>receive()</code>，否则使用<code>fallback()</code>。</p>
+<blockquote>
+<p><code>msg.data</code>是一种指定任意数据和事务的方法。您通常不会手动使用它。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.10;</span><br><span class="line"></span><br><span class="line">contract ReceiveEther &#123;</span><br><span class="line">    /*</span><br><span class="line">    调用哪个函数，fallback() 还是 receive()？</span><br><span class="line"></span><br><span class="line">            发送以太币</span><br><span class="line">               |</span><br><span class="line">         msg.data 为空？</span><br><span class="line">              / \</span><br><span class="line">            yes  no</span><br><span class="line">            /     \</span><br><span class="line">receive() 存在吗？  fallback()</span><br><span class="line">         /   \</span><br><span class="line">        是    否</span><br><span class="line">        /      \</span><br><span class="line">    receive()   fallback()</span><br><span class="line">    */</span><br><span class="line"></span><br><span class="line">    // 接收以太币的函数。msg.data 必须为空</span><br><span class="line">    receive() external payable &#123;&#125;</span><br><span class="line"></span><br><span class="line">    // 当 msg.data 不为空时调用 fallback 函数</span><br><span class="line">    fallback() external payable &#123;&#125;</span><br><span class="line"></span><br><span class="line">    function getBalance() public view returns (uint) &#123;</span><br><span class="line">        return address(this).balance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract SendEther &#123;</span><br><span class="line">    function sendEth(address payable _to) public payable &#123;</span><br><span class="line">        // 只需将在此应付函数中收到的 ETH 转发到给定地址</span><br><span class="line">        uint amountToSend = msg.value;</span><br><span class="line">        // call 返回一个 bool 值，指定成功或失败</span><br><span class="line">        (bool success, bytes memory data) = _to.call&#123;value: msg.value&#125;(&quot;&quot;);</span><br><span class="line">        require(success == true, &quot;Failed to send ETH&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="调用外部合约-Calling-External-Contracts"><a href="#调用外部合约-Calling-External-Contracts" class="headerlink" title="调用外部合约(Calling External Contracts)"></a>调用外部合约(Calling External Contracts)</h2><p>合约可以通过调用其他合约实例上的函数来调用其他合约，例如<code>A.foo(x, y, z)</code>. 为此，您必须有一个接口<code>A</code>来告诉您的合约存在哪些功能。Solidity 中的接口行为类似于头文件，并且与我们在从前端调用合约时使用的 ABI 具有相似的用途。这允许合约知道如何编码和解码函数参数并返回值以调用外部合约。</p>
+<p>注意：您使用的接口不需要很广泛。即它们不一定需要包含外部合同中存在的所有功能 - 只需要您可能在某个时候调用的那些功能。</p>
+<p>假设有一个外部<code>ERC20</code>合约，我们有兴趣调用该<code>balanceOf</code>函数来检查我们合约中给定地址的余额。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.10;</span><br><span class="line"></span><br><span class="line">interface MinimalERC20 &#123;</span><br><span class="line">    // 只需在接口包含我们感兴趣的函数</span><br><span class="line">    function balanceOf(address account) external view returns (uint256);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract MyContract &#123;</span><br><span class="line">    MinimalERC20 externalContract;</span><br><span class="line"></span><br><span class="line">    constructor(address _externalContract) &#123;</span><br><span class="line">        // 初始化一个 MinimalERC20 合约实例</span><br><span class="line">        externalContract = MinimalERC20(_externalContract);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function mustHaveSomeBalance() public &#123;</span><br><span class="line">        // 要求该交易的调用者在外部 ERC20 合约中的代币余额为非零</span><br><span class="line">        uint balance = externalContract.balanceOf(msg.sender);</span><br><span class="line">        require(balance &gt; 0, &quot;You don&#x27;t own any tokens of external contract&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Import-声明-Import-Statements"><a href="#Import-声明-Import-Statements" class="headerlink" title="Import 声明(Import Statements)"></a>Import 声明(Import Statements)</h2><p>为了保持代码的可读性，您可以将 Solidity 代码拆分为多个文件。Solidity 允许导入本地和外部文件。</p>
+<h3 id="本地-Import"><a href="#本地-Import" class="headerlink" title="本地 Import"></a>本地 Import</h3><p>假设我们有一个这样的文件夹结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">├── Import.sol</span><br><span class="line">└── Foo.sol</span><br></pre></td></tr></table></figure>
+
+<p><code>Foo.sol</code> 在哪里</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.10;</span><br><span class="line"></span><br><span class="line">contract Foo &#123;</span><br><span class="line">    string public name = &quot;Foo&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们可以像这样导入<code>Foo</code>和使用它<code>Import.sol</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.10;</span><br><span class="line"></span><br><span class="line">// 从当前目录导入 Foo.sol</span><br><span class="line">import &quot;./Foo.sol&quot;;</span><br><span class="line"></span><br><span class="line">contract Import &#123;</span><br><span class="line">    // 初始化 Foo.sol</span><br><span class="line">    Foo public foo = new Foo();</span><br><span class="line"></span><br><span class="line">    // 通过获取 Foo.sol 的名称来测试它。</span><br><span class="line">    function getFooName() public view returns (string memory) &#123;</span><br><span class="line">        return foo.name();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：当我们使用 Hardhat 时，我们也可以通过 将合约安装为节点模块<code>npm</code>，然后从<code>node_modules</code>文件夹中导入合约。这些也算作本地导入，因为从技术上讲，当您安装软件包时，您正在将合同下载到本地计算机。</p>
+<h3 id="外部-Import"><a href="#外部-Import" class="headerlink" title="外部 Import"></a>外部 Import</h3><p>您也可以通过简单地复制 URL 从 Github 导入。我们在新生课程的加密货币和 NFT 教程中做到了这一点。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// https://github.com/owner/repo/blob/branch/path/to/Contract.sol</span><br><span class="line">import &quot;https://github.com/owner/repo/blob/branch/path/to/Contract.sol&quot;;</span><br><span class="line"></span><br><span class="line">// 示例从 openzeppelin-contract repo 导入 ERC20.sol</span><br><span class="line">// https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol</span><br><span class="line">import &quot;https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol&quot;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Solidity-库"><a href="#Solidity-库" class="headerlink" title="Solidity 库"></a>Solidity 库</h2><p>库类似于 Solidity 中的合约，但有一些限制。库不能包含任何状态变量，也不能转移 ETH。</p>
+<p>通常，库用于向您的合约添加辅助函数。Solidity 世界中一个非常常用的库是<code>SafeMath</code>- 它确保数学运算不会导致整数下溢或溢出。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.10;</span><br><span class="line"></span><br><span class="line">library SafeMath &#123;</span><br><span class="line">    function add(uint x, uint y) internal pure returns (uint) &#123;</span><br><span class="line">        uint z = x + y;</span><br><span class="line">        // 如果 z 溢出，抛出错误</span><br><span class="line">        require(z &gt;= x, &quot;uint overflow&quot;);</span><br><span class="line">        return z;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract TestSafeMath &#123;</span><br><span class="line">    function testAdd(uint x, uint y) public pure returns (uint) &#123;</span><br><span class="line">        return SafeMath.add(x, y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h2><ol>
+<li><p>🤔 映射(Mappings)的行为类似于哪种数据结构？</p>
+<p>A: Arrays</p>
+<p>B: Trees</p>
+<p>C: Graphs</p>
+<p>D: Hashmaps</p>
+</li>
+<li><p>🤔 枚举(enums)有什么用？</p>
+<p>A: 将变量限制为仅具有几个预定义值之一。</p>
+<p>B: 将函数限制为仅具有几个预定义值之一</p>
+<p>C: 将接口限制为仅具有几个预定义值之一</p>
+</li>
+<li><p>🤔 结构(structs)是用来做什么的？</p>
+<p>A: 创建自定义数据类型</p>
+<p>B: 限制变量只有几个预定义的值</p>
+<p>C: 存储键值对</p>
+<p>D: 登录到区块链</p>
+</li>
+<li><p>🤔 纯函数(Pure functions)用于将数据写入区块链</p>
+<p>A: 是的</p>
+<p>B: 错误</p>
+</li>
+<li><p>🤔 视图函数(View functions)不会改变任何状态值</p>
+<p>A: 是的</p>
+<p>B: 错误</p>
+</li>
+<li><p>🤔 修饰符(modifiers)不用于什么？</p>
+<p>A: 限制对某些功能的访问</p>
+<p>B: 验证输入参数</p>
+<p>C: 功能替换</p>
+<p>D: 防止某些类型的攻击</p>
+</li>
+<li><p>🤔 事件(events)有什么用？</p>
+<p>A: 登录到区块链</p>
+<p>B: 创建自定义数据类型</p>
+<p>C: 创建在特定时间间隔后运行的函数</p>
+</li>
+<li><p>🤔 构造函数(constructor)是可选的吗？</p>
+<p>A: 是的</p>
+<p>B: 错误</p>
+</li>
+<li><p>🤔 contract B is A { }</p>
+<p>A: A 继承了 B</p>
+<p>B: B 继承 A</p>
+<p>C: A 和 B 是同一份合约</p>
+</li>
+<li><p>🤔 你必须有一个智能合约才能将 ETH 发送到另一个 ETH 地址</p>
+<p>A: 是的</p>
+<p>B: 错误</p>
+</li>
+<li><p>🤔 如果你想让你的合约直接接收 ETH 转账，你必须使用“receive() external pay”或“fallback() external pay”</p>
+<p>A: 是的</p>
+<p>B: 错误</p>
+</li>
+<li><p>🤔 库可以包含状态变量</p>
+<p>A: 是的</p>
+<p>B: 错误</p>
+</li>
+</ol>
+<blockquote>
+<p>参考答案:</p>
+<ol>
+<li>D</li>
+<li>A</li>
+<li>A</li>
+<li>B</li>
+<li>A</li>
+<li>C</li>
+<li>A</li>
+<li>A</li>
+<li>B</li>
+<li>B</li>
+<li>A</li>
+<li>B</li>
+</ol>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/web3/" rel="tag"># web3</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/08/29/web3-sophomore-level5/" rel="prev" title="以太坊虚拟机 (EVM)">
+                  <i class="fa fa-angle-left"></i> 以太坊虚拟机 (EVM)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/09/01/web3-sophomore-level7/" rel="next" title="入门混合主题">
+                  入门混合主题 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"songhanlin","repo":"blog","client_id":"58797e27de182d42ab95","client_secret":"b04eb623dae17584fe8c2246c7af7dc5ea3f1b2b","admin_user":"songhanlin","distraction_free_mode":true,"proxy":"https://glacial-dawn-82467.herokuapp.com/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"bd24360fc8230cba153a05e4c566e29f"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

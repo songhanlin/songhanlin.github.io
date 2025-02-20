@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="PQtVM4HDVB0BsS4YeoZ0tnhdbsrCEuwdFaFEgWztqTA">
+  <meta name="baidu-site-verification" content="code-bx6Ior1Y4k">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.julysong.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="WEB3系列教程之入门篇">
+<meta property="og:type" content="article">
+<meta property="og:title" content="什么是采矿?">
+<meta property="og:url" content="http://blog.julysong.com/2022/08/27/web3-sophomore-level3/index.html">
+<meta property="og:site_name" content="骑驴码梦">
+<meta property="og:description" content="WEB3系列教程之入门篇">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-27T01:50:02.000Z">
+<meta property="article:modified_time" content="2025-02-20T06:39:02.269Z">
+<meta property="article:author" content="TeenSong">
+<meta property="article:tag" content="web3">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://blog.julysong.com/2022/08/27/web3-sophomore-level3/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://blog.julysong.com/2022/08/27/web3-sophomore-level3/","path":"2022/08/27/web3-sophomore-level3/","title":"什么是采矿?"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>什么是采矿? | 骑驴码梦</title>
+  
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+window.onload = function(e){
+  var urls = "https://picsum.photos/"
+  + window.screen.availWidth +
+  "/" + window.screen.availHeight + "/?random";
+  document.body.style.backgroundImage='url('+urls+')';
+}
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126093412-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-126093412-1');
+</script>
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="骑驴码梦" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">骑驴码梦</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">我一进门就看到常威在打来福~</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%BF%E5%B7%A5%E4%B8%BA%E4%BB%80%E4%B9%88%E5%AD%98%E5%9C%A8%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">矿工为什么存在？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%89%E4%BA%BA%E4%BC%9A%E6%88%90%E4%B8%BA%E7%9F%BF%E5%B7%A5%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">为什么有人会成为矿工？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%81%E8%83%BD%E6%88%90%E4%B8%BA%E7%9F%BF%E5%B7%A5%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">谁能成为矿工？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%87%E7%9F%BF%E6%88%90%E6%9C%AC"><span class="nav-number">4.</span> <span class="nav-text">采矿成本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E5%A4%AA%E5%9D%8A%E4%BA%A4%E6%98%93%E6%98%AF%E5%A6%82%E4%BD%95%E5%BC%80%E9%87%87%E7%9A%84%EF%BC%9F"><span class="nav-number">5.</span> <span class="nav-text">以太坊交易是如何开采的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%90%8C%E7%9A%84%E9%87%87%E7%9F%BF%E6%96%B9%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">不同的采矿方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%BF%E6%B1%A0"><span class="nav-number">7.</span> <span class="nav-text">矿池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%96%E7%9F%BF%E5%8F%AF%E8%A7%86%E5%8C%96%E6%BC%94%E7%A4%BA"><span class="nav-number">8.</span> <span class="nav-text">挖矿可视化演示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%84%E6%BA%90"><span class="nav-number">9.</span> <span class="nav-text">资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="nav-number">10.</span> <span class="nav-text">练习题</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="TeenSong"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">TeenSong</p>
+  <div class="site-description" itemprop="description">常威, 你还说你不会武功</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">59</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/songhanlin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;songhanlin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/e05ddaee7769" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;e05ddaee7769" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i>简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_28153553" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_28153553" rel="noopener me" target="_blank"><i class="fa fa-copyright fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/song_hanlin/activities" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;song_hanlin&#x2F;activities" rel="noopener me" target="_blank"><i class="fa fa-mortar-board fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml" rel="noopener me"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.julysong.com/2022/08/27/web3-sophomore-level3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="TeenSong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="骑驴码梦">
+      <meta itemprop="description" content="常威, 你还说你不会武功">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="什么是采矿? | 骑驴码梦">
+      <meta itemprop="description" content="WEB3系列教程之入门篇">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          什么是采矿?
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-08-27 09:50:02" itemprop="dateCreated datePublished" datetime="2022-08-27T09:50:02+08:00">2022-08-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-02-20 14:39:02" itemprop="dateModified" datetime="2025-02-20T14:39:02+08:00">2025-02-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/web3%E7%B3%BB%E5%88%97%E4%B9%8B%E5%85%A5%E9%97%A8%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">web3系列之入门篇</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">WEB3系列教程之入门篇</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>原文地址: <a target="_blank" rel="noopener" href="https://learnweb3.io/courses/c1d7081b-63a9-4c6e-b35c-9fcbbad418b2/lessons/872a5d9b-7f4a-4f60-a7d2-9682067b117d">What is Mining?</a></p>
+<p>翻译: JulySong</p>
+</blockquote>
+<p>挖矿是帮助创建新交易块以添加到以太坊区块链网络的过程。它还有助于保护网络免受攻击。</p>
+<p>就像比特币一样，以太坊目前使用工作量证明（PoW）共识机制，该机制严重依赖于挖矿。以太坊矿工利用他们的时间和计算能力来处理新的传入交易并产生新的区块。</p>
+<blockquote>
+<p>以太坊 2.0（计划于 2022 年中后期）将用权益证明(Pos)取代工作量证明(PoW)，这将显着改变新区块的生产方式。稍后我们将讨论 Eth2。</p>
+</blockquote>
+<h2 id="矿工为什么存在？"><a href="#矿工为什么存在？" class="headerlink" title="矿工为什么存在？"></a>矿工为什么存在？</h2><p>大多数人认为挖矿只是添加新交易和创造新硬币的一种方式。但是，我们在上面提到过，挖矿也有助于保持网络安全。这是为什么？</p>
+<p>在像以太坊这样的去中心化系统中，我们需要确保世界上的每个人都同意交易的顺序。</p>
+<p>例如，如果 Alice 向 Bob 发送了 1 ETH，他又发送给 Charlie，则交易的顺序需要如下</p>
+<p>Alice –&gt; Bob 1 ETH</p>
+<p>Bob –&gt; Charlie 1 ETH</p>
+<p>任何其他交易订单都不起作用，重要的是每个人都同意这一点。</p>
+<p>因此，矿工还负责验证区块链网络上的加密货币交易并将其添加到分类账中。重要的是，这个过程可以防止数字货币的<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Double-spending">双重支出</a>。</p>
+<h2 id="为什么有人会成为矿工？"><a href="#为什么有人会成为矿工？" class="headerlink" title="为什么有人会成为矿工？"></a>为什么有人会成为矿工？</h2><p>就像实物货币一样，当有人执行交易时，必须更新区块链的状态以反映所涉及的每个账户的借方&#x2F;贷方。</p>
+<p>然而，数字平台容易受到攻击，并且可以被操纵。因此，矿工不仅提出新区块并验证所有交易，他们还需要出示合法性证书，证明他们提议的区块中的所有交易都是有效的。</p>
+<p>生成此证书是一项计算难度大且复杂的挑战。这就是所有工作量证明的内容。我们将在稍后的教程中对此进行更深入的讨论，但现在，只知道生成此证书非常困难。</p>
+<p>但是，有了合法性证书，第三方就很容易验证它是否有效。</p>
+<p>对于在生产这些证书和执行交易方面辛勤工作的矿工，他们以新币的形式获得奖励。在以太坊中，当矿工成功挖出一个区块时，他们会因辛勤工作而获得 2 ETH。以太坊以 5 ETH 的整体奖励开始，但随着 2017 年拜占庭升级(Byzantium upgrade)而降低到 3 ETH，然后随着 2019 年君士坦丁堡升级(Constantinople upgrade)再次降至 2 ETH。</p>
+<p>由于去中心化系统缺乏中央权威，因此挖矿过程对网络的安全性和有效性至关重要。因此，挖矿奖励作为参与交易验证过程的激励。</p>
+<h2 id="谁能成为矿工？"><a href="#谁能成为矿工？" class="headerlink" title="谁能成为矿工？"></a>谁能成为矿工？</h2><p>从技术上讲，任何人都可以通过运行以太坊节点软件成为以太坊上的矿工。然而，并不是每个人都能从以太坊中获利。</p>
+<p>在大多数情况下，矿工购买专门的硬件来开采有利可图。普通计算机不太可能获得足够的采矿奖励来支付采矿相关的电气和硬件成本。</p>
+<h2 id="采矿成本"><a href="#采矿成本" class="headerlink" title="采矿成本"></a>采矿成本</h2><ul>
+<li>构建和维护硬件所需的硬件成本</li>
+<li>为采矿设备供电的电力成本</li>
+<li>支持采矿设备的潜在设备成本（冷却器、通风机、能量监视器、电线、太阳能农场等）</li>
+</ul>
+<p>要探索采矿盈利能力，您可以使用<a target="_blank" rel="noopener" href="https://etherscan.io/ether-mining-calculator">这样的计算器</a></p>
+<h2 id="以太坊交易是如何开采的？"><a href="#以太坊交易是如何开采的？" class="headerlink" title="以太坊交易是如何开采的？"></a>以太坊交易是如何开采的？</h2><ol>
+<li>用户从他们的账户签署交易请求</li>
+<li>交易通过节点广播到以太坊网络</li>
+<li>在听到新交易后，网络中的每个节点都会将交易添加到它们的本地 mempool（内存池）中。内存池是节点已经听说但尚未包含在区块中的交易列表。</li>
+<li>在某些时候，矿工将大量交易分组到一个潜在的区块中，以最大限度地提高他们赚取的交易费用，同时保持在区块气体限制之下。然后，<ol>
+<li>矿工验证每笔交易的有效性。这包括检查没有人试图转移他们不拥有的以太，或者签名无效，或者请求格式不正确等。</li>
+<li>然后矿工在他们的以太坊虚拟机（EVM）的本地副本上执行交易。它将每个此类请求的交易费用奖励给他们自己的账户。</li>
+<li>在区块中的所有交易都经过验证并在其本地 EVM 上执行之后，矿工开始为整个区块创建工作证明合法性证明。</li>
+</ol>
+</li>
+<li>最终，矿工完成为区块生成合法性证书，其中包括用户的交易。然后矿工将完成的区块广播给全世界，其中包括证书和区块链的新状态信息。</li>
+<li>其他节点听到有关新块的消息。他们验证证书（这很容易做到），在他们的 EVM 本地副本上执行区块中的所有交易，并验证他们的 EVM 状态是否与矿工提议的状态相匹配。</li>
+<li>一旦其他节点验证了矿工提出的所有建议，他们就会将此块添加到他们的区块链节点，并接受新的 EVM 状态作为“区块链的当前状态”。</li>
+<li>每个节点都会从其本地内存池中删除块中包含的交易。</li>
+<li>这个过程重复。</li>
+</ol>
+<h2 id="不同的采矿方法"><a href="#不同的采矿方法" class="headerlink" title="不同的采矿方法"></a>不同的采矿方法</h2><p>在该技术的早期，当成为一名矿工非常容易时，大多数矿工使用在台式机和笔记本电脑上运行的基于 CPU 的挖矿。然而，在当今时代，CPU 挖矿非常缓慢且不切实际，因为即使是少量的挖矿奖励也可能需要几个月的时间，同时还要持续以 100% 的容量运行 CPU 并支付高昂的电力成本。</p>
+<p>基于 GPU 的挖掘是当今最常见的方法。这种方法可以通过将多个 GPU 放在一个采矿设备下，使它们全部并行工作，从而提高一个设备的整体容量和吞吐量，从而最大限度地提高计算能力。</p>
+<p>专用集成电路（ASIC）挖矿也很受欢迎。这些是专门为挖掘以太坊而设计的硬件芯片。您可以在线为最流行的区块链网络购买 ASIC。然而，它们很昂贵，而且随着越来越多的矿工加入网络并且挖矿变得更加困难，硬件很快就会过时。一个全新的 ASIC 通常最多只能使用 1-2 年。</p>
+<p>目前正在增长的另一个选择是云挖矿，它允许个人矿工利用专用挖矿设施的力量，而无需拥有任何硬件。</p>
+<h2 id="矿池"><a href="#矿池" class="headerlink" title="矿池"></a>矿池</h2><p>大多数个体矿工没有足够的资源来建立拥有数千个 GPU 和 ASIC 的大型采矿设施。矿池允许矿工组合他们的计算资源，以增加他们挖掘区块的机会。如果矿池中的任何人成功开采了一个区块，则奖励将根据他们为矿池贡献的计算能力按比例分配给矿池中的每个人。</p>
+<h2 id="挖矿可视化演示"><a href="#挖矿可视化演示" class="headerlink" title="挖矿可视化演示"></a>挖矿可视化演示</h2><p>观看此视频以获得采矿过程的可视化演示。</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=zcX7OJ-L8XQ">视频</a></p>
+<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><p>以下是额外推荐的但可选的阅读和查看，以了解有关采矿的更多信息：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.ethhub.io/using-ethereum/mining/">挖以太坊意味着什么？</a></li>
+<li><a target="_blank" rel="noopener" href="https://etherscan.io/stat/miner?range=7&blocktype=blocks">顶级以太坊矿工</a></li>
+<li><a target="_blank" rel="noopener" href="https://etherscan.io/ether-mining-calculator">Etherscan 挖矿计算器</a></li>
+</ul>
+<hr>
+<h2 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h2><ol>
+<li><p>🤔 以太坊目前使用什么共识机制？</p>
+<p>A: 工作证明(PoW: Proof of Work)</p>
+<p>B: 股权证明(PoS: Proof of Stake)</p>
+<p>C: 权威证明(PoA: Proof of Authority)</p>
+</li>
+<li><p>🤔 网络中存在矿工，保证用户可控</p>
+<p>A: 是的</p>
+<p>B: 错误</p>
+</li>
+<li><p>🤔 矿工获得报酬以开采区块</p>
+<p>A: 是的</p>
+<p>B: 错误</p>
+</li>
+<li><p>🤔 以太坊的挖矿奖励大致为：</p>
+<p>A: 2 ETH&#x2F;Block</p>
+<p>B: 5 ETH&#x2F;Block</p>
+<p>C: 1 ETH&#x2F;Block</p>
+</li>
+<li><p>🤔 成为矿工对任何人来说都是非常有利可图的</p>
+<p>A: 是的</p>
+<p>B: 错误</p>
+</li>
+<li><p>🤔 Mempool 是已挖掘的交易列表</p>
+<p>A: 是的</p>
+<p>B: 错误</p>
+</li>
+<li><p>🤔 哪种挖矿方式更赚钱？</p>
+<p>A: 使用 CPUs</p>
+<p>B: 使用 GPUs</p>
+<p>C: 使用 APUs</p>
+</li>
+<li><p>🤔 专门为挖以太坊而设计的芯片是什么？</p>
+<p>A: APUs</p>
+<p>B: ASICs</p>
+<p>C: GPUs</p>
+</li>
+<li><p>🤔 矿池帮助个体矿工结合他们的计算工作来增加挖掘区块的机会</p>
+<p>A: 是的</p>
+<p>B: 错误</p>
+</li>
+<li><p>🤔 以太坊将在 2022 年后转向权威证明(PoA)</p>
+<p>A: 是的</p>
+<p>B: 错误</p>
+</li>
+</ol>
+<blockquote>
+<p>参考答案:</p>
+<ol>
+<li>A</li>
+<li>B</li>
+<li>A</li>
+<li>A</li>
+<li>B</li>
+<li>B</li>
+<li>B</li>
+<li>B</li>
+<li>A</li>
+<li>B</li>
+</ol>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/web3/" rel="tag"># web3</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/08/25/web3-sophomore-level2/" rel="prev" title="什么是Gas?">
+                  <i class="fa fa-angle-left"></i> 什么是Gas?
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/08/29/web3-sophomore-level4/" rel="next" title="什么是工作证明？">
+                  什么是工作证明？ <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"songhanlin","repo":"blog","client_id":"58797e27de182d42ab95","client_secret":"b04eb623dae17584fe8c2246c7af7dc5ea3f1b2b","admin_user":"songhanlin","distraction_free_mode":true,"proxy":"https://glacial-dawn-82467.herokuapp.com/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"2782d5663883d14fc30547e6f65034bd"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

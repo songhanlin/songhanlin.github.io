@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="PQtVM4HDVB0BsS4YeoZ0tnhdbsrCEuwdFaFEgWztqTA">
+  <meta name="baidu-site-verification" content="code-bx6Ior1Y4k">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.julysong.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法复杂度初探">
+<meta property="og:url" content="http://blog.julysong.com/2022/05/14/algorithm-complexity/index.html">
+<meta property="og:site_name" content="骑驴码梦">
+<meta property="og:description" content="学习笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/songhanlin/hexo-image/blob/master/algorithm-complexity/1.png?raw=true">
+<meta property="og:image" content="https://github.com/songhanlin/hexo-image/blob/master/algorithm-complexity/2.png?raw=true">
+<meta property="og:image" content="https://github.com/songhanlin/hexo-image/blob/master/algorithm-complexity/3.png?raw=true">
+<meta property="og:image" content="https://github.com/songhanlin/hexo-image/blob/master/algorithm-complexity/4.png?raw=true">
+<meta property="og:image" content="https://github.com/songhanlin/hexo-image/blob/master/algorithm-complexity/5.png?raw=true">
+<meta property="og:image" content="https://github.com/songhanlin/hexo-image/blob/master/algorithm-complexity/6.png?raw=true">
+<meta property="article:published_time" content="2022-05-14T06:35:04.000Z">
+<meta property="article:modified_time" content="2025-02-20T06:39:02.256Z">
+<meta property="article:author" content="TeenSong">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/songhanlin/hexo-image/blob/master/algorithm-complexity/1.png?raw=true">
+
+
+<link rel="canonical" href="http://blog.julysong.com/2022/05/14/algorithm-complexity/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://blog.julysong.com/2022/05/14/algorithm-complexity/","path":"2022/05/14/algorithm-complexity/","title":"算法复杂度初探"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>算法复杂度初探 | 骑驴码梦</title>
+  
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+window.onload = function(e){
+  var urls = "https://picsum.photos/"
+  + window.screen.availWidth +
+  "/" + window.screen.availHeight + "/?random";
+  document.body.style.backgroundImage='url('+urls+')';
+}
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126093412-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-126093412-1');
+</script>
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="骑驴码梦" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">骑驴码梦</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">我一进门就看到常威在打来福~</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BF%BB%E8%AF%91"><span class="nav-number">1.</span> <span class="nav-text">翻译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-1-5-7-%E4%B8%AD-%E6%9C%80%E5%A4%A7%E7%9A%84%E6%95%B0%E5%AD%97%E6%98%AF%E5%A4%9A%E5%B0%91-T-n-O-n-T-n-%E8%A1%A8%E7%A4%BA%E6%AC%A1%E6%95%B0-O-n-%E8%A1%A8%E7%A4%BA%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number"></span> <span class="nav-text">[3, 2, 1, 5, 7]中, 最大的数字是多少123456789public int max(int[] nums) {    int ans &#x3D; nums[0];    for (int i : nums) {        if (i &gt; ans) {            ans &#x3D; i;        }    }    return ans;}&gt; T(n)&#x3D;O(n)&gt; T(n)表示次数, O(n)表示时间复杂度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E9%98%B6-Linear"><span class="nav-number">1.</span> <span class="nav-text">线性阶(Linear)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8A%E8%BF%B0%E7%9A%84%E8%BF%99%E7%A7%8D%E5%8F%AB%E5%81%9A%E7%BA%BF%E6%80%A7%E9%98%B6%E5%9C%A8%E4%B8%80%E4%B8%AA%E9%95%BF%E5%BA%A6%E4%B8%BAn%E7%9A%84%E8%8C%83%E5%9B%B4%E5%86%85-%E6%88%91%E4%BB%AC%E5%8F%AA%E9%9C%80%E8%A6%81%E6%9F%A5%E6%89%BE%E4%BB%96%E7%9A%84%E4%B8%80%E5%8D%8A-%E5%88%99%E5%9B%A0%E4%B8%BA2%E4%B8%BA%E5%B8%B8%E9%87%8F-%E5%9B%A0%E6%AD%A4%E5%8F%AF%E4%BB%A5%E5%8E%BB%E9%99%A4-%E5%8D%B3"><span class="nav-number"></span> <span class="nav-text">上述的这种叫做线性阶在一个长度为n的范围内, 我们只需要查找他的一半,则因为2为常量, 因此可以去除, 即:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E6%95%B0%E9%98%B6-Constant"><span class="nav-number">1.</span> <span class="nav-text">常数阶(Constant)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#O-1-%E5%B8%B8%E6%95%B0%E9%98%B6s-n-1-2-3-%E2%80%A6-n-n-n-1-2"><span class="nav-number"></span> <span class="nav-text">O(1)常数阶s(n)&#x3D;1+2+3+…+n&#x3D;n(n+1)&#x2F;2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%95%B0%E9%98%B6-Logarithmic"><span class="nav-number">1.</span> <span class="nav-text">对数阶(Logarithmic)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B3%E6%96%B9%E9%98%B6-quadratic"><span class="nav-number">2.</span> <span class="nav-text">平方阶(quadratic)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E5%AF%BC%E5%85%AC%E5%BC%8F%E5%A6%82%E4%B8%8B2%E5%92%8C1%E9%83%BD%E6%98%AF%E5%B8%B8%E9%87%8F-%E5%9B%A0%E6%AD%A4%E8%88%8D%E5%BC%83-%E5%8D%B3O-n%C2%B2"><span class="nav-number"></span> <span class="nav-text">推导公式如下2和1都是常量, 因此舍弃, 即O(n²)</span></a></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="TeenSong"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">TeenSong</p>
+  <div class="site-description" itemprop="description">常威, 你还说你不会武功</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">59</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/songhanlin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;songhanlin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/e05ddaee7769" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;e05ddaee7769" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i>简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_28153553" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_28153553" rel="noopener me" target="_blank"><i class="fa fa-copyright fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/song_hanlin/activities" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;song_hanlin&#x2F;activities" rel="noopener me" target="_blank"><i class="fa fa-mortar-board fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml" rel="noopener me"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.julysong.com/2022/05/14/algorithm-complexity/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="TeenSong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="骑驴码梦">
+      <meta itemprop="description" content="常威, 你还说你不会武功">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="算法复杂度初探 | 骑驴码梦">
+      <meta itemprop="description" content="学习笔记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          算法复杂度初探
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-14 14:35:04" itemprop="dateCreated datePublished" datetime="2022-05-14T14:35:04+08:00">2022-05-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-02-20 14:39:02" itemprop="dateModified" datetime="2025-02-20T14:39:02+08:00">2025-02-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">学习笔记</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="翻译"><a href="#翻译" class="headerlink" title="翻译"></a>翻译</h3><p>algorithm complexity: 算法复杂度</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><h2 id="3-2-1-5-7-中-最大的数字是多少-T-n-O-n-T-n-表示次数-O-n-表示时间复杂度"><a href="#3-2-1-5-7-中-最大的数字是多少-T-n-O-n-T-n-表示次数-O-n-表示时间复杂度" class="headerlink" title="[3, 2, 1, 5, 7]中, 最大的数字是多少&gt; T(n)&#x3D;O(n)&gt; T(n)表示次数, O(n)表示时间复杂度"></a>[3, 2, 1, 5, 7]中, 最大的数字是多少<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public int max(int[] nums) &#123;</span><br><span class="line">    int ans = nums[0];</span><br><span class="line">    for (int i : nums) &#123;</span><br><span class="line">        if (i &gt; ans) &#123;</span><br><span class="line">            ans = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>&gt; T(n)&#x3D;O(n)<br>&gt; T(n)表示次数, O(n)表示时间复杂度</h2><h3 id="线性阶-Linear"><a href="#线性阶-Linear" class="headerlink" title="线性阶(Linear)"></a>线性阶(Linear)</h3><h2 id="上述的这种叫做线性阶在一个长度为n的范围内-我们只需要查找他的一半-则因为2为常量-因此可以去除-即"><a href="#上述的这种叫做线性阶在一个长度为n的范围内-我们只需要查找他的一半-则因为2为常量-因此可以去除-即" class="headerlink" title="上述的这种叫做线性阶在一个长度为n的范围内, 我们只需要查找他的一半,则因为2为常量, 因此可以去除, 即:"></a>上述的这种叫做线性阶<br>在一个长度为n的范围内, 我们只需要查找他的一半,<br>则<br><img src="https://github.com/songhanlin/hexo-image/blob/master/algorithm-complexity/1.png?raw=true" width="400" hegiht="300"  /><br>因为2为常量, 因此可以去除, 即:<br><img src="https://github.com/songhanlin/hexo-image/blob/master/algorithm-complexity/2.png?raw=true" width="400" hegiht="300"  /></h2><h3 id="常数阶-Constant"><a href="#常数阶-Constant" class="headerlink" title="常数阶(Constant)"></a>常数阶(Constant)</h3><h2 id="O-1-常数阶s-n-1-2-3-…-n-n-n-1-2"><a href="#O-1-常数阶s-n-1-2-3-…-n-n-n-1-2" class="headerlink" title="O(1)常数阶s(n)&#x3D;1+2+3+…+n&#x3D;n(n+1)&#x2F;2"></a>O(1)常数阶<br>s(n)&#x3D;1+2+3+…+n&#x3D;n(n+1)&#x2F;2</h2><h3 id="对数阶-Logarithmic"><a href="#对数阶-Logarithmic" class="headerlink" title="对数阶(Logarithmic)"></a>对数阶(Logarithmic)</h3><p>O(log2 n)对数阶(以2为底n的对数)<br>二分查找<br>在0~8之间查找某个数字, 例如7, 至多会查找3次<br><img src="https://github.com/songhanlin/hexo-image/blob/master/algorithm-complexity/3.png?raw=true" width="400" hegiht="300"  /><br><img src="https://github.com/songhanlin/hexo-image/blob/master/algorithm-complexity/4.png?raw=true" width="300" hegiht="300"  /></p>
+<blockquote>
+<p>推导: 16查找多少次(4), 128查找多少次(7)</p>
+</blockquote>
+<hr>
+<h3 id="平方阶-quadratic"><a href="#平方阶-quadratic" class="headerlink" title="平方阶(quadratic)"></a>平方阶(quadratic)</h3><p>O(n^2)平方阶<br>1,2,3三个数字总共有多少个组合?<br>[1,2],[2,3],[1,3]<br>[2,1],[3,2],[3,1]<br>推导公式为n*(n-1), 去除重复组合部分为<br><img src="https://github.com/songhanlin/hexo-image/blob/master/algorithm-complexity/5.png?raw=true" width="300" hegiht="300"  /><br>对一组数字进行升序排序,<br>[3,4,2]<br>    3比4—&gt;[3,4,2]<br>    3比2—&gt;[2,4,3]<br>    4比3—&gt;[2,3,4]<br>对一个N位的数组, 设两个数字i,j进行比较<br>i&#x3D;nums[n];<br>j&#x3D;nums[n-1],nums[n-2]….n;</p>
+<h2 id="推导公式如下2和1都是常量-因此舍弃-即O-n²"><a href="#推导公式如下2和1都是常量-因此舍弃-即O-n²" class="headerlink" title="推导公式如下2和1都是常量, 因此舍弃, 即O(n²)"></a>推导公式如下<br><img src="https://github.com/songhanlin/hexo-image/blob/master/algorithm-complexity/6.png?raw=true" width="300" hegiht="300"  /><br>2和1都是常量, 因此舍弃, 即<br>O(n²)</h2><p>类似的还有O(n³)立方阶(cubic), 线性对数阶O(n log2n)…，<br>k次方阶O(n^k),指数阶O(2^n)。随着问题规模n的不断增大，上述时间复杂度不断增大，算法的执行效率越低。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/05/13/math-induction/" rel="prev" title="数学归纳法简介(数列求和, 数列平方和)">
+                  <i class="fa fa-angle-left"></i> 数学归纳法简介(数列求和, 数列平方和)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/05/19/merge-sorted-array/" rel="next" title="合并两个有序的数列">
+                  合并两个有序的数列 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"songhanlin","repo":"blog","client_id":"58797e27de182d42ab95","client_secret":"b04eb623dae17584fe8c2246c7af7dc5ea3f1b2b","admin_user":"songhanlin","distraction_free_mode":true,"proxy":"https://glacial-dawn-82467.herokuapp.com/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"5e8762f4b648a6bdb9f0be3f5999a2c1"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

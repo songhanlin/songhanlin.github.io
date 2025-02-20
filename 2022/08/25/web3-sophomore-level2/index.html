@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="PQtVM4HDVB0BsS4YeoZ0tnhdbsrCEuwdFaFEgWztqTA">
+  <meta name="baidu-site-verification" content="code-bx6Ior1Y4k">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.julysong.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="WEB3系列教程之入门篇">
+<meta property="og:type" content="article">
+<meta property="og:title" content="什么是Gas?">
+<meta property="og:url" content="http://blog.julysong.com/2022/08/25/web3-sophomore-level2/index.html">
+<meta property="og:site_name" content="骑驴码梦">
+<meta property="og:description" content="WEB3系列教程之入门篇">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/songhanlin/hexo-image/blob/master/sophomore-level2/1.png?raw=true">
+<meta property="article:published_time" content="2022-08-25T07:32:20.000Z">
+<meta property="article:modified_time" content="2025-02-20T06:39:02.268Z">
+<meta property="article:author" content="TeenSong">
+<meta property="article:tag" content="web3">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/songhanlin/hexo-image/blob/master/sophomore-level2/1.png?raw=true">
+
+
+<link rel="canonical" href="http://blog.julysong.com/2022/08/25/web3-sophomore-level2/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://blog.julysong.com/2022/08/25/web3-sophomore-level2/","path":"2022/08/25/web3-sophomore-level2/","title":"什么是Gas?"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>什么是Gas? | 骑驴码梦</title>
+  
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+window.onload = function(e){
+  var urls = "https://picsum.photos/"
+  + window.screen.availWidth +
+  "/" + window.screen.availHeight + "/?random";
+  document.body.style.backgroundImage='url('+urls+')';
+}
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126093412-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-126093412-1');
+</script>
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="骑驴码梦" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">骑驴码梦</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">我一进门就看到常威在打来福~</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Gas-%E4%B8%80%E8%88%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">Gas: 一般概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A6%E6%95%A6%E5%89%8D%E5%8D%87%E7%BA%A7"><span class="nav-number">2.</span> <span class="nav-text">伦敦前升级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">2.1.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A9%E7%84%B6%E6%B0%94%E6%88%90%E6%9C%AC%E8%AE%A1%E7%AE%97"><span class="nav-number">2.2.</span> <span class="nav-text">天然气成本计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B0%94%E4%BD%93%E9%99%90%E5%88%B6"><span class="nav-number">2.3.</span> <span class="nav-text">气体限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%BB%E6%AD%A2%E6%B0%94%E4%BD%93%E9%99%90%E5%88%B6"><span class="nav-number">2.4.</span> <span class="nav-text">阻止气体限制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A6%E6%95%A6%E5%90%8E%E5%8D%87%E7%BA%A7"><span class="nav-number">3.</span> <span class="nav-text">伦敦后升级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90-1"><span class="nav-number">3.1.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E5%8F%98%E5%9D%97%E5%A4%A7%E5%B0%8F"><span class="nav-number">3.2.</span> <span class="nav-text">可变块大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E5%8F%98%E5%9F%BA%E6%9C%AC%E8%B4%B9%E7%94%A8"><span class="nav-number">3.3.</span> <span class="nav-text">可变基本费用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E5%A5%BD%E7%9A%84%E6%B0%94%E4%BD%93%E4%BC%B0%E7%AE%97"><span class="nav-number">3.4.</span> <span class="nav-text">更好的气体估算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B0%94%E4%BD%93%E4%B8%BA%E4%BB%80%E4%B9%88%E5%AD%98%E5%9C%A8%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">气体为什么存在？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%8D%E4%BD%8E%E7%87%83%E6%B0%94%E8%B4%B9"><span class="nav-number">5.</span> <span class="nav-text">降低燃气费</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%84%E6%BA%90"><span class="nav-number">6.</span> <span class="nav-text">资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="nav-number">7.</span> <span class="nav-text">练习题</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="TeenSong"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">TeenSong</p>
+  <div class="site-description" itemprop="description">常威, 你还说你不会武功</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">59</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/songhanlin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;songhanlin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/e05ddaee7769" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;e05ddaee7769" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i>简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_28153553" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_28153553" rel="noopener me" target="_blank"><i class="fa fa-copyright fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/song_hanlin/activities" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;song_hanlin&#x2F;activities" rel="noopener me" target="_blank"><i class="fa fa-mortar-board fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml" rel="noopener me"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.julysong.com/2022/08/25/web3-sophomore-level2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="TeenSong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="骑驴码梦">
+      <meta itemprop="description" content="常威, 你还说你不会武功">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="什么是Gas? | 骑驴码梦">
+      <meta itemprop="description" content="WEB3系列教程之入门篇">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          什么是Gas?
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-08-25 15:32:20" itemprop="dateCreated datePublished" datetime="2022-08-25T15:32:20+08:00">2022-08-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-02-20 14:39:02" itemprop="dateModified" datetime="2025-02-20T14:39:02+08:00">2025-02-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/web3%E7%B3%BB%E5%88%97%E4%B9%8B%E5%85%A5%E9%97%A8%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">web3系列之入门篇</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">WEB3系列教程之入门篇</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>原文地址: <a target="_blank" rel="noopener" href="https://learnweb3.io/courses/c1d7081b-63a9-4c6e-b35c-9fcbbad418b2/lessons/482b1e3d-fd7c-4008-9bca-a17d1bbee5f7">What is Gas?</a></p>
+<p>翻译: JulySong</p>
+</blockquote>
+<p>Gas 是理解以太坊网络的最重要和最基本的方面之一。</p>
+<blockquote>
+<p>天然气是允许它（以太坊）运行的燃料，就像汽车需要汽油才能运行一样。</p>
+</blockquote>
+<p>在浏览新生跟踪教程时，您可能已经注意到在以太坊网络上进行的交易需要用户支付交易费用。</p>
+<ul>
+<li>这个交易费是怎么计算的？</li>
+<li>您需要为一笔交易支付多少 ETH？</li>
+<li>为什么有些交易比其他交易更昂贵？</li>
+<li>为什么会有 Gas 费？</li>
+</ul>
+<p>这些问题的答案在于 gas 的概念。</p>
+<p>最近的升级，即 2021 年 8 月的伦敦升级，略微改变了交易费用的计算方式和天然气的运作方式。出于这个原因，我们将把本教程分为两个部分：</p>
+<ul>
+<li>伦敦前升级</li>
+<li>伦敦后升级</li>
+</ul>
+<p>Pre-London Upgrade 比 Post-London Upgrade 更容易理解并且更容易理解，并且也为升级提供了动力。</p>
+<h2 id="Gas-一般概念"><a href="#Gas-一般概念" class="headerlink" title="Gas: 一般概念"></a>Gas: 一般概念</h2><p>就像秒是一个时间单位，而米是一个距离单位一样，gas 本身就是以太坊网络上的一个计算单位。</p>
+<p>气体单位用于衡量在以太坊上执行交易所需的计算量。由于每笔交易都需要一些计算资源来执行，因此需要一笔费用，通常称为 Gas 费用或交易费用。</p>
+<p>汽油费以以太坊的本地货币——以太币或 ETH 支付。汽油费的计算方式在伦敦升级前后略有不同。</p>
+<blockquote>
+<p>注意：通常当有人说“Gas”时 - 他们指的是“Gas Fees”而不是单位本身。但是，出于本教程的目的，我们在技术上是正确的，在提到单位时说“Gas”，在提到 Ether 中的费用时说“Gas Fees”。</p>
+</blockquote>
+<h2 id="伦敦前升级"><a href="#伦敦前升级" class="headerlink" title="伦敦前升级"></a>伦敦前升级</h2><p>在伦敦升级发生之前，您需要为一笔交易支付多少以太币是使用一个简单的公式计算出来的。</p>
+<p><code>gas fees = gas spent * gas price</code></p>
+<ul>
+<li>Gas Spent 是用于执行交易的气体总量（以气体单位为单位）</li>
+<li>Gas Price 是你愿意为每个执行的 Gas 单位支付的以太币数量</li>
+</ul>
+<p>Gas 价格以 gwei 计价 - 一种 ETH 的计价单位。</p>
+<p>1 Gwei &#x3D; 0.000000001 ETH</p>
+<p>1 ETH &#x3D; 10^9 Gwei</p>
+<p>因此，与其说你的 gas 价格是 0.000000001 ETH，不如说你的 gas 价格是 1 Gwei。</p>
+<blockquote>
+<p>Gwei 代表 Giga-Wei，等于 1,000,000,000 (10^9) wei。Wei 是 ETH 的最小面额。1 ETH &#x3D; 10^18 Wei。</p>
+</blockquote>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>就执行所需的气体量而言，最便宜的交易只是将 ETH 从一个账户转移到另一个账户。这笔交易花费了 21,000 个气体单位。</p>
+<p>假设 Alice 想向 Bob 支付 1 ETH。天然气成本为 21,000 gas。假设 gas 价格为 200 Gwei。</p>
+<p>所以，<code>gas fees = 21,000 * 200 = 4,200,000 Gwei = 0.0042 ETH</code></p>
+<p>因此，当 Alice 汇款时，会从她的账户中扣除 1.0042 ETH，而 Bob 将收到 1 ETH。0.0042 ETH 费用归于挖掘包含 Alice 交易的区块的矿工。</p>
+<p>您可能想知道 gas 价格是如何设置为 200 Gwei 的？天然气价格设置多少取决于用户。具有较高 gas 价格的交易具有更高的优先级被包含在一个区块中，因为矿工首先获得更高的小费。因此，天然气价格基本上就像公开拍卖或贿赂矿工一样。谁愿意向矿工支付最高价格或最高贿赂，他们的交易就会比价格较低的交易更快。</p>
+<p>像 Metamask 这样的钱包可以根据当前网络条件为要执行的交易提供合理的 gas 价格估算——因此大多数用户不需要自己接触 gas 价格值。（不过，您可以通过 Metamask 设置启用修改）</p>
+<h3 id="天然气成本计算"><a href="#天然气成本计算" class="headerlink" title="天然气成本计算"></a>天然气成本计算</h3><p>当智能合约被编译成字节码时，在部署到以太坊网络之前，它会被编译成 OPCODES。这些是可以直接在以太坊虚拟机上运行的简单操作。您可以将它们视为可以直接在 Intel 或 AMD CPU 上运行的基本操作。这些 OPCODES 包括基本操作，如 <code>ADD</code>, <code>MUL</code>, <code>DIV</code>, <code>SUB</code>, <code>SHA3</code>等.</p>
+<p>每个 OPCODE 都有固定的 gas 成本。智能合约中特定功能的 gas 成本是其所有 OPCODES 的 gas 成本之和。 <a target="_blank" rel="noopener" href="https://github.com/crytic/evm-opcodes">如果有兴趣，您可以在此处找到所有 OPCODE 及其相关 gas 费用的列表。</a>.</p>
+<p>因此，与将 ETH 从一个账户转移到另一个账户这样的简单交易相比，需要更多操作码才能执行的更复杂的交易最终会使用更多的气体（单位）。</p>
+<h3 id="气体限制"><a href="#气体限制" class="headerlink" title="气体限制"></a>气体限制</h3><p>现在，您可以想象存在许多功能，这些功能比仅将 ETH 从一个帐户发送到另一个帐户要复杂得多。那些涉及循环，或随机性，或依赖于用户输入。</p>
+<p>对于此类函数，可能很难准确预测执行所需的气体量，因为它取决于其他变量。</p>
+<p>因此，您可以指定一个上限，而不是在决定为交易支付多少费用时指定确切的 gas 成本。</p>
+<p>Gas Limit 是指您愿意为交易使用的最大 Gas 量（单位）。这是由用户设置的。</p>
+<p>同样，像 Metamask 这样的钱包提供了合理的估计。</p>
+<p>如果您的交易使用的 gas 少于您的限额，则未使用的 gas 将退还到您的帐户。</p>
+<p>因此，您的钱包在发送交易时必须有<code>gas limit * gas price</code>以太币来支付 gas。当交易被执行和开采时，任何未使用的 gas 都将被退还。</p>
+<p>但是，如果您的交易使用的 gas 超过了您的限制，则交易将失败并且您的 gas 将消失。</p>
+<h3 id="阻止气体限制"><a href="#阻止气体限制" class="headerlink" title="阻止气体限制"></a>阻止气体限制</h3><p>除了用户指定的每笔交易的气体限制外，以太坊网络还对单个区块中允许的最大气体量（单位）施加了限制。</p>
+<p>这样做是为了确保每个块都保持在允许的计算成本范围内。由于更复杂的事务需要更长的时间来执行，这可以确保节点不会由于计算复杂性的增加而开始与网络的其余部分不同步。</p>
+<h2 id="伦敦后升级"><a href="#伦敦后升级" class="headerlink" title="伦敦后升级"></a>伦敦后升级</h2><p>2021 年 8 月 5 日 - 伦敦升级在以太坊网络上实施。本次升级主要引入了三个好处：</p>
+<ul>
+<li>更好的汽油费估算</li>
+<li>更快的交易包含</li>
+<li>燃烧一定比例的 ETH 作为交易费用</li>
+</ul>
+<p>就本文而言，我们主要对前两点感兴趣。</p>
+<p>在伦敦升级之前，像 Metamask 这样的钱包会根据过去的网络活动提供对 gas 价格的估计。每个钱包都使用自己的方法来做到这一点。具体来说，Metamask 扫描了以太坊上的最后 1000 个区块，并预测了您交易的 gas 价格。</p>
+<p>然而，从伦敦升级开始，每个区块都设置了基本汽油价格费用。这是将您的交易包含在此区块中的每单位 gas 的最低价格。这是由网络根据对块空间的需求本地计算的。这些基本费用将继续被以太坊网络烧毁，因此永远摆脱该 ETH 以抵消发行。由于以太坊没有总体最大供应量（与比特币的最大供应量为 2100 万比特币不同），因此销毁有助于 ETH 供应量达到平衡，而不是无限膨胀。</p>
+<p>除了基本费用外，还引入了小费（优先费用）的概念。随着基本费用被烧毁，提示用于补偿矿工执行和传播用户交易。大多数钱包都会自动设置，但您可以选择手动设置。更高的小费交易往往会获得更高的优先级。</p>
+<p>此次升级后，gas 费用的计算公式更改为：</p>
+<p><code>gas fees = gas spent * (base fees + priority fees)</code></p>
+<h3 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h3><p>回到前面的例子，如果 Alice 必须向 Bob 支付 1 ETH，那么 gas 成本（以单位为单位）为 21,000。假设基本费用为 100 Gwei，Alice 决定包含 10 Gwei 的小费。</p>
+<p><code>total gas fees = 21,000 * (100 Gwei + 10 Gwei) = 2,310,000 Gwei = 0.00231 ETH</code></p>
+<h3 id="可变块大小"><a href="#可变块大小" class="headerlink" title="可变块大小"></a>可变块大小</h3><p>在伦敦升级之前，所有区块的区块气体限制是恒定的。每个区块的最大容量为 15M 气体。在需求量大的时候，这会导致糟糕的用户体验，因为区块正在满负荷运行，用户必须等待需求减少才能被包含在区块中。</p>
+<p>升级为以太坊引入了可变大小的块。每个区块现在有一个 15M gas 的目标 gas 限制，但大小可以随着网络需求而增加或减少，最高可达 30M gas。</p>
+<p>平均而言，网络通过修改区块大小和基本费用达到了 1500 万左右的平衡。</p>
+<p>如果块气体大于 15M 目标，则增加下一个块的基本费用。同样，如果区块气体小于 15M 目标，则下一个区块的基本费用会降低。调整基本费用的金额取决于区块气体与 1500 万目标的距离。</p>
+<p>花一些时间阅读最后几段并完全掌握它们 - 这是非常迷人的东西，但可能有点棘手。</p>
+<h3 id="可变基本费用"><a href="#可变基本费用" class="headerlink" title="可变基本费用"></a>可变基本费用</h3><p>让我们看看在高网络需求时基本费用会发生什么变化。</p>
+<p>如果超过目标 15M gas，则每个区块的基本费用最多增加 12.5%。这种指数增长使得区块气体无限期地保持在高位在财务上是不可行的，因此允许节点与网络保持同步，而不是不断地执行 30M 的气体块。</p>
+<p><img src="https://github.com/songhanlin/hexo-image/blob/master/sophomore-level2/1.png?raw=true"></p>
+<p>在此示例中，第 2 块看到了从目标 15M 到 30M 的最大可能增长。结果，区块 3 的基本费用从 100 Gwei 增加到 112.5 Gwei，增加了 12.5%。</p>
+<p>同样，由于区块 3 也达到了 30M gas 的最大限制，这是与目标的最大可能距离，因此区块 4 的基本费用再次增加了 12.5% 至 126.6 Gwei。等等…</p>
+<p>这种情况一直在发生，到第 8 块时，基本费用为 202.7 Gwei。比 7 个街区前增加了 102.7%！到第 100 块时，基本费用为 10302608.6 Gwei——这太疯狂了（也是不现实的）。这意味着在区块 100 进行简单的 ETH 转账将花费您 (21000 * 10302608.6 Gwei) &#x3D; 216 ETH。</p>
+<p>由于基本费用呈指数级增长，因此可以注意到极不可能看到完整块的扩展峰值。</p>
+<p>需要注意的是，基础费用也最多降低了 12.5%，帮助峰值在流量开始放缓后恢复平衡。</p>
+<h3 id="更好的气体估算"><a href="#更好的气体估算" class="headerlink" title="更好的气体估算"></a>更好的气体估算</h3><p>相对于 Pre-London 升级机制，这种基本费用机制的改变使得费用预测更加可靠。按照上表，要在第 9 个区块创建交易，钱包可以让用户 100% 确定地知道要添加到下一个区块的最大基本费用为 <code>current base fees (base fees of prev block) * 112.5%</code> &#x3D; <code>202.8 * 112.5/100 </code>or <code>228.1 Gwei</code>. 相反，可以确定最低基本费用，因为知道减少只能是 12.5%：<code>current base fees (base fees of prev block) * 87.5%</code> &#x3D; <code>202.8 * 87.5/100</code> or <code>177.45 Gwei</code>.</p>
+<p>因此，钱包现在知道在提供估算时提供给用户的基本费用的最小和最大范围。最小值是 <code>current base fees * 87.5%</code>, 最大值是: <code>current base fees * 112.5%</code> 然后用户可以调整矿工的小费，这通常是基本费用的一小部分。</p>
+<h2 id="气体为什么存在？"><a href="#气体为什么存在？" class="headerlink" title="气体为什么存在？"></a>气体为什么存在？</h2><p>汽油费有助于保持以太坊网络的安全。通过对网络上执行的每次计算收取费用，可以防止不良行为者向网络发送垃圾邮件。</p>
+<p>为了避免智能合约中的意外或恶意无限循环，这将导致所有以太坊节点永远卡住，交易的气体限制设置了交易可以使用多少计算的限制。</p>
+<p>像这样的代码将耗尽所有提供的气体，达到限制，然后交易将失败：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.10;</span><br><span class="line"></span><br><span class="line">contract Gas &#123;</span><br><span class="line">    uint public i = 0;</span><br><span class="line"></span><br><span class="line">    // 用完你发送的所有气体会导致你的交易失败。</span><br><span class="line">    // 状态更改已撤消。</span><br><span class="line">    // 消耗的 Gas 不退还。</span><br><span class="line">    function forever() public &#123;</span><br><span class="line">        // Here we run a loop until all of the gas are spent</span><br><span class="line">        // and the transaction fails</span><br><span class="line">        while (true) &#123;</span><br><span class="line">            i += 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使这一切成为可能的基本单位是气体。</p>
+<h2 id="降低燃气费"><a href="#降低燃气费" class="headerlink" title="降低燃气费"></a>降低燃气费</h2><p>如今，以太坊的高额费用是一个热门话题。以太坊社区已庄严宣誓不会损害网络的去中心化或安全性。因此，进行了有利于安全性的权衡，这导致以太坊网络目前的交易费用高于其他区块链（如 Solana），从而以牺牲安全性和去中心化为代价，进行了有利于降低费用的权衡。</p>
+<p>以太坊的基本目标是成为一个能够执行智能合约的高度安全和高度去中心化的区块链网络。</p>
+<p>但是，如果用户必须继续花费数百美元来移动一美元，那么这些都不重要。</p>
+<p>因此，有很多事情正在进行中，其中一些已经可用，以降低 gas 费用并改善用户体验。</p>
+<p>首先，以太坊 2.0（也称为 Eth2）将提供的网络升级最终将解决一些气体问题，这反过来将使网络能够每秒处理数千笔交易并在全球范围内扩展。</p>
+<p>此外，在第 2 层扩展方面正在进行大量工作。稍后我们将更深入地了解第 2 层扩展和第 2 层平台，但本质上它们是将智能合约的繁重计算方面转移到其他地方的网络，并使用以太坊主网作为最终结算层，从而继承了安全性和以太坊的去中心化优势，并为用户保持低 gas 费和高交易速度。</p>
+<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><p>推荐使用以下资源（但可选）阅读&#x2F;查看以了解有关气体的更多信息：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=AJvzNICwcwc">视频：以太坊气体解释</a></li>
+<li><a target="_blank" rel="noopener" href="https://ethereum.org/en/history/#london">伦敦升级</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/coinmonks/8-ways-of-reducing-the-gas-consumption-of-your-smart-contracts-9a506b339c0a">智能合约中的气体优化</a></li>
+<li><a target="_blank" rel="noopener" href="https://ethereum.org/en/developers/docs/scaling/layer-2-rollups/">有关第 2 层扩展的更多信息</a></li>
+</ul>
+<hr>
+<h2 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h2><ol>
+<li><p>🤔 以太坊网络上最便宜的交易是 $ETH 的转账</p>
+<p>A: 是的</p>
+<p>B: 错误</p>
+</li>
+<li><p>🤔 如果 Alice 想向 Bob 发送 1 ETH，假设 gas 价格为 100 Gwei，Alice 在交易费用中支付了多少 ETH（假设伦敦 ugprade 之前）？</p>
+<p>A: 0.0021 ETH</p>
+<p>B: 2100000 ETH</p>
+<p>C: 0.021 ETH</p>
+</li>
+<li><p>🤔 今天花费 100 Gwei 的交易明天可以花费 200 Gwei</p>
+<p>A: 是的</p>
+<p>B: 错误</p>
+</li>
+<li><p>🤔 交易的 gas 价格值在伦敦升级之前是固定的</p>
+<p>A: 是的</p>
+<p>B: 错误</p>
+</li>
+<li><p>🤔 伦敦分叉发生在以太坊的伦敦服务器上</p>
+<p>A: 是的</p>
+<p>B: 错误</p>
+</li>
+<li><p>🤔 在伦敦分叉之后，向网络发送交易所需的最低费用是多少？</p>
+<p>A: 基本费用</p>
+<p>B: 优先费用</p>
+<p>C: 天然气价格</p>
+</li>
+<li><p>🤔 您可以使用 Metamask 之类的钱包更改&#x2F;选择要为交易支付的最大汽油费</p>
+<p>A: 是的</p>
+<p>B: 错误</p>
+</li>
+<li><p>🤔 今天以太坊网络上可能的最大块大小限制是多少？</p>
+<p>A: 10M Gas</p>
+<p>B: 30M Gas</p>
+<p>C: 15M Gas</p>
+</li>
+<li><p>🤔 哪个版本的以太坊网络为网络提供了更好的 gas 估算？</p>
+<p>A: 伦敦前叉</p>
+<p>B: 后伦敦叉</p>
+</li>
+<li><p>🤔 汽油费的概念对网络不利</p>
+<p>A: 是的</p>
+<p>B: 错误</p>
+</li>
+</ol>
+<blockquote>
+<p>参考答案:</p>
+<ol>
+<li>A</li>
+<li>A</li>
+<li>A</li>
+<li>B</li>
+<li>B</li>
+<li>A</li>
+<li>A</li>
+<li>B</li>
+<li>B</li>
+<li>B</li>
+</ol>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/web3/" rel="tag"># web3</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/08/24/web3-sophomore-level1/" rel="prev" title="React 和 Next.js 简介">
+                  <i class="fa fa-angle-left"></i> React 和 Next.js 简介
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/08/27/web3-sophomore-level3/" rel="next" title="什么是采矿?">
+                  什么是采矿? <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"songhanlin","repo":"blog","client_id":"58797e27de182d42ab95","client_secret":"b04eb623dae17584fe8c2246c7af7dc5ea3f1b2b","admin_user":"songhanlin","distraction_free_mode":true,"proxy":"https://glacial-dawn-82467.herokuapp.com/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"e605683e4653814501c83cc282a2f8c1"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
